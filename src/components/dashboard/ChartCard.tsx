@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 interface ChartCardProps {
@@ -21,7 +20,11 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
     <article className={`bg-white border border-gray-200 rounded-xl p-6 shadow-sm ${className}`}>
       <div className="flex items-start gap-6 mb-6">
         <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center flex-shrink-0">
-          <div className="w-8 h-8 bg-blue-600 rounded-sm transform rotate-12"></div>
+          <img 
+            src="/lovable-uploads/0d596334-15b7-41e8-b632-2f9024e60962.png" 
+            alt="Chart icon"
+            className="w-10 h-10"
+          />
         </div>
         <div className="flex-1">
           <h2 className="text-[rgba(46,75,181,1)] text-2xl font-semibold">
