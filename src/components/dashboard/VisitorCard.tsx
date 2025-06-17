@@ -1,16 +1,9 @@
-
 import React from 'react';
-
 export const VisitorCard: React.FC = () => {
-  return (
-    <article className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+  return <article className="border border-gray-200 rounded-xl p-6 shadow-sm bg-[#f6f7ff]">
       <div className="flex items-start gap-6 mb-6">
         <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center flex-shrink-0">
-          <img 
-            src="/lovable-uploads/c2137da9-89d7-4a16-b4c7-1371e400e7b7.png" 
-            alt="Visitor icon"
-            className="w-10 h-10"
-          />
+          <img src="/lovable-uploads/c2137da9-89d7-4a16-b4c7-1371e400e7b7.png" alt="Visitor icon" className="w-10 h-10" />
         </div>
         <div className="flex-1">
           <h2 className="text-[rgba(46,75,181,1)] text-2xl font-semibold mb-2">
@@ -58,6 +51,5 @@ export const VisitorCard: React.FC = () => {
           </tbody>
         </table>
       </div>
-    </article>
-  );
+    </article>;
 };
