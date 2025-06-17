@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { LayoutDashboard, BarChart3, TrendingUp, Users, FileText, Settings, User, History, Mail, LogOut, ChevronDown } from 'lucide-react';
+import { LayoutDashboard, BarChart3, TrendingUp, Users, FileText, Settings, User, History, Mail, LogOut } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -9,12 +9,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubItem,
-  SidebarMenuSubButton,
   useSidebar
 } from '@/components/ui/sidebar';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 const navigationItems = [
   { 
@@ -25,12 +21,8 @@ const navigationItems = [
   },
   { 
     icon: BarChart3, 
-    label: 'Comparison Dashboard', 
-    hasSubmenu: true,
-    subItems: [
-      { label: 'Overview', href: '/comparison' },
-      { label: 'Analytics', href: '/comparison/analytics' }
-    ]
+    label: 'Comparison Dashboard',
+    href: '/comparison'
   },
   { 
     icon: TrendingUp, 
@@ -38,13 +30,9 @@ const navigationItems = [
     href: '/occupancy-trend'
   },
   { 
-    icon: BarChart3, 
-    label: 'Occupancy Comparison', 
-    hasSubmenu: true,
-    subItems: [
-      { label: 'Daily', href: '/occupancy-comparison/daily' },
-      { label: 'Weekly', href: '/occupancy-comparison/weekly' }
-    ]
+    icon: TrendingUp, 
+    label: 'Occupancy Comparison',
+    href: '/occupancy-comparison'
   },
   { 
     icon: Users, 
@@ -53,20 +41,16 @@ const navigationItems = [
   },
   { 
     icon: Users, 
-    label: 'Visitor Comparison', 
-    hasSubmenu: true,
-    subItems: [
-      { label: 'Timeline', href: '/visitor-comparison/timeline' },
-      { label: 'Metrics', href: '/visitor-comparison/metrics' }
-    ]
+    label: 'Visitor Comparison',
+    href: '/visitor-comparison'
   },
   { 
-    icon: FileText, 
+    icon: History, 
     label: 'Data Reports',
     href: '/data-reports'
   },
   { 
-    icon: Settings, 
+    icon: Mail, 
     label: 'Capacity Master',
     href: '/capacity-master'
   },
@@ -102,12 +86,12 @@ export const AppSidebar: React.FC = () => {
   const isCollapsed = state === 'collapsed';
 
   return (
-    <Sidebar className="border-r border-gray-200">
-      <SidebarContent className="bg-[rgba(246,247,255,1)] pt-6">
+    <Sidebar className="border-r border-gray-200" style={{ backgroundImage: 'url(/lovable-uploads/297ff5e8-c4e2-4da7-a6e5-38fadaf47c24.png)', backgroundSize: 'cover', backgroundPosition: 'top' }}>
+      <SidebarContent className="bg-[rgba(246,247,255,0.95)] pt-6">
         {/* Logo */}
         <div className="px-4 mb-6">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/a4398ecef9f90d02280dff77486962a630c02cde?placeholderIfAbsent=true"
+            src="/lovable-uploads/84d9499d-2461-49f9-bc7a-c21e8858962c.png"
             className={`object-contain transition-all duration-200 ${isCollapsed ? 'w-8 h-8' : 'w-[187px] h-auto'}`}
             alt="Company logo"
           />
@@ -118,67 +102,25 @@ export const AppSidebar: React.FC = () => {
             <SidebarMenu>
               {navigationItems.map((item, index) => (
                 <SidebarMenuItem key={index}>
-                  {item.hasSubmenu ? (
-                    <Collapsible>
-                      <CollapsibleTrigger asChild>
-                        <SidebarMenuButton 
-                          className={`w-full justify-between ${
-                            isCollapsed ? 'px-3' : 'px-4'
-                          } py-3 hover:bg-gray-100 rounded-lg transition-colors`}
-                        >
-                          <div className="flex items-center gap-3">
-                            <item.icon className="w-5 h-5 text-gray-600" />
-                            {!isCollapsed && (
-                              <span className="text-[17px] font-normal text-black">
-                                {item.label}
-                              </span>
-                            )}
-                          </div>
-                          {!isCollapsed && (
-                            <ChevronDown className="w-4 h-4 text-gray-400" />
-                          )}
-                        </SidebarMenuButton>
-                      </CollapsibleTrigger>
+                  <SidebarMenuButton 
+                    asChild
+                    className={`w-full ${
+                      item.isActive 
+                        ? 'bg-[rgba(48,66,127,1)] text-white hover:bg-[rgba(48,66,127,0.9)]' 
+                        : 'hover:bg-gray-100'
+                    } ${isCollapsed ? 'px-3' : 'px-4'} py-3 rounded-lg transition-colors`}
+                  >
+                    <a href={item.href} className="flex items-center gap-3">
+                      <item.icon className={`w-5 h-5 ${item.isActive ? 'text-white' : 'text-gray-600'}`} />
                       {!isCollapsed && (
-                        <CollapsibleContent>
-                          <SidebarMenuSub>
-                            {item.subItems?.map((subItem, subIndex) => (
-                              <SidebarMenuSubItem key={subIndex}>
-                                <SidebarMenuSubButton asChild>
-                                  <a 
-                                    href={subItem.href}
-                                    className="text-sm text-gray-600 hover:text-gray-900"
-                                  >
-                                    {subItem.label}
-                                  </a>
-                                </SidebarMenuSubButton>
-                              </SidebarMenuSubItem>
-                            ))}
-                          </SidebarMenuSub>
-                        </CollapsibleContent>
+                        <span className={`text-[17px] font-normal whitespace-nowrap ${
+                          item.isActive ? 'text-white' : 'text-black'
+                        }`}>
+                          {item.label}
+                        </span>
                       )}
-                    </Collapsible>
-                  ) : (
-                    <SidebarMenuButton 
-                      asChild
-                      className={`w-full ${
-                        item.isActive 
-                          ? 'bg-[rgba(48,66,127,1)] text-white hover:bg-[rgba(48,66,127,0.9)]' 
-                          : 'hover:bg-gray-100'
-                      } ${isCollapsed ? 'px-3' : 'px-4'} py-3 rounded-lg transition-colors`}
-                    >
-                      <a href={item.href} className="flex items-center gap-3">
-                        <item.icon className={`w-5 h-5 ${item.isActive ? 'text-white' : 'text-gray-600'}`} />
-                        {!isCollapsed && (
-                          <span className={`text-[17px] font-normal ${
-                            item.isActive ? 'text-white' : 'text-black'
-                          }`}>
-                            {item.label}
-                          </span>
-                        )}
-                      </a>
-                    </SidebarMenuButton>
-                  )}
+                    </a>
+                  </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>

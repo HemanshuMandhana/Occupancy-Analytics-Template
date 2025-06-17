@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 
 interface ChartCardProps {
   title: string;
@@ -6,62 +7,89 @@ interface ChartCardProps {
 }
 
 export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) => {
+  const [hoveredMonth, setHoveredMonth] = useState<string | null>(null);
+  
+  const chartData = [
+    { month: 'Jan', occupied: 40, vacant: 20 },
+    { month: 'Feb', occupied: 25, vacant: 35 },
+    { month: 'Mar', occupied: 65, vacant: 15 },
+    { month: 'Apr', occupied: 55, vacant: 32 }, // This will show tooltip
+    { month: 'May', occupied: 15, vacant: 45 }
+  ];
+
   return (
-    <article className={`bg-[rgba(247,248,255,1)] border flex min-w-60 min-h-[389px] gap-10 overflow-hidden flex-wrap grow shrink w-[398px] my-auto pt-[19px] pb-px px-[26px] rounded-xl border-[rgba(37,57,120,1)] border-solid max-md:max-w-full max-md:px-5 ${className}`}>
-      <div className="rotate-[3.141592653589793rad] bg-[rgba(224,227,253,1)] flex w-[85px] shrink-0 h-[86px] gap-2.5 rounded-[677px]" />
-      <h2 className="min-w-60 text-3xl text-[rgba(46,75,181,1)] font-semibold grow shrink w-[264px]">
-        {title}
-      </h2>
-      <div className="border flex min-w-60 items-stretch gap-[29px] overflow-hidden grow shrink w-[403px] px-4 py-[19px] rounded-[11px] border-[rgba(229,231,231,1)] border-solid">
-        <div className="flex flex-col items-stretch text-[11px] text-black font-medium mt-12 max-md:hidden max-md:mt-10">
-          <div>80</div>
-          <div className="mt-[29px]">60</div>
-          <div className="mt-[29px]">40</div>
-          <div className="mt-[26px]">20</div>
-          <div className="mt-[29px]">0</div>
+    <article className={`bg-white border border-gray-200 rounded-xl p-6 shadow-sm ${className}`}>
+      <div className="flex items-start gap-6 mb-6">
+        <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center flex-shrink-0">
+          <div className="w-8 h-8 bg-blue-600 rounded-sm transform rotate-12"></div>
         </div>
-        <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit">
-          <div className="flex w-[143px] max-w-full gap-2 text-[11px] text-[rgba(153,153,153,1)] font-semibold whitespace-nowrap max-md:mr-[9px]">
-            <div className="flex items-center gap-[7px] flex-1">
-              <div className="rounded bg-[rgba(66,103,177,1)] self-stretch flex w-[15px] shrink-0 h-[15px] my-auto" />
-              <span className="self-stretch my-auto">Occupied</span>
-            </div>
-            <div className="flex items-center gap-[7px] flex-1">
-              <div className="rounded bg-[rgba(247,248,255,1)] self-stretch flex w-[15px] shrink-0 h-[15px] my-auto border-black" />
-              <span className="self-stretch my-auto">Vacant</span>
-            </div>
+        <div className="flex-1">
+          <h2 className="text-[rgba(46,75,181,1)] text-2xl font-semibold">
+            {title}
+          </h2>
+        </div>
+      </div>
+
+      <div className="border border-gray-200 rounded-lg p-4">
+        {/* Legend */}
+        <div className="flex gap-6 mb-6 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 bg-[rgba(66,103,177,1)] rounded"></div>
+            <span className="text-gray-600">Occupied</span>
           </div>
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/2ad0f229b3fee3e9ef2111b71bb4da3ba6c08d59?placeholderIfAbsent=true"
-            className="aspect-[333.33] object-contain w-full mt-[38px]"
-            alt="Chart visualization"
-          />
-          <div className="self-center flex w-[306px] max-w-full gap-5 justify-between mt-[5px]">
-            {['Jan', 'Feb', 'Mar', 'Apr', 'May'].map((month, index) => (
-              <div key={month} className={`flex flex-col items-stretch ${index === 0 ? 'mt-[22px]' : index === 1 ? 'mt-[75px] max-md:mt-10' : index === 2 ? 'mt-2.5' : index === 3 ? 'self-stretch' : 'mt-[109px] max-md:mt-10'}`}>
-                {index === 3 && (
-                  <div className="flex flex-col relative aspect-[1.143] w-full text-[10px] text-[rgba(233,233,233,1)] font-medium pt-1.5 pb-[13px] px-[9px]">
-                    <img
-                      src="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/9824c9a7add4001476de340f1a88e7d1ae5f0480?placeholderIfAbsent=true"
-                      className="absolute h-full w-full object-cover inset-0"
-                      alt="Chart tooltip background"
-                    />
-                    <div className="relative flex items-center gap-[5px]">
-                      <div className="bg-[rgba(66,103,177,1)] self-stretch flex w-[7px] shrink-0 h-[7px] my-auto rounded-sm" />
-                      <span className="self-stretch my-auto">55</span>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 bg-white border border-gray-400 rounded"></div>
+            <span className="text-gray-600">Vacant</span>
+          </div>
+        </div>
+
+        {/* Chart Area */}
+        <div className="flex items-end justify-between h-48 mb-4">
+          {/* Y-axis labels */}
+          <div className="flex flex-col justify-between h-full text-xs text-gray-500 mr-4">
+            <span>80</span>
+            <span>60</span>
+            <span>40</span>
+            <span>20</span>
+            <span>0</span>
+          </div>
+
+          {/* Chart bars */}
+          <div className="flex-1 flex items-end justify-between gap-8 h-full">
+            {chartData.map((data, index) => (
+              <div key={data.month} className="flex flex-col items-center relative">
+                {/* Tooltip for April */}
+                {data.month === 'Apr' && (
+                  <div className="absolute -top-16 bg-gray-100 rounded p-2 text-xs shadow-lg z-10">
+                    <div className="flex items-center gap-1 mb-1">
+                      <div className="w-2 h-2 bg-[rgba(66,103,177,1)] rounded-sm"></div>
+                      <span>55</span>
                     </div>
-                    <div className="relative flex items-center gap-[5px] mt-2">
-                      <div className="bg-[rgba(247,248,255,1)] self-stretch flex w-2 shrink-0 h-2 my-auto rounded-sm" />
-                      <span className="self-stretch my-auto">32</span>
+                    <div className="flex items-center gap-1">
+                      <div className="w-2 h-2 bg-white border border-gray-300 rounded-sm"></div>
+                      <span>32</span>
                     </div>
                   </div>
                 )}
-                <div className={`bg-[rgba(221,226,255,1)] ${index === 0 ? 'pt-[63px]' : index === 1 ? 'pt-[41px]' : index === 2 ? 'pt-[21px]' : index === 3 ? 'pt-[34px] max-md:ml-1.5 max-md:mr-2' : 'pt-5'} rounded-[9px]`}>
-                  <div className={`bg-[rgba(37,56,120,1)] ${index === 0 ? 'flex shrink-0 h-[73px]' : index === 1 ? 'z-10 flex w-[42px] shrink-0 h-[42px]' : index === 2 ? 'flex shrink-0 h-[127px]' : index === 3 ? 'z-10 flex shrink-0 h-[72px]' : 'z-10 flex shrink-0 h-[31px]'} rounded-[0px_0px_9px_9px]`} />
+                
+                {/* Bar container */}
+                <div className="flex flex-col items-center mb-2" style={{ height: '80%' }}>
+                  <div className="w-12 bg-gray-200 rounded-t flex flex-col justify-end" style={{ height: '100%' }}>
+                    {/* Occupied portion */}
+                    <div 
+                      className="bg-[rgba(66,103,177,1)] w-full rounded-t"
+                      style={{ height: `${data.occupied}%` }}
+                    ></div>
+                    {/* Vacant portion */}
+                    <div 
+                      className="bg-white border-l border-r border-gray-300 w-full"
+                      style={{ height: `${data.vacant}%` }}
+                    ></div>
+                  </div>
                 </div>
-                <div className={`text-black text-[11px] font-semibold self-center ${index === 1 || index === 3 ? 'mt-[15px]' : index === 4 ? 'mt-[13px]' : 'mt-3.5'}`}>
-                  {month}
-                </div>
+                
+                {/* Month label */}
+                <span className="text-xs font-medium text-gray-700">{data.month}</span>
               </div>
             ))}
           </div>
