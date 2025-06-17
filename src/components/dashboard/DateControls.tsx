@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { RefreshCw } from 'lucide-react';
 
 export const DateControls: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState('Sun, 12 Dec 2024');
@@ -26,9 +27,7 @@ export const DateControls: React.FC = () => {
         className="bg-[rgba(245,167,40,1)] flex items-center justify-center w-[45px] lg:w-[54px] h-[45px] lg:h-[54px] rounded-lg hover:bg-[rgba(245,167,40,0.9)] transition-colors"
         aria-label="Refresh data"
       >
-        <div className="w-5 lg:w-6 h-5 lg:h-6 flex items-center justify-center">
-          <div className="w-4 lg:w-[18px] h-4 lg:h-[18px]" />
-        </div>
+        <RefreshCw className="w-5 lg:w-6 h-5 lg:h-6 text-white" />
       </button>
     </div>
   );
