@@ -71,7 +71,7 @@ export const AppSidebar: React.FC = () => {
           <img alt="Company logo" className="" src="/lovable-uploads/4d506073-f826-4459-add9-950c3a757f5f.png" />
         </div>
 
-        <SidebarGroup>
+        <SidebarGroup className="mx-0 my-0 py-0 px-[5px]">
           <SidebarGroupContent>
             <SidebarMenu>
               {navigationItems.map((item, index) => <SidebarMenuItem key={index}>
