@@ -1,10 +1,12 @@
+
 import React from 'react';
 import { LayoutDashboard, BarChart3, TrendingUp, Users, FileText, Settings, User, History, Mail, LogOut } from 'lucide-react';
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar';
+import { useLocation } from 'react-router-dom';
+
 const navigationItems = [{
   icon: LayoutDashboard,
   label: 'Dashboard',
-  isActive: true,
   href: '/'
 }, {
   icon: BarChart3,
@@ -55,16 +57,18 @@ const navigationItems = [{
   label: 'Log out',
   href: '/logout'
 }];
+
 export const AppSidebar: React.FC = () => {
-  const {
-    state
-  } = useSidebar();
+  const { state } = useSidebar();
+  const location = useLocation();
   const isCollapsed = state === 'collapsed';
-  return <Sidebar className="border-r border-gray-200" style={{
-    backgroundImage: 'url(/lovable-uploads/297ff5e8-c4e2-4da7-a6e5-38fadaf47c24.png)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'top'
-  }}>
+
+  return (
+    <Sidebar className="border-r border-gray-200" style={{
+      backgroundImage: 'url(/lovable-uploads/297ff5e8-c4e2-4da7-a6e5-38fadaf47c24.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'top'
+    }}>
       <SidebarContent className="bg-[rgba(246,247,255,0.95)] pt-6">
         {/* Logo */}
         <div className="px-4 mb-6">
@@ -74,19 +78,25 @@ export const AppSidebar: React.FC = () => {
         <SidebarGroup className="mx-0 my-0 py-0 px-[5px]">
           <SidebarGroupContent>
             <SidebarMenu>
-              {navigationItems.map((item, index) => <SidebarMenuItem key={index}>
-                  <SidebarMenuButton asChild className={`w-full ${item.isActive ? 'bg-[rgba(48,66,127,1)] text-white hover:bg-[rgba(48,66,127,0.9)]' : 'hover:bg-gray-100'} ${isCollapsed ? 'px-3' : 'px-4'} py-3 rounded-lg transition-colors`}>
-                    <a href={item.href} className="flex items-center gap-3">
-                      <item.icon className={`w-5 h-5 ${item.isActive ? 'text-white' : 'text-gray-600'}`} />
-                      {!isCollapsed && <span className={`text-[17px] font-normal whitespace-nowrap ${item.isActive ? 'text-white' : 'text-black'}`}>
-                          {item.label}
-                        </span>}
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>)}
+              {navigationItems.map((item, index) => {
+                const isActive = location.pathname === item.href;
+                return (
+                  <SidebarMenuItem key={index}>
+                    <SidebarMenuButton asChild className={`w-full ${isActive ? 'bg-[rgba(48,66,127,1)] text-white hover:bg-[rgba(48,66,127,0.9)]' : 'hover:bg-gray-100'} ${isCollapsed ? 'px-3' : 'px-4'} py-3 rounded-lg transition-colors`}>
+                      <a href={item.href} className="flex items-center gap-3">
+                        <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-gray-600'}`} />
+                        {!isCollapsed && <span className={`text-[17px] font-normal whitespace-nowrap ${isActive ? 'text-white' : 'text-black'}`}>
+                            {item.label}
+                          </span>}
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-    </Sidebar>;
+    </Sidebar>
+  );
 };

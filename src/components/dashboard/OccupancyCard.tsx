@@ -27,33 +27,33 @@ export const OccupancyCard: React.FC = () => {
       </div>
       
       {/* Table */}
-      <div className="overflow-hidden rounded-lg border border-gray-200">
-        <table className="w-full">
+      <div className="w-full overflow-hidden rounded-lg border border-gray-200">
+        <table className="w-full table-fixed">
           <thead>
             <tr className="bg-[rgba(37,56,120,1)] text-white">
-              <th className="px-4 py-3 text-left font-medium">ZONE</th>
-              <th className="px-4 py-3 text-left font-medium">Capacity</th>
-              <th className="px-4 py-3 text-left font-medium">Zone</th>
-              <th className="px-4 py-3 text-left font-medium">Capacity</th>
+              <th className="w-1/4 px-4 py-3 text-left font-medium border-r border-gray-300">ZONE</th>
+              <th className="w-1/4 px-4 py-3 text-left font-medium border-r border-gray-300">Capacity</th>
+              <th className="w-1/4 px-4 py-3 text-left font-medium border-r border-gray-300">Zone</th>
+              <th className="w-1/4 px-4 py-3 text-left font-medium">Capacity</th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-b border-gray-200">
-              <td className="px-4 py-3 text-gray-600">-</td>
-              <td className="px-4 py-3 text-gray-600">-</td>
-              <td className="px-4 py-3 text-gray-600">-</td>
+              <td className="px-4 py-3 text-gray-600 border-r border-gray-200">-</td>
+              <td className="px-4 py-3 text-gray-600 border-r border-gray-200">-</td>
+              <td className="px-4 py-3 text-gray-600 border-r border-gray-200">-</td>
               <td className="px-4 py-3 text-gray-600">-</td>
             </tr>
             <tr className="border-b border-gray-200 bg-gray-50">
-              <td className="px-4 py-3 text-gray-600">-</td>
-              <td className="px-4 py-3 text-gray-600">-</td>
-              <td className="px-4 py-3 text-gray-600">-</td>
+              <td className="px-4 py-3 text-gray-600 border-r border-gray-200">-</td>
+              <td className="px-4 py-3 text-gray-600 border-r border-gray-200">-</td>
+              <td className="px-4 py-3 text-gray-600 border-r border-gray-200">-</td>
               <td className="px-4 py-3 text-gray-600">-</td>
             </tr>
             <tr>
-              <td className="px-4 py-3 text-gray-600">-</td>
-              <td className="px-4 py-3 text-gray-600">-</td>
-              <td className="px-4 py-3 text-gray-600">-</td>
+              <td className="px-4 py-3 text-gray-600 border-r border-gray-200">-</td>
+              <td className="px-4 py-3 text-gray-600 border-r border-gray-200">-</td>
+              <td className="px-4 py-3 text-gray-600 border-r border-gray-200">-</td>
               <td className="px-4 py-3 text-gray-600">-</td>
             </tr>
           </tbody>

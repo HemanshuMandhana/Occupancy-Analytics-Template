@@ -34,7 +34,7 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
         </div>
       </div>
 
-      <div className="border border-gray-200 rounded-lg p-4 overflow-hidden">
+      <div className="border border-gray-200 rounded-lg p-6">
         {/* Legend */}
         <div className="flex gap-6 mb-6 text-sm">
           <div className="flex items-center gap-2">
@@ -48,10 +48,10 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
         </div>
 
         {/* Chart Area */}
-        <div className="relative">
-          <div className="flex items-end justify-between h-40 mb-4 relative">
+        <div className="relative w-full">
+          <div className="flex items-end justify-between h-48 mb-4 relative pl-12 pr-4">
             {/* Y-axis labels */}
-            <div className="flex flex-col justify-between h-full text-xs text-gray-500 mr-4 absolute -left-8">
+            <div className="flex flex-col justify-between h-full text-xs text-gray-500 absolute left-0 top-0">
               <span>80</span>
               <span>60</span>
               <span>40</span>
@@ -59,18 +59,18 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
               <span>0</span>
             </div>
 
-            {/* Chart bars */}
-            <div className="flex-1 flex items-end justify-between gap-4 h-full ml-8">
+            {/* Chart bars container */}
+            <div className="flex-1 flex items-end justify-between gap-2 h-full">
               {chartData.map((data, index) => {
                 const total = data.occupied + data.vacant;
-                const occupiedHeight = (data.occupied / 80) * 100;
-                const vacantHeight = (data.vacant / 80) * 100;
+                const occupiedHeight = Math.min((data.occupied / 80) * 100, 95);
+                const vacantHeight = Math.min((data.vacant / 80) * 100, 95);
                 
                 return (
-                  <div key={data.month} className="flex flex-col items-center relative">
+                  <div key={data.month} className="flex flex-col items-center relative flex-1 max-w-[60px]">
                     {/* Tooltip */}
                     {hoveredBar === data.month && (
-                      <div className="absolute -top-16 bg-black text-white rounded p-2 text-xs shadow-lg z-10 whitespace-nowrap">
+                      <div className="absolute -top-20 bg-black text-white rounded p-2 text-xs shadow-lg z-10 whitespace-nowrap">
                         <div className="flex items-center gap-1 mb-1">
                           <div className="w-2 h-2 bg-[rgba(66,103,177,1)] rounded-sm"></div>
                           <span>{data.occupied}</span>
@@ -84,8 +84,8 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
                     
                     {/* Stacked Bar */}
                     <div 
-                      className="w-12 mb-2 relative cursor-pointer"
-                      style={{ height: '80%' }}
+                      className="w-full mb-2 relative cursor-pointer bg-gray-100 rounded"
+                      style={{ height: '85%', maxHeight: '180px' }}
                       onMouseEnter={() => setHoveredBar(data.month)}
                       onMouseLeave={() => setHoveredBar(null)}
                     >
