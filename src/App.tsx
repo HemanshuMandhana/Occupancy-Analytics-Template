@@ -19,7 +19,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/dashboard" element={<Index />} />
           <Route path="/comparison" element={<Comparison />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
