@@ -1,9 +1,17 @@
+
 import React from 'react';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Menu } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { useNavigate } from 'react-router-dom';
 
 export const Header: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate('/login');
+  };
+
   return (
     <header className="bg-[rgba(246,247,255,1)] relative z-20 w-full px-4 lg:px-6 py-2">
       <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-4">
@@ -35,7 +43,10 @@ export const Header: React.FC = () => {
                 <DropdownMenuItem className="cursor-pointer hover:bg-gray-100 px-3 py-2">
                   My Account
                 </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer hover:bg-gray-100 px-3 py-2">
+                <DropdownMenuItem 
+                  onClick={handleLogout}
+                  className="cursor-pointer hover:bg-gray-100 px-3 py-2"
+                >
                   Log Out
                 </DropdownMenuItem>
               </DropdownMenuContent>
