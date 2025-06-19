@@ -29,7 +29,7 @@ const Index: React.FC = () => {
             <Header />
             
             {/* Controls section */}
-            <div className="px-6 py-4 bg-white/90 backdrop-blur-sm border-b">
+            <div className="px-6 py-2 bg-white/90 backdrop-blur-sm border-b">
               <div className="flex justify-between items-center">
                 <DateControls />
                 <DownloadButton />
