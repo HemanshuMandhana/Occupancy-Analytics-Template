@@ -1,0 +1,8 @@
+@import './tailwind.css';
+@import url('https://fonts.googleapis.com/css2?family=Gilroy:wght@400;600;700;800&display=swap');
+
+/* Global overrides (optional if already handled in tailwind.css) */
+body {
+  font-family: 'Gilroy', 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
