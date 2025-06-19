@@ -46,14 +46,16 @@ const Comparison: React.FC = () => {
                   >
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <button className="bg-[rgba(37,56,120,1)] flex w-full min-w-[140px] lg:min-w-[175px] min-h-[35px] lg:min-h-[40px] items-center gap-2 justify-center px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg hover:bg-[rgba(37,56,120,0.9)] transition-colors">
-                          <span className="text-sm lg:text-base">Roddenberry</span>
-                          <img
-                            src="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/655c8d2c001cf6f09886b560e12f33f9b4fb711d?placeholderIfAbsent=true"
-                            className="w-2 lg:w-2.5 h-1.5 lg:h-2 object-contain"
-                            alt="Dropdown arrow"
-                          />
-                        </button>
+                        <div className="min-w-[140px] lg:min-w-[175px]">
+                          <button className="bg-[rgba(37,56,120,1)] flex w-full min-h-[35px] lg:min-h-[40px] items-center gap-2 justify-center px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg hover:bg-[rgba(37,56,120,0.9)] transition-colors">
+                            <span className="text-sm lg:text-base">Roddenberry</span>
+                            <img
+                              src="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/655c8d2c001cf6f09886b560e12f33f9b4fb711d?placeholderIfAbsent=true"
+                              className="w-2 lg:w-2.5 h-1.5 lg:h-2 object-contain"
+                              alt="Dropdown arrow"
+                            />
+                          </button>
+                        </div>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
                         align="start"
