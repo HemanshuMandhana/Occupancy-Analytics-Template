@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/AppSidebar';
@@ -66,7 +67,7 @@ const Comparison: React.FC = () => {
             </div>
             
             {/* Controls section */}
-            <div className="px-6 py-2 bg-white/90 backdrop-blur-sm border-b">
+            <div className="px-6 py-1 bg-white/90 backdrop-blur-sm border-b">
               <div className="flex justify-between items-center">
                 <DateControls />
                 <DownloadButton />
