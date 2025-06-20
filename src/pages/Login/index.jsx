@@ -67,8 +67,8 @@ const LoginPage = () => {
 
       {/* Content Layer */}
       <div className="relative z-10 flex flex-col flex-grow">
-        {/* Header - Desktop Logo */}
-        <div className="pt-4 px-4 sm:px-8 lg:px-20 xl:px-36 flex-shrink-0 hidden md:block">
+        {/* Header - Desktop Logo - moved down */}
+        <div className="pt-8 px-4 sm:px-8 lg:px-20 xl:px-36 flex-shrink-0 hidden md:block">
           <img
             src="/images/img_logo1.png"
             alt="Logo"
@@ -77,7 +77,7 @@ const LoginPage = () => {
         </div>
 
         {/* Mobile Header - Logo Symbol + Company Name */}
-        <div className="pt-4 px-4 flex-shrink-0 block md:hidden text-center">
+        <div className="pt-6 px-4 flex-shrink-0 block md:hidden text-center">
           <div className="flex flex-col items-center gap-2">
             <img
               src="/lovable-uploads/55439f1a-28d6-4fd6-b8e0-51da1e05e591.png"
@@ -98,10 +98,10 @@ const LoginPage = () => {
               {/* Form Section */}
               <div className="space-y-10">
                 <div>
-                  <h1 className="text-[5vw] xl:text-[4.2vw] 2xl:text-[3.5vw] font-extrabold text-[#30427f] leading-[0.85] mb-2 font-gilroy">
+                  <h1 className="text-[6vw] xl:text-[5.5vw] 2xl:text-[4.8vw] font-extrabold text-[#30427f] leading-[0.85] mb-2 font-gilroy">
                     Login
                   </h1>
-                  <h2 className="text-[3vw] xl:text-[2.6vw] 2xl:text-[2vw] font-bold text-black leading-[0.9] font-gilroy">
+                  <h2 className="text-[3.5vw] xl:text-[3vw] 2xl:text-[2.5vw] font-bold text-black leading-[0.9] font-gilroy">
                     Occupancy Analytics
                   </h2>
                 </div>
@@ -167,9 +167,9 @@ const LoginPage = () => {
                           size="captcha"
                           onClick={handleCaptchaRefresh}
                           type="button"
-                          className="h-[3.5vh] w-[3.5vh] rounded-lg flex items-center justify-center"
+                          className="h-[4vh] w-[4vh] rounded-lg flex items-center justify-center"
                         >
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
                             <path
                               d="M13.65 2.35C12.2 0.9 10.21 0 8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C11.73 16 14.84 13.45 15.73 10H13.65C12.83 12.33 10.61 14 8 14C4.69 14 2 11.31 2 8C2 4.69 4.69 2 8 2C9.66 2 11.14 2.69 12.22 3.78L9 7H16V0L13.65 2.35Z"
                               fill="#7b7b7b"
@@ -215,14 +215,14 @@ const LoginPage = () => {
               <div />
             </div>
 
-            {/* Mobile & Tablet Layout */}
+            {/* Mobile & Tablet Layout - increased title font sizes */}
             <div className="lg:hidden flex flex-col items-center justify-center space-y-6 max-w-md mx-auto">
               {/* Title */}
               <div className="text-center">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#30427f] leading-tight mb-2 font-gilroy">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#30427f] leading-tight mb-2 font-gilroy">
                   Login
                 </h1>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black leading-tight font-gilroy">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black leading-tight font-gilroy">
                   Occupancy Analytics
                 </h2>
               </div>
@@ -289,9 +289,9 @@ const LoginPage = () => {
                         size="captcha"
                         onClick={handleCaptchaRefresh}
                         type="button"
-                        className="h-8 w-8 rounded-lg flex items-center justify-center"
+                        className="h-10 w-10 rounded-lg flex items-center justify-center"
                       >
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
                           <path
                             d="M13.65 2.35C12.2 0.9 10.21 0 8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C11.73 16 14.84 13.45 15.73 10H13.65C12.83 12.33 10.61 14 8 14C4.69 14 2 11.31 2 8C2 4.69 4.69 2 8 2C9.66 2 11.14 2.69 12.22 3.78L9 7H16V0L13.65 2.35Z"
                             fill="#7b7b7b"
@@ -335,9 +335,9 @@ const LoginPage = () => {
           </div>
         </main>
 
-        {/* Footer */}
+        {/* Footer - reduced font size */}
         <div className="px-4 sm:px-8 lg:px-20 xl:px-36 pb-4 flex-shrink-0">
-          <p className="text-xs sm:text-sm lg:text-base font-normal text-black font-gilroy text-center lg:text-left">
+          <p className="text-[10px] sm:text-xs lg:text-sm font-normal text-black font-gilroy text-center lg:text-left">
             2025, Designed and Developed by Feedback Solutions Inc
           </p>
         </div>

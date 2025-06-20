@@ -61,33 +61,36 @@ export const AppSidebar: React.FC = () => {
   const isCollapsed = state === 'collapsed';
 
   const handleLogout = () => {
-    // Clear any stored user data/tokens here if needed
     navigate('/login');
   };
 
   return (
-    <Sidebar className="border-r border-gray-200" style={{
+    <Sidebar className="border-r border-gray-200 w-48" style={{
       backgroundImage: 'url(/lovable-uploads/297ff5e8-c4e2-4da7-a6e5-38fadaf47c24.png)',
       backgroundSize: 'cover',
       backgroundPosition: 'top'
     }}>
-      <SidebarContent className="bg-[rgba(246,247,255,0.95)] pt-6">
-        {/* Logo */}
-        <div className="px-4 mb-6">
-          <img alt="Company logo" className="" src="/lovable-uploads/4d506073-f826-4459-add9-950c3a757f5f.png" />
+      <SidebarContent className="bg-[rgba(246,247,255,0.95)] pt-3">
+        {/* Logo - aligned with header */}
+        <div className="px-3 mb-4 flex justify-center">
+          <img 
+            alt="Company logo" 
+            className="h-8 w-auto object-contain" 
+            src="/lovable-uploads/4d506073-f826-4459-add9-950c3a757f5f.png" 
+          />
         </div>
 
-        <SidebarGroup className="mx-0 my-0 py-0 px-[5px]">
+        <SidebarGroup className="mx-0 my-0 py-0 px-[3px]">
           <SidebarGroupContent>
             <SidebarMenu>
               {navigationItems.map((item, index) => {
                 const isActive = location.pathname === item.href;
                 return (
                   <SidebarMenuItem key={index}>
-                    <SidebarMenuButton asChild className={`w-full ${isActive ? 'bg-[rgba(48,66,127,1)] text-white hover:bg-[rgba(48,66,127,0.9)]' : 'hover:bg-gray-100'} ${isCollapsed ? 'px-3' : 'px-4'} py-3 rounded-lg transition-colors`}>
-                      <a href={item.href} className="flex items-center gap-3">
-                        <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-gray-600'}`} />
-                        {!isCollapsed && <span className={`text-[17px] font-normal whitespace-nowrap ${isActive ? 'text-white' : 'text-black'}`}>
+                    <SidebarMenuButton asChild className={`w-full ${isActive ? 'bg-[rgba(48,66,127,1)] text-white hover:bg-[rgba(48,66,127,0.9)]' : 'hover:bg-gray-100'} ${isCollapsed ? 'px-2' : 'px-3'} py-2 rounded-lg transition-colors`}>
+                      <a href={item.href} className="flex items-center gap-2.5">
+                        <item.icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-gray-600'}`} />
+                        {!isCollapsed && <span className={`text-sm font-normal whitespace-nowrap ${isActive ? 'text-white' : 'text-black'}`}>
                             {item.label}
                           </span>}
                       </a>
@@ -100,11 +103,11 @@ export const AppSidebar: React.FC = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton 
                   onClick={handleLogout}
-                  className={`w-full hover:bg-gray-100 ${isCollapsed ? 'px-3' : 'px-4'} py-3 rounded-lg transition-colors cursor-pointer`}
+                  className={`w-full hover:bg-gray-100 ${isCollapsed ? 'px-2' : 'px-3'} py-2 rounded-lg transition-colors cursor-pointer`}
                 >
-                  <div className="flex items-center gap-3">
-                    <LogOut className="w-5 h-5 text-gray-600" />
-                    {!isCollapsed && <span className="text-[17px] font-normal whitespace-nowrap text-black">
+                  <div className="flex items-center gap-2.5">
+                    <LogOut className="w-4 h-4 text-gray-600" />
+                    {!isCollapsed && <span className="text-sm font-normal whitespace-nowrap text-black">
                         Log out
                       </span>}
                   </div>
