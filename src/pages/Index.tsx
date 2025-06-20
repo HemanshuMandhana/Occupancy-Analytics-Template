@@ -27,19 +27,19 @@ const Index: React.FC = () => {
             <UnifiedHeader pageTitle="Dashboard" />
             
             {/* Main content - optimized for no scrolling */}
-            <main className="flex-1 p-3 bg-white/80 backdrop-blur-sm overflow-hidden" role="main">
+            <main className="flex-1 p-2 bg-white/80 backdrop-blur-sm overflow-hidden" role="main">
               <div className="max-w-[1600px] mx-auto h-full">
                 {/* Grid container with controlled height */}
-                <div className="h-full grid grid-rows-2 gap-3">
+                <div className="h-full grid grid-rows-2 gap-2">
                   {/* Top row - Primary metrics */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2">
                     <OccupancyCard />
                     <VisitorCard />
                     <ChartCard title="Zone Occupancy Day" />
                   </div>
                   
                   {/* Bottom row - Heat maps and zone pick chart */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2">
                     <HeatMapCard 
                       title="Visitors by Zone" 
                       subtitle="Heat Map" 

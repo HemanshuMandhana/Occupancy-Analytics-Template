@@ -24,12 +24,12 @@ const Comparison: React.FC = () => {
             <UnifiedHeader pageTitle="Comparison Dashboard" />
             
             {/* Main content - optimized for no scrolling */}
-            <main className="flex-1 p-3 bg-white/80 backdrop-blur-sm overflow-hidden" role="main">
+            <main className="flex-1 p-2 bg-white/80 backdrop-blur-sm overflow-hidden" role="main">
               <div className="max-w-[1600px] mx-auto h-full">
                 {/* Grid container with controlled height */}
-                <div className="h-full grid grid-rows-2 gap-3">
+                <div className="h-full grid grid-rows-2 gap-2">
                   {/* Top row - Comparison tables */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
                     <ComparisonCard 
                       title="Zone Occupancy Day- Last week Comparison"
                       subtitle="Total Building Occupancy"
@@ -45,7 +45,7 @@ const Comparison: React.FC = () => {
                   </div>
                   
                   {/* Bottom row - Comparison charts */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
                     <ComparisonCard 
                       title="Zone Occupancy Day Last week Comparison"
                       chartType="occupancy"
