@@ -3,8 +3,8 @@ import React from 'react';
 
 export const LoginFooter: React.FC = () => {
   return (
-    <div className="px-4 sm:px-8 lg:px-16 xl:px-20 2xl:px-24 pb-4 sm:pb-6 lg:pb-8 flex-shrink-0">
-      <p className="text-xs sm:text-sm lg:text-base xl:text-lg font-normal text-black font-gilroy">
+    <div className="px-[4vw] xl:px-[8vw] 2xl:px-[10vw] pb-[2vh] flex-shrink-0">
+      <p className="text-[clamp(0.75rem,1.5vw,1.125rem)] font-normal text-black font-gilroy">
         2025, Designed and Developed by Feedback Solutions Inc
       </p>
     </div>

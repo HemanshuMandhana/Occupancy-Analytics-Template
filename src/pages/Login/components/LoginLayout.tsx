@@ -7,7 +7,7 @@ interface LoginLayoutProps {
 
 export const LoginLayout: React.FC<LoginLayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen w-full bg-white relative overflow-hidden flex flex-col">
+    <div className="h-screen w-screen bg-white relative overflow-hidden flex flex-col">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
@@ -27,7 +27,7 @@ export const LoginLayout: React.FC<LoginLayoutProps> = ({ children }) => {
       </div>
 
       {/* Content Layer */}
-      <div className="relative z-10 flex flex-col h-screen">
+      <div className="relative z-10 flex flex-col h-full">
         {children}
       </div>
     </div>
