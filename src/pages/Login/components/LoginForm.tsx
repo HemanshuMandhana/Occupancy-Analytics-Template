@@ -43,42 +43,42 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <main className="flex-1 flex items-center justify-start px-4 sm:px-8 lg:px-16 xl:px-20 2xl:px-24 py-4">
+    <main className="flex-1 flex items-center justify-start px-[4.17vw] py-[2.08vw]">
       <div className="w-full max-w-none">
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 xl:gap-16 items-center h-full">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-[3.33vw] items-center h-full">
           {/* Form Section */}
-          <div className="space-y-6 lg:space-y-8 xl:space-y-10 max-w-2xl xl:max-w-none">
+          <div className="space-y-[2.78vw] max-w-none">
             {/* Title Section */}
-            <div className="space-y-2 lg:space-y-4">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-extrabold text-[#30427f] leading-none font-gilroy">
+            <div className="space-y-[1.11vw]">
+              <h1 className="text-[4.17vw] font-extrabold text-[#30427f] leading-none font-gilroy">
                 Login
               </h1>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-black leading-tight font-gilroy">
+              <h2 className="text-[2.78vw] font-bold text-black leading-tight font-gilroy">
                 Occupancy Analytics
               </h2>
             </div>
 
             {/* Form Container */}
-            <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl bg-[#fafdfe] rounded-xl shadow-lg p-6 lg:p-8 xl:p-10">
-              <form onSubmit={handleLogin} className="space-y-4 lg:space-y-6">
+            <div className="w-[27.78vw] bg-[#fafdfe] rounded-xl shadow-lg p-[2.08vw]">
+              <form onSubmit={handleLogin} className="space-y-[1.39vw]">
                 {/* Admin ID */}
-                <div className="space-y-2">
-                  <Label className="block text-sm lg:text-base xl:text-lg font-normal text-black font-gilroy">
+                <div className="space-y-[0.42vw]">
+                  <Label className="block text-[0.83vw] font-normal text-black font-gilroy">
                     Admin ID
                   </Label>
                   <Input
                     type="text"
                     value={adminId}
                     onChange={(e) => setAdminId(e.target.value)}
-                    className="w-full h-10 lg:h-12 xl:h-14 px-3 lg:px-4 xl:px-5 bg-white border border-[#bcbec0] rounded-lg text-sm lg:text-base text-[#7b7b7b] font-gilroy focus:outline-none focus:border-[#30427f] focus:ring-1 focus:ring-[#30427f]"
+                    className="w-full h-[2.78vw] px-[1.04vw] bg-white border border-[#bcbec0] rounded-lg text-[0.83vw] text-[#7b7b7b] font-gilroy focus:outline-none focus:border-[#30427f] focus:ring-1 focus:ring-[#30427f]"
                     placeholder="ex: sagar patil"
                     required
                   />
                 </div>
 
                 {/* Password */}
-                <div className="space-y-2">
-                  <Label className="block text-sm lg:text-base xl:text-lg font-normal text-black font-gilroy">
+                <div className="space-y-[0.42vw]">
+                  <Label className="block text-[0.83vw] font-normal text-black font-gilroy">
                     Password
                   </Label>
                   <div className="relative">
@@ -86,19 +86,19 @@ export const LoginForm: React.FC = () => {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full h-10 lg:h-12 xl:h-14 px-3 lg:px-4 xl:px-5 bg-white border border-[#bcbec0] rounded-lg text-sm lg:text-base text-[#7b7b7b] font-gilroy focus:outline-none focus:border-[#30427f] focus:ring-1 focus:ring-[#30427f] pr-12"
+                      className="w-full h-[2.78vw] px-[1.04vw] bg-white border border-[#bcbec0] rounded-lg text-[0.83vw] text-[#7b7b7b] font-gilroy focus:outline-none focus:border-[#30427f] focus:ring-1 focus:ring-[#30427f] pr-[2.5vw]"
                       placeholder="Password"
                       required
                     />
                     <button 
                       type="button" 
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 lg:right-4 top-1/2 transform -translate-y-1/2"
+                      className="absolute right-[0.83vw] top-1/2 transform -translate-y-1/2"
                     >
                       <img 
                         src="/images/img_clarityeyehideline.svg" 
                         alt="Toggle password visibility" 
-                        className="w-4 h-4 lg:w-5 lg:h-5" 
+                        className="w-[1.04vw] h-[1.04vw]" 
                       />
                     </button>
                   </div>
@@ -115,18 +115,18 @@ export const LoginForm: React.FC = () => {
                 {/* Login Button */}
                 <Button
                   type="submit"
-                  className="w-full h-12 lg:h-14 xl:h-16 rounded-lg shadow-lg text-base lg:text-lg xl:text-xl font-bold bg-[#30427f] hover:bg-[#253660] text-white transition-colors"
+                  className="w-full h-[3.33vw] rounded-lg shadow-lg text-[1.04vw] font-bold bg-[#30427f] hover:bg-[#253660] text-white transition-colors"
                 >
                   Login
                 </Button>
 
                 {/* Contact Link */}
-                <div className="text-center pt-2">
-                  <span className="text-xs lg:text-sm font-normal text-black font-gilroy">Trouble? </span>
+                <div className="text-center pt-[0.42vw]">
+                  <span className="text-[0.69vw] font-normal text-black font-gilroy">Trouble? </span>
                   <button
                     type="button"
                     onClick={handleContactUs}
-                    className="text-xs lg:text-sm font-semibold text-black underline font-gilroy hover:text-[#30427f] transition-colors"
+                    className="text-[0.69vw] font-semibold text-black underline font-gilroy hover:text-[#30427f] transition-colors"
                   >
                     Contact us
                   </button>

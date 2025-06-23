@@ -7,7 +7,7 @@ interface LoginLayoutProps {
 
 export const LoginLayout: React.FC<LoginLayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen w-full bg-white relative overflow-hidden flex flex-col">
+    <div className="min-h-screen w-full bg-white relative overflow-hidden flex flex-col" style={{ aspectRatio: '16/9' }}>
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
@@ -22,7 +22,7 @@ export const LoginLayout: React.FC<LoginLayoutProps> = ({ children }) => {
         <img
           src="/images/img_mask_group.png"
           alt="Theater"
-          className="h-full xl:w-[54vw] 2xl:w-[52vw] object-cover"
+          className="h-full w-[27.08vw] object-cover"
         />
       </div>
 
