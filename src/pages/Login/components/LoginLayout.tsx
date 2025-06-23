@@ -17,12 +17,15 @@ export const LoginLayout: React.FC<LoginLayoutProps> = ({ children }) => {
         />
       </div>
 
-      {/* Right Image - Hidden on mobile and tablets */}
+      {/* Right Image - Hidden on mobile and tablets, responsive sizing for desktop */}
       <div className="absolute top-0 right-0 z-0 hidden xl:block h-full">
         <img
           src="/images/img_mask_group.png"
           alt="Theater"
-          className="h-full xl:w-[54vw] 2xl:w-[52vw] object-cover"
+          className="h-full object-cover"
+          style={{
+            width: 'clamp(45vw, 52vw, 55vw)'
+          }}
         />
       </div>
 
