@@ -3,11 +3,11 @@ import React from 'react';
 
 export const LoginHeader: React.FC = () => {
   return (
-    <div className="pt-4 px-4 sm:px-8 lg:px-20 xl:px-36 flex-shrink-0">
+    <div className="pt-4 sm:pt-6 lg:pt-8 xl:pt-10 px-4 sm:px-8 lg:px-16 xl:px-20 2xl:px-24 flex-shrink-0">
       <img
         src="/images/img_logo1.png"
-        alt="Logo"
-        className="h-[6vh] sm:h-[7vh] lg:h-[8vh] xl:h-[9vh] w-auto object-contain"
+        alt="Feedback Solutions Logo"
+        className="h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20 w-auto object-contain"
       />
     </div>
   );
