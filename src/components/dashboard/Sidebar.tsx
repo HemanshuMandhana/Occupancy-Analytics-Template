@@ -71,20 +71,21 @@ export const AppSidebar: React.FC = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'top'
     }}>
-      <SidebarContent className="bg-[rgba(246,247,255,0.95)] pt-6">
-        {/* Logo */}
-        <div className="px-4 mb-6">
-          <img alt="Company logo" className="" src="/lovable-uploads/4d506073-f826-4459-add9-950c3a757f5f.png" />
+      <SidebarContent className="bg-[rgba(246,247,255,0.95)] pt-4 flex flex-col h-full">
+        {/* Logo - Reduced size to match header */}
+        <div className="px-4 mb-4 flex-shrink-0">
+          <img alt="Company logo" className="h-8 w-auto object-contain" src="/lovable-uploads/4d506073-f826-4459-add9-950c3a757f5f.png" />
         </div>
 
-        <SidebarGroup className="mx-0 my-0 py-0 px-[5px]">
-          <SidebarGroupContent>
-            <SidebarMenu>
+        {/* Navigation Menu - Increased spacing */}
+        <SidebarGroup className="mx-0 my-0 py-0 px-[5px] flex-1 flex flex-col">
+          <SidebarGroupContent className="flex-1">
+            <SidebarMenu className="space-y-3">
               {navigationItems.map((item, index) => {
                 const isActive = location.pathname === item.href;
                 return (
                   <SidebarMenuItem key={index}>
-                    <SidebarMenuButton asChild className={`w-full ${isActive ? 'bg-[rgba(48,66,127,1)] text-white hover:bg-[rgba(48,66,127,0.9)]' : 'hover:bg-gray-100'} ${isCollapsed ? 'px-3' : 'px-4'} py-3 rounded-lg transition-colors`}>
+                    <SidebarMenuButton asChild className={`w-full ${isActive ? 'bg-[rgba(48,66,127,1)] text-white hover:bg-[rgba(48,66,127,0.9)]' : 'hover:bg-gray-100'} ${isCollapsed ? 'px-3' : 'px-4'} py-4 rounded-lg transition-colors`}>
                       <a href={item.href} className="flex items-center gap-3">
                         <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-gray-600'}`} />
                         {!isCollapsed && <span className={`text-[17px] font-normal whitespace-nowrap ${isActive ? 'text-white' : 'text-black'}`}>
@@ -100,7 +101,7 @@ export const AppSidebar: React.FC = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton 
                   onClick={handleLogout}
-                  className={`w-full hover:bg-gray-100 ${isCollapsed ? 'px-3' : 'px-4'} py-3 rounded-lg transition-colors cursor-pointer`}
+                  className={`w-full hover:bg-gray-100 ${isCollapsed ? 'px-3' : 'px-4'} py-4 rounded-lg transition-colors cursor-pointer`}
                 >
                   <div className="flex items-center gap-3">
                     <LogOut className="w-5 h-5 text-gray-600" />

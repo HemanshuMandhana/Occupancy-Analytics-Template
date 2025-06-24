@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -45,23 +46,20 @@ export const LoginForm: React.FC = () => {
     <div className="h-screen w-full flex flex-col overflow-hidden">
       {/* Header */}
       <div className="pt-[6vh] px-[3vw] xl:px-[7vw] 2xl:px-[9vw] flex-shrink-0">
-        {/* Desktop Logo */}
+        {/* Desktop Logo - Increased size */}
         <img
           src="/images/img_logo1.png"
           alt="Feedback Solutions Logo"
-          className="hidden md:block h-[4vh] sm:h-[4.5vh] md:h-[5vh] lg:h-[5.5vh] xl:h-[6vh] w-auto object-contain"
+          className="hidden md:block h-[5vh] sm:h-[5.5vh] md:h-[6vh] lg:h-[6.5vh] xl:h-[7vh] w-auto object-contain"
         />
 
-        {/* Mobile Logo and Company Name */}
+        {/* Mobile Logo - Increased size */}
         <div className="flex md:hidden flex-col items-center">
           <img
             src="/lovable-uploads/28e70e75-df11-4701-94ef-7c2e7d34ccbb.png"
             alt="Feedback Solutions Logo"
-            className="h-[5.5vh] w-auto object-contain"
+            className="h-[6.5vh] w-auto object-contain"
           />
-          <p className="uppercase pt-[0.5vh] text-[clamp(2rem,3.5vw,2rem)] font-bold text-[#30427f] font-ato italic mt-1">
-            Paramount
-          </p>
         </div>
       </div>
 
@@ -70,16 +68,23 @@ export const LoginForm: React.FC = () => {
         <div className="w-full max-w-none flex items-center">
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-[4vw] xl:gap-[6vw] items-center w-full">
             <div className="space-y-[1.5vh] max-w-xl xl:max-w-lg mx-auto xl:mx-0 flex flex-col justify-center">
+              {/* Mobile Company Name - Above titles */}
+              <div className="block md:hidden text-center mb-[1vh]">
+                <p className="uppercase text-[clamp(2rem,3.5vw,2rem)] font-bold text-[#30427f] font-ato italic">
+                  Paramount
+                </p>
+              </div>
+
               <div className="space-y-[1vh]">
-                <h1 className="text-[clamp(2.75rem,6vw,4.5rem)] xl:text-[clamp(5rem,4.5vw,5rem)] font-extrabold text-[#30427f] leading-none font-gilroy">
+                <h1 className="text-[clamp(2.75rem,6vw,4.5rem)] xl:text-[clamp(5rem,4.5vw,5rem)] font-extrabold text-[#30427f] leading-none font-gilroy text-center md:text-left">
                   Login
                 </h1>
-                <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] xl:text-[clamp(3rem,2.5vw,2.75rem)] font-bold text-black leading-tight font-gilroy">
+                <h2 className="text-[clamp(1.5rem,4vw,2.25rem)] xl:text-[clamp(3rem,2.5vw,2.75rem)] font-bold text-black leading-tight font-gilroy text-center md:text-left">
                   Occupancy Analytics
                 </h2>
               </div>
 
-              {/* ⬇️ Reduced width of form box below */}
+              {/* Form box with reduced width */}
               <div className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[400px] bg-[#fafdfe] border border-[#e2e8f0] rounded-xl shadow-md p-[clamp(1rem,2vh,1.75rem)] mx-auto xl:mx-0">
                 <form onSubmit={handleLogin} className="space-y-[clamp(0.75rem,1.5vh,1.25rem)]">
                   <div className="space-y-[0.5vh]">
