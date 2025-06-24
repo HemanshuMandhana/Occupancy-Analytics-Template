@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -45,7 +46,7 @@ const InputField = ({
           onChange={handleInputChange}
           disabled={disabled}
           required={required}
-          className="w-full h-[48px] px-[19px] py-[16px] bg-white border border-[#bcbec0] rounded-[9px] text-[13px] font-normal leading-[16px] text-[#7b7b7b] font-gilroy focus:outline-none focus:border-[#30427f] focus:ring-1 focus:ring-[#30427f]"
+          className="w-full h-[48px] px-[19px] py-[16px] bg-white border border-gray-200 rounded-[9px] text-[13px] font-normal leading-[16px] text-[#7b7b7b] font-gilroy focus:outline-none focus:border-[#30427f] focus:ring-1 focus:ring-[#30427f]"
           {...props}
         />
         {showPasswordToggle && type === 'password' && (

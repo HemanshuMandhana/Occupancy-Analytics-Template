@@ -2,7 +2,6 @@
 import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
 
 interface CaptchaFieldProps {
   captchaCode: string;
@@ -39,12 +38,10 @@ export const CaptchaField: React.FC<CaptchaFieldProps> = ({
             </span>
           ))}
         </div>
-        <Button
-          variant="outline"
-          size="icon"
+        <button
           onClick={onRefresh}
           type="button"
-          className="h-8 w-8 rounded-lg flex items-center justify-center border-[#bcbec0] hover:bg-gray-50"
+          className="h-8 w-8 rounded-lg flex items-center justify-center bg-transparent border-none hover:bg-gray-100/50 transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="w-4 h-4">
             <path
@@ -52,7 +49,7 @@ export const CaptchaField: React.FC<CaptchaFieldProps> = ({
               fill="#7b7b7b"
             />
           </svg>
-        </Button>
+        </button>
       </div>
 
       {/* Captcha Input */}
@@ -60,7 +57,7 @@ export const CaptchaField: React.FC<CaptchaFieldProps> = ({
         type="text"
         value={captcha}
         onChange={(e) => setCaptcha(e.target.value)}
-        className="w-full h-[clamp(40px,5vh,56px)] px-[1rem] bg-white border border-[#bcbec0] rounded-lg text-[clamp(0.75rem,1vw,0.875rem)] text-[#7b7b7b] font-gilroy focus:outline-none focus:border-[#30427f] focus:ring-1 focus:ring-[#30427f]"
+        className="w-full h-[clamp(40px,5vh,56px)] px-[1rem] bg-white border border-gray-200 rounded-lg text-[clamp(0.75rem,1vw,0.875rem)] text-[#7b7b7b] font-gilroy focus:outline-none focus:border-[#30427f] focus:ring-1 focus:ring-[#30427f]"
         placeholder="Enter captcha"
         required
       />
