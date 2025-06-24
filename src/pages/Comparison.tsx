@@ -19,7 +19,7 @@ const Comparison: React.FC = () => {
         backgroundAttachment: 'fixed'
       }}
     >
-      <SidebarProvider defaultOpen={true}>
+      <SidebarProvider defaultOpen={false}>
         <div className="min-h-screen flex w-full">
           <AppSidebar />
           

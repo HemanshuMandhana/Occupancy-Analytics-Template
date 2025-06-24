@@ -1,47 +1,47 @@
 
 import React from 'react';
-import { LayoutDashboard, BarChart3, TrendingUp, Users, FileText, Settings, User, History, Mail, LogOut } from 'lucide-react';
+import { User, Settings, LogOut } from 'lucide-react';
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const navigationItems = [{
-  icon: LayoutDashboard,
+  icon: '/icons/dashboard.png',
   label: 'Dashboard',
   href: '/dashboard'
 }, {
-  icon: BarChart3,
+  icon: '/icons/comparison.png',
   label: 'Comparison Dashboard',
   href: '/comparison'
 }, {
-  icon: TrendingUp,
+  icon: '/icons/trend.png',
   label: 'Occupancy Trend',
   href: '/occupancy-trend'
 }, {
-  icon: TrendingUp,
+  icon: '/icons/comparison-trend.png',
   label: 'Occupancy Comparison',
   href: '/occupancy-comparison'
 }, {
-  icon: Users,
+  icon: '/icons/visitor.png',
   label: 'Visitor Count',
   href: '/visitor-count'
 }, {
-  icon: Users,
+  icon: '/icons/visitor-comparison.png',
   label: 'Visitor Comparison',
   href: '/visitor-comparison'
 }, {
-  icon: History,
+  icon: '/icons/data-reports.png',
   label: 'Data Reports',
   href: '/data-reports'
 }, {
-  icon: Mail,
+  icon: '/icons/capacity.png',
   label: 'Capacity Master',
   href: '/capacity-master'
 }, {
-  icon: Mail,
+  icon: '/icons/capacity.png',
   label: 'Email Report Config',
   href: '/email-config'
 }, {
-  icon: History,
+  icon: '/icons/data-reports.png',
   label: 'Login History',
   href: '/login-history'
 }, {
@@ -49,7 +49,7 @@ const navigationItems = [{
   label: 'My Account',
   href: '/my-account'
 }, {
-  icon: Users,
+  icon: User,
   label: 'User Master',
   href: '/user-master'
 }];
@@ -61,36 +61,62 @@ export const AppSidebar: React.FC = () => {
   const isCollapsed = state === 'collapsed';
 
   const handleLogout = () => {
-    // Clear any stored user data/tokens here if needed
     navigate('/login');
   };
 
   return (
-    <Sidebar className="border-r border-gray-200" style={{
-      backgroundImage: 'url(/lovable-uploads/297ff5e8-c4e2-4da7-a6e5-38fadaf47c24.png)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'top'
-    }}>
+    <Sidebar 
+      className="border-r border-gray-200" 
+      style={{
+        backgroundImage: 'url(/lovable-uploads/297ff5e8-c4e2-4da7-a6e5-38fadaf47c24.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'top'
+      }}
+      collapsible="icon"
+    >
       <SidebarContent className="bg-[rgba(246,247,255,0.95)] pt-4 flex flex-col h-full">
-        {/* Logo - Reduced size to match header */}
-        <div className="px-4 mb-4 flex-shrink-0">
-          <img alt="Company logo" className="h-8 w-auto object-contain" src="/lovable-uploads/4d506073-f826-4459-add9-950c3a757f5f.png" />
+        {/* Logo */}
+        <div className="px-4 mb-6 flex-shrink-0">
+          <img 
+            alt="Company logo" 
+            className="h-8 w-auto object-contain" 
+            src="/lovable-uploads/4d506073-f826-4459-add9-950c3a757f5f.png" 
+          />
         </div>
 
-        {/* Navigation Menu - Increased spacing */}
-        <SidebarGroup className="mx-0 my-0 py-0 px-[5px] flex-1 flex flex-col">
+        {/* Navigation Menu */}
+        <SidebarGroup className="mx-0 my-0 py-0 px-2 flex-1 flex flex-col">
           <SidebarGroupContent className="flex-1">
-            <SidebarMenu className="space-y-3">
+            <SidebarMenu className="space-y-1">
               {navigationItems.map((item, index) => {
                 const isActive = location.pathname === item.href;
                 return (
                   <SidebarMenuItem key={index}>
-                    <SidebarMenuButton asChild className={`w-full ${isActive ? 'bg-[rgba(48,66,127,1)] text-white hover:bg-[rgba(48,66,127,0.9)]' : 'hover:bg-gray-100'} ${isCollapsed ? 'px-3' : 'px-4'} py-4 rounded-lg transition-colors`}>
+                    <SidebarMenuButton 
+                      asChild 
+                      className={`w-full transition-all duration-200 ${
+                        isActive 
+                          ? 'bg-black text-white hover:bg-black/90' 
+                          : 'hover:bg-gray-100 text-gray-700'
+                      } ${isCollapsed ? 'px-2 justify-center' : 'px-4'} py-3 rounded-lg`}
+                    >
                       <a href={item.href} className="flex items-center gap-3">
-                        <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-gray-600'}`} />
-                        {!isCollapsed && <span className={`text-[17px] font-normal whitespace-nowrap ${isActive ? 'text-white' : 'text-black'}`}>
+                        {typeof item.icon === 'string' ? (
+                          <img 
+                            src={item.icon} 
+                            alt={item.label}
+                            className={`w-5 h-5 object-contain ${isActive ? 'filter brightness-0 invert' : ''}`}
+                          />
+                        ) : (
+                          <item.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-gray-600'}`} />
+                        )}
+                        {!isCollapsed && (
+                          <span className={`text-[15px] font-medium whitespace-nowrap ${
+                            isActive ? 'text-white' : 'text-gray-700'
+                          }`}>
                             {item.label}
-                          </span>}
+                          </span>
+                        )}
                       </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -101,13 +127,17 @@ export const AppSidebar: React.FC = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton 
                   onClick={handleLogout}
-                  className={`w-full hover:bg-gray-100 ${isCollapsed ? 'px-3' : 'px-4'} py-4 rounded-lg transition-colors cursor-pointer`}
+                  className={`w-full hover:bg-gray-100 text-gray-700 ${
+                    isCollapsed ? 'px-2 justify-center' : 'px-4'
+                  } py-3 rounded-lg transition-all duration-200 cursor-pointer`}
                 >
                   <div className="flex items-center gap-3">
                     <LogOut className="w-5 h-5 text-gray-600" />
-                    {!isCollapsed && <span className="text-[17px] font-normal whitespace-nowrap text-black">
+                    {!isCollapsed && (
+                      <span className="text-[15px] font-medium whitespace-nowrap text-gray-700">
                         Log out
-                      </span>}
+                      </span>
+                    )}
                   </div>
                 </SidebarMenuButton>
               </SidebarMenuItem>
