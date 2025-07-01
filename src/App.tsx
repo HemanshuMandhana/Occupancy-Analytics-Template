@@ -1,13 +1,14 @@
-
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/Login";
-import Index from "./pages/Index";
-import Comparison from "./pages/Comparison";
-import NotFound from "./pages/NotFound";
+// App.tsx
+import { Toaster } from '@/components/ui/toaster';
+import { Toaster as Sonner } from '@/components/ui/sonner';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/Login';
+import Index from './pages/Index';
+import Comparison from './pages/Comparison';
+import NotFound from './pages/NotFound';
+import AppLayout from './layout/AppLayout';
 
 const queryClient = new QueryClient();
 
@@ -20,9 +21,10 @@ const App = () => (
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<LoginPage />} />
-          <Route path="/dashboard" element={<Index />} />
-          <Route path="/comparison" element={<Comparison />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route element={<AppLayout />}>
+            <Route path="/dashboard" element={<Index />} />
+            <Route path="/comparison" element={<Comparison />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

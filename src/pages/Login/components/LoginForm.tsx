@@ -43,7 +43,7 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col overflow-hidden">
+    <div className="h-screen w-full flex flex-col overflow-auto">
       {/* Header */}
       <div className="pt-[6vh] px-[3vw] xl:px-[7vw] 2xl:px-[9vw] flex-shrink-0">
         {/* Desktop Logo - Increased size */}
@@ -56,9 +56,9 @@ export const LoginForm: React.FC = () => {
         {/* Mobile Logo - Increased size */}
         <div className="flex md:hidden flex-col items-center">
           <img
-            src="/lovable-uploads/28e70e75-df11-4701-94ef-7c2e7d34ccbb.png"
+            src="/lovable-uploads/logo-icon.png"
             alt="Feedback Solutions Logo"
-            className="h-[6.5vh] w-auto object-contain"
+            className="h-[8vh] w-auto object-contain"
           />
         </div>
       </div>
@@ -75,7 +75,7 @@ export const LoginForm: React.FC = () => {
                 </p>
               </div>
 
-              <div className="space-y-[1vh]">
+              <div className="space-y-[2vh]">
                 <h1 className="text-[clamp(2.75rem,6vw,4.5rem)] xl:text-[clamp(5rem,4.5vw,5rem)] font-extrabold text-[#30427f] leading-none font-gilroy text-center md:text-left">
                   Login
                 </h1>
@@ -162,7 +162,7 @@ export const LoginForm: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <div className="px-[3vw] xl:px-[7vw] 2xl:px-[9vw] pt-[1vh] pb-[3vh] flex-shrink-0 w-full">
+      <div className="px-[3vw] xl:px-[7vw] 2xl:px-[9vw] pt-[2vh] pb-[3vh] flex-shrink-0 w-full">
         <p className="text-[clamp(.75rem,0.9vw,0.75rem)] font-normal text-black font-gilroy text-center md:text-left">
           2025, Designed and Developed by Feedback Solutions Inc
         </p>

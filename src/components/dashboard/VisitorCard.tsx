@@ -3,13 +3,13 @@ import React from 'react';
 
 export const VisitorCard: React.FC = () => {
   return (
-    <article className="border border-gray-200 rounded-xl p-6 shadow-sm bg-white">
+    <article className="h-[389px] border border-gray-200 rounded-xl p-6 shadow-sm bg-[#f6f7ff]">
       <div className="flex items-start gap-6 mb-6">
         <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center flex-shrink-0">
           <img 
             src="/lovable-uploads/c2137da9-89d7-4a16-b4c7-1371e400e7b7.png" 
             alt="Visitor icon" 
-            className="w-10 h-10" 
+            className="w-16 h-16" 
           />
         </div>
         <div className="flex-1">

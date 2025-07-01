@@ -24,7 +24,7 @@ export const LoginLayout: React.FC<LoginLayoutProps> = ({ children }) => {
           alt="Theater"
           className="h-full object-cover"
           style={{
-            width: 'clamp(45vw, 52vw, 55vw)'
+            width: 'clamp(45vw, 52vw, 50vw)'
           }}
         />
       </div>

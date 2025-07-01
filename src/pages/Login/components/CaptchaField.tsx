@@ -24,7 +24,7 @@ export const CaptchaField: React.FC<CaptchaFieldProps> = ({
       
       {/* Captcha Display and Refresh */}
       <div className="flex items-center gap-3 mb-3">
-        <div className="text-[clamp(1rem,1.5vw,1.25rem)] font-extrabold italic tracking-wider text-black font-gilroy p-2 rounded-lg flex gap-1 bg-transparent select-none">
+        <div className="text-[clamp(.75rem,1.5vw,1rem)] font-bold italic tracking-wider text-black font-gilroy p-2 rounded-lg flex gap-1 bg-transparent select-none">
           {captchaCode.split('').map((char, index) => (
             <span
               key={index}
@@ -41,7 +41,7 @@ export const CaptchaField: React.FC<CaptchaFieldProps> = ({
         <button
           onClick={onRefresh}
           type="button"
-          className="h-8 w-8 rounded-lg flex items-center justify-center bg-transparent border-none hover:bg-gray-100/50 transition-colors"
+          className="h-3 w-3 rounded-lg flex items-center justify-center bg-transparent border-none hover:bg-gray-100/50 transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="w-4 h-4">
             <path

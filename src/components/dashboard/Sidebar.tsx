@@ -1,6 +1,4 @@
-
-import React from 'react';
-import { LogOut } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -55,13 +53,44 @@ const navigationItems = [{
 }];
 
 export const AppSidebar: React.FC = () => {
-  const { state } = useSidebar();
+  const { state, open, toggleSidebar } = useSidebar();
   const location = useLocation();
   const navigate = useNavigate();
+  const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
   const isCollapsed = state === 'collapsed';
+  
+  // Check if mobile view
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  // Determine when to show expanded content
+  // Desktop: show expanded when not collapsed OR when collapsed but hovering
+  // Mobile: show expanded when sidebar is open
+  const shouldShowExpanded = isMobile ? open : (!isCollapsed || (isCollapsed && isHovering));
 
   const handleLogout = () => {
     navigate('/login');
+  };
+
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsHovering(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsHovering(false);
+    }
   };
 
   return (
@@ -70,32 +99,39 @@ export const AppSidebar: React.FC = () => {
       style={{
         backgroundImage: 'url(/lovable-uploads/297ff5e8-c4e2-4da7-a6e5-38fadaf47c24.png)',
         backgroundSize: 'cover',
-        backgroundPosition: 'top'
+        backgroundPosition: 'top',
+        width: shouldShowExpanded ? '280px' : '60px',
+        transition: 'width 0.2s ease-in-out',
+        zIndex: isHovering ? 50 : 'auto'
       }}
       collapsible="icon"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <SidebarContent className="bg-[rgba(246,247,255,0.95)] pt-4 flex flex-col h-full">
-        {/* Logo */}
-        <div className="px-4 mb-6 flex-shrink-0 flex justify-center">
-          {isCollapsed ? (
+      <SidebarContent className="bg-[rgba(246,247,255,0.95)] flex flex-col h-full">
+        {/* Logo - Aligned with header height */}
+        <div className={`flex-shrink-0 flex ${shouldShowExpanded ? 'justify-start px-4' : 'justify-center px-2'} transition-all duration-200`} 
+             style={{ height: '60px', alignItems: 'center' }}>
+          {shouldShowExpanded ? (
             <img 
-              alt="Company logo icon" 
-              className="h-6 w-6 object-contain" 
-              src="/lovable-uploads/84d9499d-2461-49f9-bc7a-c21e8858962c.png" 
+              alt="Company logo" 
+              className="w-[140px] lg:w-[187px] h-auto object-contain" 
+              src="/lovable-uploads/company-logo.png"
             />
           ) : (
             <img 
-              alt="Company logo" 
-              className="h-8 w-auto object-contain" 
-              src="/lovable-uploads/4d506073-f826-4459-add9-950c3a757f5f.png" 
+              alt="Company logo icon" 
+              className="h-8 w-8 object-contain" 
+              src="/lovable-uploads/logo-icon.png" 
             />
           )}
         </div>
 
-        {/* Navigation Menu */}
-        <SidebarGroup className="mx-0 my-0 py-0 px-2 flex-1 flex flex-col">
+        {/* Navigation Menu - Aligned with DateControls */}
+        <SidebarGroup className="mx-0 my-0 py-0 px-3 flex-1 flex flex-col" 
+                     style={{ paddingTop: '12px' }}>
           <SidebarGroupContent className="flex-1">
-            <SidebarMenu className="space-y-1">
+            <SidebarMenu className="space-y-2">
               {navigationItems.map((item, index) => {
                 const isActive = location.pathname === item.href;
                 return (
@@ -104,19 +140,19 @@ export const AppSidebar: React.FC = () => {
                       asChild 
                       className={`w-full transition-all duration-200 ${
                         isActive 
-                          ? 'bg-black text-white hover:bg-black/90' 
+                          ? 'bg-[rgba(37,56,120,1)] text-white hover:bg-[rgba(37,56,120,0.9)]' 
                           : 'hover:bg-gray-100 text-gray-700'
-                      } ${isCollapsed ? 'px-2 justify-center' : 'px-4'} py-3 rounded-lg`}
-                      tooltip={isCollapsed ? item.label : undefined}
+                      } ${shouldShowExpanded ? 'px-4 justify-start min-h-[48px]' : 'px-3 justify-center min-h-[48px]'} rounded-lg`}
+                      tooltip={!shouldShowExpanded ? item.label : undefined}
                     >
-                      <a href={item.href} className="flex items-center gap-3">
+                      <a href={item.href} className="flex items-center gap-3 w-full">
                         <img 
                           src={item.iconPath} 
                           alt={item.label}
-                          className={`w-5 h-5 object-contain ${isActive ? 'filter brightness-0 invert' : ''}`}
+                          className={`w-5 h-5 object-contain flex-shrink-0 ${isActive ? 'filter brightness-0 invert' : ''}`}
                         />
-                        {!isCollapsed && (
-                          <span className={`text-[15px] font-medium whitespace-nowrap ${
+                        {shouldShowExpanded && (
+                          <span className={`text-[15px] font-medium whitespace-nowrap transition-opacity duration-200 ${
                             isActive ? 'text-white' : 'text-gray-700'
                           }`}>
                             {item.label}
@@ -133,18 +169,18 @@ export const AppSidebar: React.FC = () => {
                 <SidebarMenuButton 
                   onClick={handleLogout}
                   className={`w-full hover:bg-gray-100 text-gray-700 ${
-                    isCollapsed ? 'px-2 justify-center' : 'px-4'
-                  } py-3 rounded-lg transition-all duration-200 cursor-pointer`}
-                  tooltip={isCollapsed ? "Log out" : undefined}
+                    shouldShowExpanded ? 'px-4 justify-start min-h-[48px]' : 'px-3 justify-center min-h-[48px]'
+                  } rounded-lg transition-all duration-200 cursor-pointer`}
+                  tooltip={!shouldShowExpanded ? "Log out" : undefined}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 w-full">
                     <img 
                       src="/Navigation bar icons/Log out icon.svg" 
                       alt="Log out"
-                      className="w-5 h-5 object-contain"
+                      className="w-5 h-5 object-contain flex-shrink-0"
                     />
-                    {!isCollapsed && (
-                      <span className="text-[15px] font-medium whitespace-nowrap text-gray-700">
+                    {shouldShowExpanded && (
+                      <span className={`text-[15px] font-medium whitespace-nowrap text-gray-700 transition-opacity duration-200`}>
                         Log out
                       </span>
                     )}

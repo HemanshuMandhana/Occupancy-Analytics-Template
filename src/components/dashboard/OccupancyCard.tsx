@@ -3,13 +3,13 @@ import React from 'react';
 
 export const OccupancyCard: React.FC = () => {
   return (
-    <article className="border border-gray-200 rounded-xl p-6 shadow-sm bg-white">
+    <article className="h-[389px] border border-gray-200 rounded-xl p-6 shadow-sm bg-[#f6f7ff]">
       <div className="flex items-start gap-6 mb-6">
         <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center flex-shrink-0">
           <img 
             src="/lovable-uploads/84d9499d-2461-49f9-bc7a-c21e8858962c.png" 
             alt="Building icon" 
-            className="w-10 h-10" 
+            className="w-16 h-16" 
           />
         </div>
         <div className="flex-1">

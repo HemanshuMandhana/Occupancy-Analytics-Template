@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Download } from 'lucide-react';
 
@@ -200,7 +199,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
   };
 
   return (
-    <article className="border border-gray-200 rounded-xl p-6 shadow-sm bg-white">
+    <article className="border border-gray-200 rounded-xl p-6 shadow-sm bg-[#f6f7ff]">
       <div className="mb-4">
         <h2 className="text-[rgba(46,75,181,1)] text-xl font-semibold mb-2">
           {title}

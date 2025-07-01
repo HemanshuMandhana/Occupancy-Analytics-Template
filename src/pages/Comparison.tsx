@@ -1,10 +1,5 @@
-
 import React from 'react';
-import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/AppSidebar';
-import { UniversalHeader } from '../components/dashboard/UniversalHeader';
 import { DateControls } from '../components/dashboard/DateControls';
-import { DownloadButton } from '../components/dashboard/DownloadButton';
 import { ComparisonCard } from '../components/dashboard/ComparisonCard';
 
 const Comparison: React.FC = () => {
@@ -18,56 +13,40 @@ const Comparison: React.FC = () => {
         backgroundAttachment: 'fixed'
       }}
     >
-      <SidebarProvider defaultOpen={false}>
-        <div className="min-h-screen flex w-full">
-          <AppSidebar />
-          
-          <SidebarInset className="flex-1">
-            <UniversalHeader />
-            
-            {/* Controls section */}
-            <div className="px-6 py-1 bg-white/90 backdrop-blur-sm border-b">
-              <div className="flex justify-between items-center">
-                <DateControls />
-                <DownloadButton />
-              </div>
-            </div>
-            
-            {/* Main content */}
-            <main className="flex-1 p-6 bg-white/80 backdrop-blur-sm" role="main">
-              <div className="max-w-[1600px] mx-auto space-y-6">
-                {/* Top row - Comparison tables */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <ComparisonCard 
-                    title="Zone Occupancy Day- Last week Comparison"
-                    subtitle="Total Building Occupancy"
-                    value="62"
-                    tableType="occupancy"
-                  />
-                  <ComparisonCard 
-                    title="Zone Visitor Count- Last week Comparison"
-                    subtitle="Total Building Visitor count"
-                    value="693"
-                    tableType="visitor"
-                  />
-                </div>
-                
-                {/* Bottom row - Comparison charts */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <ComparisonCard 
-                    title="Zone Occupancy Day Last week Comparison"
-                    chartType="occupancy"
-                  />
-                  <ComparisonCard 
-                    title="Zone Visitor Count Week"
-                    chartType="visitor"
-                  />
-                </div>
-              </div>
-            </main>
-          </SidebarInset>
+      <DateControls />
+
+      {/* Content with responsive padding and top margin for fixed DateControls */}
+      <div className="px-4 lg:px-6 py-4 space-y-6">
+        {/* Top row - Comparison tables */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6 mb-4 lg:mb-6">
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+            <ComparisonCard
+              title="Zone Occupancy Day- Last week Comparison"
+              subtitle="Total Building Occupancy"
+              value="62"
+              tableType="occupancy"
+            />
+          </div>
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+            <ComparisonCard
+              title="Zone Visitor Count- Last week Comparison"
+              subtitle="Total Building Visitor count"
+              value="693"
+              tableType="visitor"
+            />
+          </div>
         </div>
-      </SidebarProvider>
+
+        {/* Bottom row - Charts */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+            <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
+          </div>
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+            <ComparisonCard title="Zone Visitor Count Week" chartType="visitor" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

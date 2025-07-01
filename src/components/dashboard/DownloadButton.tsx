@@ -15,7 +15,7 @@ export const DownloadButton: React.FC = () => {
     >
       <div className="flex min-h-[28px] lg:min-h-[31px] items-center justify-center w-[28px] lg:w-[31px] p-0.5">
         <img
-          src="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/8ce7bd0b-875f-4860-b2ce-91011e591581?placeholderIfAbsent=true"
+          src="public\images\Primary Download Button.svg"
           className="w-6 lg:w-7 h-6 lg:h-7 object-contain bg-[rgba(32,116,74,1)]"
           alt="Excel file icon"
         />
