@@ -41,30 +41,49 @@ const AppSidebar: React.FC = () => {
       <aside
         className={cn(
           'fixed top-0 left-0 h-screen transition-all duration-300 border-r border-gray-200 bg-[rgba(246,247,255,0.95)] backdrop-blur-sm',
-          isDesktopOpen ? 'w-[280px]' : 'w-[60px]',
           'hidden lg:flex flex-col',
           // Higher z-index when hovered but not expanded, to overlay on content
           isHovered && !isExpanded ? 'z-50' : 'z-40'
         )}
+        style={{
+          width: isDesktopOpen ? 'clamp(250px, 25vw, 280px)' : 'clamp(50px, 6vw, 60px)'
+        }}
         onMouseEnter={() => !isExpanded && setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className={cn(
-          "flex items-center h-[78.5px] px-6",
-          isDesktopOpen ? "justify-start" : "justify-center"
-        )}>
+        <div 
+          className={cn(
+            "flex items-center border-b border-gray-100",
+            isDesktopOpen ? "justify-start" : "justify-center"
+          )}
+          style={{ 
+            height: 'clamp(60px, 8vh, 78.5px)',
+            padding: isDesktopOpen ? 'clamp(12px, 1.5vw, 16px)' : 'clamp(8px, 1vw, 12px)'
+          }}
+        >
           {isDesktopOpen ? (
-            <img src="/lovable-uploads/company-logo.png" alt="Logo" className="w-[140px] lg:w-[187px] h-auto object-contain" />
+            <img 
+              src="/lovable-uploads/company-logo.png" 
+              alt="Logo" 
+              className="w-[140px] lg:w-[187px] h-auto object-contain"
+            />
           ) : (
-            <img src="/lovable-uploads/logo-icon.png" alt="Logo Icon" className="h-8 w-8 object-contain" />
+            <img 
+              src="/lovable-uploads/logo-icon.png" 
+              alt="Logo Icon" 
+              className="h-8 w-8 object-contain"
+            />
           )}
         </div>
 
         <nav 
-          className="flex-1 overflow-y-auto px-6 pt-4 [&::-webkit-scrollbar]:hidden"
-          style={scrollbarHiddenStyle}
+          className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden"
+          style={{
+            ...scrollbarHiddenStyle,
+            padding: `clamp(12px, 1.5vh, 16px) clamp(6px, 0.8vw, 8px)`
+          }}
         >
-          <ul className="space-y-1">
+          <ul style={{ gap: 'clamp(4px, 0.5vh, 6px)' }} className="flex flex-col">
             {navigationItems.map((item, index) => {
               const active = location.pathname === item.href;
               return (
@@ -72,18 +91,31 @@ const AppSidebar: React.FC = () => {
                   <Link
                     to={item.href}
                     className={cn(
-                      'flex items-center gap-3 rounded-lg min-h-[48px] transition-colors text-sm font-medium',
-                      isDesktopOpen ? 'px-4 justify-start' : 'px-3 justify-center',
+                      'flex items-center rounded-lg transition-colors font-medium',
+                      isDesktopOpen ? 'justify-start' : 'justify-center',
                       active
                         ? 'bg-[rgba(37,56,120,1)] text-white hover:bg-[rgba(37,56,120,0.9)]'
                         : 'text-gray-700 hover:bg-gray-100'
                     )}
+                    style={{
+                      minHeight: 'clamp(40px, 5vh, 48px)',
+                      padding: isDesktopOpen 
+                        ? 'clamp(8px, 1vh, 12px) clamp(12px, 1.5vw, 16px)' 
+                        : 'clamp(8px, 1vh, 12px)',
+                      gap: isDesktopOpen ? 'clamp(8px, 1vw, 12px)' : '0',
+                      fontSize: isDesktopOpen ? 'clamp(12px, 1.2vw, 14px)' : '0'
+                    }}
                   >
                     <img
                       src={item.icon}
                       alt={item.label}
-                      className={cn('w-5 h-5 object-contain flex-shrink-0', active && 'filter brightness-0 invert')}
-                      style={{ minWidth: '20px', minHeight: '20px' }}
+                      className={cn('object-contain flex-shrink-0', active && 'filter brightness-0 invert')}
+                      style={{ 
+                        width: 'clamp(16px, 2vw, 20px)', 
+                        height: 'clamp(16px, 2vw, 20px)',
+                        minWidth: 'clamp(16px, 2vw, 20px)', 
+                        minHeight: 'clamp(16px, 2vw, 20px)' 
+                      }}
                     />
                     {isDesktopOpen && <span className="truncate">{item.label}</span>}
                   </Link>
@@ -95,15 +127,28 @@ const AppSidebar: React.FC = () => {
               <button
                 onClick={handleLogout}
                 className={cn(
-                  'flex items-center gap-3 rounded-lg min-h-[48px] transition-colors text-sm font-medium text-gray-700 hover:bg-gray-100 w-full',
-                  isDesktopOpen ? 'px-4 justify-start' : 'px-3 justify-center'
+                  'flex items-center rounded-lg transition-colors font-medium text-gray-700 hover:bg-gray-100 w-full',
+                  isDesktopOpen ? 'justify-start' : 'justify-center'
                 )}
+                style={{
+                  minHeight: 'clamp(40px, 5vh, 48px)',
+                  padding: isDesktopOpen 
+                    ? 'clamp(8px, 1vh, 12px) clamp(12px, 1.5vw, 16px)' 
+                    : 'clamp(8px, 1vh, 12px)',
+                  gap: isDesktopOpen ? 'clamp(8px, 1vw, 12px)' : '0',
+                  fontSize: isDesktopOpen ? 'clamp(12px, 1.2vw, 14px)' : '0'
+                }}
               >
                 <img 
                   src="/Navigation bar icons/Log out icon.svg" 
                   alt="Log out" 
-                  className="w-5 h-5 object-contain flex-shrink-0"
-                  style={{ minWidth: '20px', minHeight: '20px' }}
+                  className="object-contain flex-shrink-0"
+                  style={{ 
+                    width: 'clamp(16px, 2vw, 20px)', 
+                    height: 'clamp(16px, 2vw, 20px)',
+                    minWidth: 'clamp(16px, 2vw, 20px)', 
+                    minHeight: 'clamp(16px, 2vw, 20px)' 
+                  }}
                 />
                 {isDesktopOpen && <span>Log out</span>}
               </button>
@@ -115,20 +160,34 @@ const AppSidebar: React.FC = () => {
       {/* Mobile Sidebar - Full width on mobile, hidden on desktop */}
       <aside
         className={cn(
-          'fixed top-0 left-0 h-screen z-50 transition-transform duration-300 border-r border-gray-200 bg-[rgba(246,247,255,0.95)] backdrop-blur-sm w-[280px]',
+          'fixed top-0 left-0 h-screen z-50 transition-transform duration-300 border-r border-gray-200 bg-[rgba(246,247,255,0.95)] backdrop-blur-sm',
           'lg:hidden flex flex-col',
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
         )}
+        style={{ width: 'clamp(260px, 75vw, 300px)' }}
       >
-        <div className="flex items-center justify-start h-[60px] px-4">
-          <img src="/lovable-uploads/company-logo.png" alt="Logo" className="w-[140px] h-auto object-contain" />
+        <div 
+          className="flex items-center justify-start border-b border-gray-100"
+          style={{ 
+            height: 'clamp(50px, 8vh, 60px)',
+            padding: 'clamp(8px, 2vw, 16px)'
+          }}
+        >
+          <img 
+            src="/lovable-uploads/company-logo.png" 
+            alt="Logo" 
+            className="w-[100px] object-contain h-auto"
+          />
         </div>
 
         <nav 
-          className="flex-1 overflow-y-auto px-2 pt-4 [&::-webkit-scrollbar]:hidden"
-          style={scrollbarHiddenStyle}
+          className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden"
+          style={{
+            ...scrollbarHiddenStyle,
+            padding: `clamp(8px, 2vh, 16px) clamp(4px, 1vw, 8px)`
+          }}
         >
-          <ul className="space-y-1">
+          <ul style={{ gap: 'clamp(2px, 0.5vh, 4px)' }} className="flex flex-col">
             {navigationItems.map((item, index) => {
               const active = location.pathname === item.href;
               return (
@@ -137,17 +196,28 @@ const AppSidebar: React.FC = () => {
                     to={item.href}
                     onClick={() => toggleMobileSidebar()}
                     className={cn(
-                      'flex items-center gap-3 rounded-lg min-h-[48px] transition-colors text-sm font-medium px-4 justify-start',
+                      'flex items-center rounded-lg transition-colors font-medium justify-start',
                       active
                         ? 'bg-[rgba(37,56,120,1)] text-white hover:bg-[rgba(37,56,120,0.9)]'
                         : 'text-gray-700 hover:bg-gray-100'
                     )}
+                    style={{
+                      minHeight: 'clamp(36px, 6vh, 48px)',
+                      padding: 'clamp(6px, 1.5vh, 12px) clamp(8px, 2vw, 16px)',
+                      gap: 'clamp(6px, 1.5vw, 12px)',
+                      fontSize: 'clamp(11px, 2.5vw, 14px)'
+                    }}
                   >
                     <img
                       src={item.icon}
                       alt={item.label}
-                      className={cn('w-5 h-5 object-contain flex-shrink-0', active && 'filter brightness-0 invert')}
-                      style={{ minWidth: '20px', minHeight: '20px' }}
+                      className={cn('object-contain flex-shrink-0', active && 'filter brightness-0 invert')}
+                      style={{ 
+                        width: 'clamp(14px, 3vw, 20px)', 
+                        height: 'clamp(14px, 3vw, 20px)',
+                        minWidth: 'clamp(14px, 3vw, 20px)', 
+                        minHeight: 'clamp(14px, 3vw, 20px)' 
+                      }}
                     />
                     <span className="truncate">{item.label}</span>
                   </Link>
@@ -155,16 +225,27 @@ const AppSidebar: React.FC = () => {
               );
             })}
 
-            <li className="pt-2">
+            <li>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-3 rounded-lg min-h-[48px] transition-colors text-sm font-medium text-gray-700 hover:bg-gray-100 w-full px-4 justify-start"
+                className="flex items-center rounded-lg transition-colors font-medium text-gray-700 hover:bg-gray-100 w-full justify-start"
+                style={{
+                  minHeight: 'clamp(36px, 6vh, 48px)',
+                  padding: 'clamp(6px, 1.5vh, 12px) clamp(8px, 2vw, 16px)',
+                  gap: 'clamp(6px, 1.5vw, 12px)',
+                  fontSize: 'clamp(11px, 2.5vw, 14px)'
+                }}
               >
                 <img 
                   src="/Navigation bar icons/Log out icon.svg" 
                   alt="Log out" 
-                  className="w-5 h-5 object-contain flex-shrink-0"
-                  style={{ minWidth: '20px', minHeight: '20px' }}
+                  className="object-contain flex-shrink-0"
+                  style={{ 
+                    width: 'clamp(14px, 3vw, 20px)', 
+                    height: 'clamp(14px, 3vw, 20px)',
+                    minWidth: 'clamp(14px, 3vw, 20px)', 
+                    minHeight: 'clamp(14px, 3vw, 20px)' 
+                  }}
                 />
                 <span>Log out</span>
               </button>

@@ -26,17 +26,18 @@ export const UniversalHeader: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const pageTitle = getPageTitle(location.pathname);
-  const { toggleSidebar, toggleMobileSidebar, isExpanded, isHovered } = useSidebar();
+  const { toggleSidebar, toggleMobileSidebar, isExpanded } = useSidebar();
 
   const handleLogout = () => navigate('/login');
 
-  const isOpen = isExpanded || isHovered;
-
   return (
     <header 
-      className="bg-[rgba(246,247,255,1)] fixed top-0 z-40 h-[78.5px] border-b border-gray-200 transition-all duration-300 left-0 right-0 lg:left-[60px]"
+      className="bg-[rgba(246,247,255,1)] fixed top-0 z-40 border-b border-gray-200 transition-all duration-300 left-0 right-0"
       style={{
-        marginLeft: typeof window !== 'undefined' && window.innerWidth >= 1024 && isOpen ? '220px' : '0'
+        height: 'clamp(60px, 8vh, 78.5px)',
+        // Only adjust margin based on expanded state, not hover
+        marginLeft: typeof window !== 'undefined' && window.innerWidth >= 1024 ? 
+          (isExpanded ? 'clamp(250px, 25vw, 280px)' : 'clamp(50px, 6vw, 60px)') : '0'
       }}
     >
       <div className="flex items-center justify-between h-full px-4 lg:px-6">
@@ -56,7 +57,7 @@ export const UniversalHeader: React.FC = () => {
           </button>
           
           {/* Desktop - Page Title */}
-          <h1 className="hidden sm:block text-black text-xl lg:text-2xl font-semibold">
+          <h1 className="hidden sm:block text-black font-semibold" style={{ fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)' }}>
             {pageTitle}
           </h1>
           

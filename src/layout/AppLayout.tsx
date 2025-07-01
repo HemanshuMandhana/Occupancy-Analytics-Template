@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { UniversalHeader } from '../components/dashboard/UniversalHeader';
 
 const AppLayoutContent: React.FC = () => {
-  const { isExpanded, isHovered, isMobileOpen } = useSidebar();
+  const { isExpanded } = useSidebar();
   const [windowWidth, setWindowWidth] = React.useState(
     typeof window !== 'undefined' ? window.innerWidth : 1024
   );
@@ -30,8 +30,16 @@ const AppLayoutContent: React.FC = () => {
       return '0px';
     }
     
-    // Desktop: only apply margin based on expanded state, not hover
-    return isExpanded ? '280px' : '60px';
+    // Desktop: use responsive sidebar widths
+    if (isExpanded) {
+      // Expanded sidebar width: clamp(250px, 25vw, 280px)
+      const expandedWidth = Math.max(250, Math.min(windowWidth * 0.25, 280));
+      return `${expandedWidth}px`;
+    } else {
+      // Collapsed sidebar width: clamp(50px, 6vw, 60px)
+      const collapsedWidth = Math.max(50, Math.min(windowWidth * 0.06, 60));
+      return `${collapsedWidth}px`;
+    }
   };
 
   return (
@@ -45,11 +53,11 @@ const AppLayoutContent: React.FC = () => {
         }}
       >
         <UniversalHeader />
-        {/* Changed overflow-auto to overflow-hidden and added proper height calculation */}
-        <div className="flex-1 pt-[78.5px] overflow-hidden">
+        {/* Use dynamic header height for proper calculation */}
+        <div style={{ paddingTop: 'clamp(60px, 8vh, 78.5px)' }} className="flex-1 overflow-hidden">
           <main 
             className="bg-white/80 backdrop-blur-sm h-full overflow-y-auto"
-            style={{ height: 'calc(100vh - 78.5px)' }}
+            style={{ height: 'calc(100vh - clamp(60px, 8vh, 78.5px))' }}
           >
             <Outlet />
           </main>
