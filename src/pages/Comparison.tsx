@@ -6,7 +6,7 @@ import { ComparisonCard } from '../components/dashboard/ComparisonCard';
 const Comparison: React.FC = () => {
   return (
     <div 
-      className="min-h-full"
+      className="h-full flex flex-col"
       style={{ 
         backgroundImage: 'url(/lovable-uploads/0b9933c1-1a2b-48be-a2dd-99bc9eee0647.png)',
         backgroundSize: 'cover',
@@ -16,55 +16,62 @@ const Comparison: React.FC = () => {
     >
       <DateControls />
 
-      {/* Content with responsive padding and spacing that scales proportionally */}
+      {/* Content with responsive padding that fills remaining space */}
       <div 
-        className="space-y-6"
+        className="flex-1 overflow-y-auto"
         style={{ 
-          padding: 'clamp(16px, 2vh, 24px) clamp(16px, 2vw, 24px) clamp(16px, 2vh, 24px)',
-          gap: 'clamp(24px, 3vh, 32px)'
+          padding: 'clamp(8px, 1.2vh, 16px) clamp(12px, 1.5vw, 20px)',
+          minHeight: '0' // Allow flex shrinking
         }}
       >
-        {/* Top row - Comparison tables with responsive grid */}
         <div 
-          className="grid grid-cols-1 xl:grid-cols-2"
+          className="h-full flex flex-col"
           style={{ 
-            gap: 'clamp(16px, 2vw, 24px)',
-            // Ensure minimum card size to prevent overlap
-            gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(400px, 45vw, 500px), 1fr))'
+            gap: 'clamp(12px, 1.8vh, 20px)'
           }}
         >
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
-            <ComparisonCard
-              title="Zone Occupancy Day- Last week Comparison"
-              subtitle="Total Building Occupancy"
-              value="62"
-              tableType="occupancy"
-            />
+          {/* Top row - Comparison tables with responsive grid */}
+          <div 
+            className="grid grid-cols-1 xl:grid-cols-2 flex-1"
+            style={{ 
+              gap: 'clamp(8px, 1.2vw, 16px)',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(350px, 40vw, 450px), 1fr))',
+              minHeight: '0' // Allow grid to shrink
+            }}
+          >
+            <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+              <ComparisonCard
+                title="Zone Occupancy Day- Last week Comparison"
+                subtitle="Total Building Occupancy"
+                value="62"
+                tableType="occupancy"
+              />
+            </div>
+            <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+              <ComparisonCard
+                title="Zone Visitor Count- Last week Comparison"
+                subtitle="Total Building Visitor count"
+                value="693"
+                tableType="visitor"
+              />
+            </div>
           </div>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
-            <ComparisonCard
-              title="Zone Visitor Count- Last week Comparison"
-              subtitle="Total Building Visitor count"
-              value="693"
-              tableType="visitor"
-            />
-          </div>
-        </div>
 
-        {/* Bottom row - Charts with responsive grid */}
-        <div 
-          className="grid grid-cols-1 xl:grid-cols-2"
-          style={{ 
-            gap: 'clamp(16px, 2vw, 24px)',
-            // Ensure minimum card size to prevent overlap
-            gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(400px, 45vw, 500px), 1fr))'
-          }}
-        >
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
-            <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
-          </div>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
-            <ComparisonCard title="Zone Visitor Count Week" chartType="visitor" />
+          {/* Bottom row - Charts with responsive grid */}
+          <div 
+            className="grid grid-cols-1 xl:grid-cols-2 flex-1"
+            style={{ 
+              gap: 'clamp(8px, 1.2vw, 16px)',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(350px, 40vw, 450px), 1fr))',
+              minHeight: '0' // Allow grid to shrink
+            }}
+          >
+            <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+              <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
+            </div>
+            <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+              <ComparisonCard title="Zone Visitor Count Week" chartType="visitor" />
+            </div>
           </div>
         </div>
       </div>
