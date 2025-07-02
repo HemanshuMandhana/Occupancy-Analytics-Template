@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AppSidebar from './AppSidebar';
 import Backdrop from './Backdrop';
@@ -44,22 +43,22 @@ const AppLayoutContent: React.FC = () => {
   };
 
   return (
-    <div className="h-screen flex overflow-hidden">
+    <div className="min-h-screen flex">
       <AppSidebar />
       <Backdrop />
       <div 
-        className="flex-1 flex flex-col transition-all duration-300 overflow-hidden"
+        className="flex-1 flex flex-col transition-all duration-300"
         style={{
           marginLeft: getContentMargin()
         }}
       >
         <UniversalHeader />
-        {/* Main content area with controlled scrolling */}
-        <div 
-          className="flex-1 overflow-hidden"
-          style={{ paddingTop: 'clamp(60px, 8vh, 78.5px)' }}
-        >
-          <main className="bg-white/80 backdrop-blur-sm h-full">
+        {/* Use dynamic header height for proper calculation */}
+        <div style={{ paddingTop: 'clamp(60px, 8vh, 78.5px)' }} className="flex-1 overflow-hidden">
+          <main 
+            className="bg-white/80 backdrop-blur-sm h-full overflow-y-auto"
+            style={{ height: 'calc(100vh - clamp(60px, 8vh, 78.5px))' }}
+          >
             <Outlet />
           </main>
         </div>
