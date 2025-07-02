@@ -1,3 +1,4 @@
+
 import React from 'react';
 import AppSidebar from './AppSidebar';
 import Backdrop from './Backdrop';
@@ -53,15 +54,16 @@ const AppLayoutContent: React.FC = () => {
         }}
       >
         <UniversalHeader />
-        {/* Use dynamic header height for proper calculation */}
-        <div style={{ paddingTop: 'clamp(60px, 8vh, 78.5px)' }} className="flex-1 overflow-hidden">
-          <main 
-            className="bg-white/80 backdrop-blur-sm h-full overflow-y-auto"
-            style={{ height: 'calc(100vh - clamp(60px, 8vh, 78.5px))' }}
-          >
-            <Outlet />
-          </main>
-        </div>
+        {/* Main content region with proper scrolling */}
+        <main 
+          className="flex-1 overflow-y-auto bg-white/80 backdrop-blur-sm"
+          style={{ 
+            height: `calc(100vh - clamp(60px, 8vh, 78.5px))`,
+            paddingTop: '0px' // Remove any top padding
+          }}
+        >
+          <Outlet />
+        </main>
       </div>
     </div>
   );
