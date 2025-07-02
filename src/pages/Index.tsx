@@ -2,7 +2,6 @@
 import React from 'react';
 import { OccupancyCard } from '../components/dashboard/OccupancyCard';
 import { VisitorCard } from '../components/dashboard/VisitorCard';
-import { ChartCard } from '../components/dashboard/ChartCard';
 import { HeatMapCard } from '../components/dashboard/HeatMapCard';
 import { DateControls } from '../components/dashboard/DateControls';
 import { ResponsiveDashboardCard } from '../components/dashboard/ResponsiveDashboardCard';
@@ -40,7 +39,7 @@ const Index: React.FC = () => {
               <VisitorCard />
             </ResponsiveDashboardCard>
             <ResponsiveDashboardCard title="Zone Occupancy Day">
-              <ChartCard title="Zone Occupancy Day" />
+              {/* Chart will be rendered inside ResponsiveDashboardCard */}
             </ResponsiveDashboardCard>
           </div>
 
@@ -62,7 +61,7 @@ const Index: React.FC = () => {
               />
             </ResponsiveDashboardCard>
             <ResponsiveDashboardCard title="Zone Pick Occupancy Day">
-              <ChartCard title="Zone Pick Occupancy Day" />
+              {/* Chart will be rendered inside ResponsiveDashboardCard */}
             </ResponsiveDashboardCard>
           </div>
         </div>

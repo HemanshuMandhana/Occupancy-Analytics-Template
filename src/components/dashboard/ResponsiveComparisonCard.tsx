@@ -34,17 +34,17 @@ export const ResponsiveComparisonCard: React.FC<ResponsiveComparisonCardProps> =
       // Top cards: 767.26px × 382px on FHD
       return {
         width: 'clamp(350px, 39.96vw, 767.26px)',
-        height: 'clamp(300px, 19.9vh, 382px)',
+        height: 'clamp(280px, 19.9vh, 382px)',
         minWidth: '350px',
-        minHeight: '300px'
+        minHeight: '280px'
       };
     } else {
       // Bottom cards: 767px × 465px on FHD
       return {
         width: 'clamp(350px, 39.95vw, 767px)',
-        height: 'clamp(360px, 24.22vh, 465px)',
+        height: 'clamp(340px, 24.22vh, 465px)',
         minWidth: '350px',
-        minHeight: '360px'
+        minHeight: '340px'
       };
     }
   };
@@ -136,7 +136,7 @@ export const ResponsiveComparisonCard: React.FC<ResponsiveComparisonCardProps> =
         <div className="relative w-full flex-1">
           <div 
             className="flex items-end justify-between mb-4 relative pl-8 lg:pl-12 pr-4"
-            style={{ height: cardType === 'top' ? 'clamp(120px, 12vh, 180px)' : 'clamp(150px, 15vh, 200px)' }}
+            style={{ height: cardType === 'top' ? 'clamp(120px, 12vh, 180px)' : 'clamp(150px, 15vh, 220px)' }}
           >
             {/* Y-axis labels */}
             <div className="flex flex-col justify-between h-full text-xs text-gray-500 absolute left-0 top-0">
@@ -154,7 +154,7 @@ export const ResponsiveComparisonCard: React.FC<ResponsiveComparisonCardProps> =
                 const lastHeight = Math.min((data.last / 80) * 100, 95);
                 
                 return (
-                  <div key={data.month} className="flex gap-1 items-end flex-1 max-w-[60px] lg:max-w-[80px]">
+                  <div key={data.month} className="flex gap-1 items-end flex-1 max-w-[50px] lg:max-w-[70px]">
                     {/* Current week bar */}
                     <div className="flex flex-col items-center relative flex-1">
                       {hoveredBar === `${data.month}-current` && (
@@ -171,7 +171,7 @@ export const ResponsiveComparisonCard: React.FC<ResponsiveComparisonCardProps> =
                         style={{ 
                           height: `${currentHeight}%`, 
                           minHeight: '6px',
-                          maxHeight: cardType === 'top' ? '160px' : '180px'
+                          maxHeight: cardType === 'top' ? '160px' : '200px'
                         }}
                         onMouseEnter={() => setHoveredBar(`${data.month}-current`)}
                         onMouseLeave={() => setHoveredBar(null)}
@@ -194,7 +194,7 @@ export const ResponsiveComparisonCard: React.FC<ResponsiveComparisonCardProps> =
                         style={{ 
                           height: `${lastHeight}%`, 
                           minHeight: '6px',
-                          maxHeight: cardType === 'top' ? '160px' : '180px'
+                          maxHeight: cardType === 'top' ? '160px' : '200px'
                         }}
                         onMouseEnter={() => setHoveredBar(`${data.month}-last`)}
                         onMouseLeave={() => setHoveredBar(null)}
@@ -232,7 +232,7 @@ export const ResponsiveComparisonCard: React.FC<ResponsiveComparisonCardProps> =
       className="border border-gray-200 rounded-xl shadow-sm bg-[#f6f7ff] flex flex-col"
       style={getCardDimensions()}
     >
-      <div className="mb-4 px-4 lg:px-6 pt-4 lg:pt-6">
+      <div className="mb-4 px-4 lg:px-6 pt-4 lg:pt-6 flex-shrink-0">
         <h2 
           className="text-[rgba(46,75,181,1)] font-semibold mb-2"
           style={{ fontSize: 'clamp(1rem, 1.25vw, 1.25rem)' }}
