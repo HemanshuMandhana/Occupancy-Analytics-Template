@@ -54,12 +54,12 @@ const AppLayoutContent: React.FC = () => {
         }}
       >
         <UniversalHeader />
-        {/* Main content region with proper scrolling */}
+        {/* Main content region with proper spacing below header */}
         <main 
           className="flex-1 overflow-y-auto bg-white/80 backdrop-blur-sm"
           style={{ 
             height: `calc(100vh - clamp(60px, 8vh, 78.5px))`,
-            paddingTop: '0px' // Remove any top padding
+            marginTop: 'clamp(60px, 8vh, 78.5px)' // Add top margin to push content below header
           }}
         >
           <Outlet />
