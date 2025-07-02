@@ -19,17 +19,37 @@ const Index: React.FC = () => {
     >
       <DateControls />
       
-      {/* Content with minimal padding and spacing */}
-      <div className="px-4 lg:px-6 pb-4 space-y-4 lg:space-y-6">
-        {/* Top row - Primary metrics */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
+      {/* Content with responsive padding and spacing that scales proportionally */}
+      <div 
+        className="space-y-4 lg:space-y-6"
+        style={{ 
+          padding: 'clamp(16px, 2vh, 24px) clamp(16px, 2vw, 24px) clamp(16px, 2vh, 24px)',
+          gap: 'clamp(16px, 2vh, 24px)'
+        }}
+      >
+        {/* Top row - Primary metrics with responsive grid */}
+        <div 
+          className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
+          style={{ 
+            gap: 'clamp(16px, 2vw, 24px)',
+            // Ensure minimum card size to prevent overlap
+            gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(280px, 30vw, 350px), 1fr))'
+          }}
+        >
           <OccupancyCard />
           <VisitorCard />
           <ChartCard title="Zone Occupancy Day" />
         </div>
 
-        {/* Bottom row - Heatmaps and charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
+        {/* Bottom row - Heatmaps and charts with responsive grid */}
+        <div 
+          className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
+          style={{ 
+            gap: 'clamp(16px, 2vw, 24px)',
+            // Ensure minimum card size to prevent overlap
+            gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(280px, 30vw, 350px), 1fr))'
+          }}
+        >
           <HeatMapCard
             title="Visitors by Zone"
             subtitle="Heat Map"

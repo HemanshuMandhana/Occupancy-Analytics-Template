@@ -16,10 +16,23 @@ const Comparison: React.FC = () => {
     >
       <DateControls />
 
-      {/* Content with minimal padding and spacing */}
-      <div className="px-4 lg:px-6 pb-4 space-y-6">
-        {/* Top row - Comparison tables */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
+      {/* Content with responsive padding and spacing that scales proportionally */}
+      <div 
+        className="space-y-6"
+        style={{ 
+          padding: 'clamp(16px, 2vh, 24px) clamp(16px, 2vw, 24px) clamp(16px, 2vh, 24px)',
+          gap: 'clamp(24px, 3vh, 32px)'
+        }}
+      >
+        {/* Top row - Comparison tables with responsive grid */}
+        <div 
+          className="grid grid-cols-1 xl:grid-cols-2"
+          style={{ 
+            gap: 'clamp(16px, 2vw, 24px)',
+            // Ensure minimum card size to prevent overlap
+            gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(400px, 45vw, 500px), 1fr))'
+          }}
+        >
           <div className="bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard
               title="Zone Occupancy Day- Last week Comparison"
@@ -38,8 +51,15 @@ const Comparison: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom row - Charts */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
+        {/* Bottom row - Charts with responsive grid */}
+        <div 
+          className="grid grid-cols-1 xl:grid-cols-2"
+          style={{ 
+            gap: 'clamp(16px, 2vw, 24px)',
+            // Ensure minimum card size to prevent overlap
+            gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(400px, 45vw, 500px), 1fr))'
+          }}
+        >
           <div className="bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
           </div>
