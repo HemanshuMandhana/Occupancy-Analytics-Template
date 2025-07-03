@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { DateControls } from '../components/dashboard/DateControls';
 import { ComparisonCard } from '../components/dashboard/ComparisonCard';
@@ -8,21 +7,13 @@ const Comparison: React.FC = () => {
     <div className="min-h-full">
       <DateControls />
 
-      {/* Content with responsive scaling */}
+      {/* Content with responsive top padding and minimal padding and spacing */}
       <div 
-        className="space-y-[clamp(16px,3vh,32px)]"
-        style={{ 
-          paddingTop: 'clamp(12px, 2.5vh, 32px)',
-          paddingLeft: 'clamp(12px, 2vw, 24px)',
-          paddingRight: 'clamp(12px, 2vw, 24px)',
-          paddingBottom: 'clamp(12px, 1.5vh, 20px)'
-        }}
+        className="px-4 lg:px-6 pb-4 space-y-6"
+        style={{ paddingTop: 'clamp(24px, 3.5vh, 56px)' }}
       >
         {/* Top row - Comparison tables */}
-        <div 
-          className="grid grid-cols-1 xl:grid-cols-2"
-          style={{ gap: 'clamp(12px, 2vw, 24px)' }}
-        >
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
           <div className="bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard
               title="Zone Occupancy Day- Last week Comparison"
@@ -42,10 +33,7 @@ const Comparison: React.FC = () => {
         </div>
 
         {/* Bottom row - Charts */}
-        <div 
-          className="grid grid-cols-1 xl:grid-cols-2"
-          style={{ gap: 'clamp(12px, 2vw, 24px)' }}
-        >
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
           <div className="bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
           </div>

@@ -1,6 +1,5 @@
-
-import React, { useState, useEffect } from 'react';
-import { File } from 'lucide-react';
+import React, { useState } from 'react';
+import { Download } from 'lucide-react';
 
 interface ComparisonCardProps {
   title: string;
@@ -18,147 +17,39 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
   chartType 
 }) => {
   const [hoveredBar, setHoveredBar] = useState<string | null>(null);
-  const [animationStarted, setAnimationStarted] = useState(false);
 
   const chartData = [
-    { month: 'Jan', current: 60, last: 45 },
+    { month: 'Jan', current: 60, last: 50 },
     { month: 'Feb', current: 20, last: 35 },
-    { month: 'Mar', current: 60, last: 32 },
+    { month: 'Mar', current: 60, last: 45 },
     { month: 'Apr', current: 35, last: 40 },
     { month: 'May', current: 15, last: 25 }
   ];
 
-  useEffect(() => {
-    if (chartType) {
-      const timer = setTimeout(() => {
-        setAnimationStarted(true);
-      }, 300);
-      return () => clearTimeout(timer);
-    }
-  }, [chartType]);
-
   const renderTable = () => {
     if (tableType === 'occupancy') {
       return (
-        <div className="w-full overflow-auto rounded-lg border border-gray-200" style={{ maxHeight: 'clamp(150px, 25vh, 300px)' }}>
+        <div className="w-full overflow-hidden rounded-lg border border-gray-200">
           <table className="w-full table-fixed">
-            <thead className="sticky top-0">
+            <thead>
               <tr className="bg-[rgba(37,56,120,1)] text-white">
-                <th 
-                  className="w-1/6 text-left font-medium border-r border-gray-300"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)',
-                    minHeight: 'clamp(32px, 5vh, 48px)'
-                  }}
-                >
-                  ZONE
-                </th>
-                <th 
-                  className="w-1/6 text-left font-medium border-r border-gray-300"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
-                  }}
-                >
-                  Last
-                </th>
-                <th 
-                  className="w-1/6 text-left font-medium border-r border-gray-300"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
-                  }}
-                >
-                  Zone
-                </th>
-                <th 
-                  className="w-1/6 text-left font-medium border-r border-gray-300"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
-                  }}
-                >
-                  ZONE
-                </th>
-                <th 
-                  className="w-1/6 text-left font-medium border-r border-gray-300"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
-                  }}
-                >
-                  Last
-                </th>
-                <th 
-                  className="w-1/6 text-left font-medium"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
-                  }}
-                >
-                  Zone
-                </th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm border-r border-gray-300">ZONE</th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Last</th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Zone</th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm border-r border-gray-300">ZONE</th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Last</th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm">Zone</th>
               </tr>
             </thead>
             <tbody>
               {[...Array(3)].map((_, index) => (
                 <tr key={index} className={`border-b border-gray-200 ${index === 1 ? 'bg-gray-50' : ''}`}>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)',
-                      minHeight: 'clamp(32px, 5vh, 48px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
+                  <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
+                  <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
+                  <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
+                  <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
+                  <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
+                  <td className="px-3 py-2 text-gray-600 text-sm">-</td>
                 </tr>
               ))}
             </tbody>
@@ -169,125 +60,27 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
 
     if (tableType === 'visitor') {
       return (
-        <div className="w-full overflow-auto rounded-lg border border-gray-200" style={{ maxHeight: 'clamp(150px, 25vh, 300px)' }}>
+        <div className="w-full overflow-hidden rounded-lg border border-gray-200">
           <table className="w-full table-fixed">
-            <thead className="sticky top-0">
+            <thead>
               <tr className="bg-[rgba(37,56,120,1)] text-white">
-                <th 
-                  className="w-1/6 text-left font-medium border-r border-gray-300"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)',
-                    minHeight: 'clamp(32px, 5vh, 48px)'
-                  }}
-                >
-                  Entrance
-                </th>
-                <th 
-                  className="w-1/6 text-left font-medium border-r border-gray-300"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
-                  }}
-                >
-                  Last
-                </th>
-                <th 
-                  className="w-1/6 text-left font-medium border-r border-gray-300"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
-                  }}
-                >
-                  Current
-                </th>
-                <th 
-                  className="w-1/6 text-left font-medium border-r border-gray-300"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
-                  }}
-                >
-                  Entrance
-                </th>
-                <th 
-                  className="w-1/6 text-left font-medium border-r border-gray-300"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
-                  }}
-                >
-                  Last
-                </th>
-                <th 
-                  className="w-1/6 text-left font-medium"
-                  style={{
-                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
-                  }}
-                >
-                  Current
-                </th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Entrance</th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Last</th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Current</th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Entrance</th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Last</th>
+                <th className="w-1/6 px-3 py-2 text-left font-medium text-sm">Current</th>
               </tr>
             </thead>
             <tbody>
               {[...Array(3)].map((_, index) => (
                 <tr key={index} className={`border-b border-gray-200 ${index === 1 ? 'bg-gray-50' : ''}`}>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)',
-                      minHeight: 'clamp(32px, 5vh, 48px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600"
-                    style={{
-                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
+                  <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
+                  <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
+                  <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
+                  <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
+                  <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
+                  <td className="px-3 py-2 text-gray-600 text-sm">-</td>
                 </tr>
               ))}
             </tbody>
@@ -303,22 +96,24 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
     if (!chartType) return null;
 
     return (
-      <div style={{ marginTop: 'clamp(12px, 2vh, 20px)' }}>
+      <div className="mt-4">
+        {/* Legend */}
+        <div className="flex gap-6 mb-6 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 bg-[rgba(66,103,177,1)] rounded"></div>
+            <span className="text-gray-600">Current Week</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 bg-[rgba(189,203,253,0.5)] rounded"></div>
+            <span className="text-gray-600">Last week</span>
+          </div>
+        </div>
+
         {/* Chart Area */}
         <div className="relative w-full">
-          <div 
-            className="flex items-end justify-between mb-3 relative"
-            style={{
-              height: 'clamp(150px, 25vh, 250px)',
-              paddingLeft: 'clamp(20px, 3vw, 40px)',
-              paddingRight: 'clamp(8px, 1.5vw, 16px)'
-            }}
-          >
+          <div className="flex items-end justify-between h-48 mb-4 relative pl-12 pr-4">
             {/* Y-axis labels */}
-            <div 
-              className="flex flex-col justify-between h-full text-gray-500 absolute left-0 top-0"
-              style={{ fontSize: 'clamp(8px, 1vw, 12px)' }}
-            >
+            <div className="flex flex-col justify-between h-full text-xs text-gray-500 absolute left-0 top-0">
               <span>80</span>
               <span>60</span>
               <span>40</span>
@@ -327,30 +122,17 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
             </div>
 
             {/* Chart bars container */}
-            <div className="flex-1 flex items-end justify-between h-full">
+            <div className="flex-1 flex items-end justify-between gap-4 h-full">
               {chartData.map((data, index) => {
-                const currentHeight = animationStarted ? Math.max((data.current / 80) * 100, 5) : 0;
-                const lastHeight = animationStarted ? Math.max((data.last / 80) * 100, 5) : 0;
+                const currentHeight = Math.min((data.current / 80) * 100, 95);
+                const lastHeight = Math.min((data.last / 80) * 100, 95);
                 
                 return (
-                  <div 
-                    key={data.month} 
-                    className="flex items-end flex-1 relative"
-                    style={{ 
-                      gap: 'clamp(1px, 0.3vw, 4px)',
-                      maxWidth: 'clamp(40px, 8vw, 80px)'
-                    }}
-                  >
+                  <div key={data.month} className="flex gap-1 items-end flex-1 max-w-[80px]">
                     {/* Current week bar */}
                     <div className="flex flex-col items-center relative flex-1">
                       {hoveredBar === `${data.month}-current` && (
-                        <div 
-                          className="absolute bg-black text-white rounded p-1 shadow-lg z-10 whitespace-nowrap"
-                          style={{
-                            top: '-40px',
-                            fontSize: 'clamp(8px, 0.8vw, 10px)'
-                          }}
-                        >
+                        <div className="absolute -top-16 bg-black text-white rounded p-2 text-xs shadow-lg z-10 whitespace-nowrap">
                           <div className="flex items-center gap-1">
                             <div className="w-2 h-2 bg-[rgba(66,103,177,1)] rounded-sm"></div>
                             <span>{data.current}</span>
@@ -359,12 +141,8 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                       )}
                       
                       <div 
-                        className="w-full bg-[rgba(66,103,177,1)] rounded cursor-pointer transition-all duration-1000 ease-out hover:opacity-80"
-                        style={{ 
-                          height: `${currentHeight}%`,
-                          minHeight: animationStarted ? '4px' : '0px',
-                          transitionDelay: `${index * 100}ms`
-                        }}
+                        className="w-full bg-[rgba(66,103,177,1)] rounded cursor-pointer"
+                        style={{ height: `${currentHeight}%`, minHeight: '8px', maxHeight: '180px' }}
                         onMouseEnter={() => setHoveredBar(`${data.month}-current`)}
                         onMouseLeave={() => setHoveredBar(null)}
                       ></div>
@@ -373,30 +151,25 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                     {/* Last week bar */}
                     <div className="flex flex-col items-center relative flex-1">
                       {hoveredBar === `${data.month}-last` && (
-                        <div 
-                          className="absolute bg-black text-white rounded p-1 shadow-lg z-10 whitespace-nowrap"
-                          style={{
-                            top: '-40px',
-                            fontSize: 'clamp(8px, 0.8vw, 10px)'
-                          }}
-                        >
+                        <div className="absolute -top-16 bg-black text-white rounded p-2 text-xs shadow-lg z-10 whitespace-nowrap">
                           <div className="flex items-center gap-1">
-                            <div className="w-2 h-2 bg-[rgba(189,203,253,0.7)] rounded-sm"></div>
+                            <div className="w-2 h-2 bg-[rgba(189,203,253,0.5)] rounded-sm"></div>
                             <span>{data.last}</span>
                           </div>
                         </div>
                       )}
                       
                       <div 
-                        className="w-full bg-[rgba(189,203,253,0.7)] rounded cursor-pointer transition-all duration-1000 ease-out hover:opacity-80"
-                        style={{ 
-                          height: `${lastHeight}%`,
-                          minHeight: animationStarted ? '4px' : '0px',
-                          transitionDelay: `${index * 100 + 200}ms`
-                        }}
+                        className="w-full bg-[rgba(189,203,253,0.5)] rounded cursor-pointer"
+                        style={{ height: `${lastHeight}%`, minHeight: '8px', maxHeight: '180px' }}
                         onMouseEnter={() => setHoveredBar(`${data.month}-last`)}
                         onMouseLeave={() => setHoveredBar(null)}
                       ></div>
+                    </div>
+
+                    {/* Month label - positioned below the bars */}
+                    <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2">
+                      <span className="text-xs font-medium text-gray-700">{data.month}</span>
                     </div>
                   </div>
                 );
@@ -405,108 +178,37 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
           </div>
           
           {/* Month labels row */}
-          <div 
-            className="flex justify-between"
-            style={{ 
-              paddingLeft: 'clamp(20px, 3vw, 40px)',
-              paddingRight: 'clamp(8px, 1.5vw, 16px)'
-            }}
-          >
+          <div className="flex justify-between px-12">
             {chartData.map((data) => (
-              <span 
-                key={data.month} 
-                className="font-medium text-gray-700 flex-1 text-center"
-                style={{ fontSize: 'clamp(8px, 1vw, 12px)' }}
-              >
+              <span key={data.month} className="text-xs font-medium text-gray-700 flex-1 text-center">
                 {data.month}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Legend */}
-        <div 
-          className="flex gap-[clamp(12px,2vw,24px)] mt-[clamp(8px,1.5vh,16px)]"
-          style={{ fontSize: 'clamp(10px, 1.2vw, 14px)' }}
-        >
-          <div className="flex items-center gap-2">
-            <div 
-              className="bg-[rgba(66,103,177,1)] rounded"
-              style={{
-                width: 'clamp(10px, 1.5vw, 14px)',
-                height: 'clamp(10px, 1.5vw, 14px)'
-              }}
-            ></div>
-            <span className="text-gray-600">Current Week</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div 
-              className="bg-[rgba(189,203,253,0.7)] rounded"
-              style={{
-                width: 'clamp(10px, 1.5vw, 14px)',
-                height: 'clamp(10px, 1.5vw, 14px)'
-              }}
-            ></div>
-            <span className="text-gray-600">Last week</span>
-          </div>
+        {/* Download button for charts */}
+        <div className="flex justify-end mt-4">
+          <button className="flex items-center gap-2 px-3 py-2 border border-green-500 text-green-600 rounded hover:bg-green-50 transition-colors">
+            <Download className="w-4 h-4" />
+            <span className="text-sm">Download</span>
+          </button>
         </div>
       </div>
     );
   };
 
   return (
-    <article 
-      className="border border-gray-200 rounded-xl shadow-sm bg-[#f6f7ff] relative"
-      style={{ padding: 'clamp(12px, 2vw, 24px)' }}
-    >
-      {/* Download button positioned at top right */}
-      {chartType && (
-        <div className="absolute top-4 right-4 z-10">
-          <button 
-            className="hover:opacity-80 transition-opacity"
-            aria-label="Download data as Excel file"
-          >
-            <img
-              src="/images/Primary Download Button.svg"
-              className="object-contain"
-              alt="Download button"
-              style={{
-                width: 'clamp(80px, 12vw, 120px)',
-                height: 'clamp(32px, 5vh, 48px)'
-              }}
-            />
-          </button>
-        </div>
-      )}
-
-      <div style={{ marginBottom: 'clamp(12px, 2vh, 20px)' }}>
-        <h2 
-          className="text-[rgba(46,75,181,1)] font-semibold mb-2"
-          style={{
-            fontSize: 'clamp(14px, 2.2vw, 20px)',
-            lineHeight: '1.2'
-          }}
-        >
+    <article className="border border-gray-200 rounded-xl p-6 shadow-sm bg-[#f6f7ff]">
+      <div className="mb-4">
+        <h2 className="text-[rgba(46,75,181,1)] text-xl font-semibold mb-2">
           {title}
         </h2>
         {subtitle && value && (
           <div className="flex items-center gap-3">
-            <span 
-              className="text-gray-500"
-              style={{ fontSize: 'clamp(10px, 1.3vw, 14px)' }}
-            >
-              {subtitle}
-            </span>
-            <div 
-              className="bg-[rgba(189,203,253,0.3)] border border-[rgba(39,60,134,1)] rounded"
-              style={{ padding: 'clamp(3px, 0.8vw, 6px) clamp(6px, 1.2vw, 12px)' }}
-            >
-              <span 
-                className="text-[rgba(33,63,172,1)] font-bold"
-                style={{ fontSize: 'clamp(12px, 1.8vw, 16px)' }}
-              >
-                {value}
-              </span>
+            <span className="text-gray-500 text-sm">{subtitle}</span>
+            <div className="bg-[rgba(189,203,253,0.3)] border border-[rgba(39,60,134,1)] rounded px-3 py-1">
+              <span className="text-[rgba(33,63,172,1)] text-lg font-bold">{value}</span>
             </div>
           </div>
         )}

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { OccupancyCard } from '../components/dashboard/OccupancyCard';
 import { VisitorCard } from '../components/dashboard/VisitorCard';
@@ -11,31 +10,20 @@ const Index: React.FC = () => {
     <div className="min-h-full">
       <DateControls />
       
-      {/* Content with responsive scaling */}
+      {/* Content with responsive top padding and minimal padding and spacing */}
       <div 
-        className="space-y-[clamp(12px,2vh,24px)]"
-        style={{ 
-          paddingTop: 'clamp(12px, 2.5vh, 32px)',
-          paddingLeft: 'clamp(12px, 2vw, 24px)',
-          paddingRight: 'clamp(12px, 2vw, 24px)',
-          paddingBottom: 'clamp(12px, 1.5vh, 20px)'
-        }}
+        className="px-4 lg:px-6 pb-4 space-y-4 lg:space-y-6"
+        style={{ paddingTop: 'clamp(24px, 3.5vh, 56px)' }}
       >
         {/* Top row - Primary metrics */}
-        <div 
-          className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
-          style={{ gap: 'clamp(12px, 2vw, 24px)' }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
           <OccupancyCard />
           <VisitorCard />
           <ChartCard title="Zone Occupancy Day" />
         </div>
 
         {/* Bottom row - Heatmaps and charts */}
-        <div 
-          className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
-          style={{ gap: 'clamp(12px, 2vw, 24px)' }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
           <HeatMapCard
             title="Visitors by Zone"
             subtitle="Heat Map"
