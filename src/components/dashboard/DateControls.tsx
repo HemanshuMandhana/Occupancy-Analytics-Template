@@ -20,9 +20,11 @@ const DownloadButton: React.FC = () => {
         src="/images/Primary Download Button.svg"
         className="hidden sm:block object-contain"
         style={{ 
-          width: 'clamp(100px, 10vw, 135px)', 
+          width: '10vw', 
           height: 'auto',
-          maxHeight: 'clamp(35px, 4vh, 56px)'
+          maxHeight: '4vh',
+          minWidth: '100px',
+          maxWidth: '135px'
         }}
         alt="Download button"
       />
@@ -32,8 +34,10 @@ const DownloadButton: React.FC = () => {
         src="/images/Excel icon.svg"
         className="block sm:hidden object-contain"
         style={{ 
-          width: 'clamp(24px, 6vw, 32px)', 
-          height: 'clamp(24px, 6vw, 32px)'
+          width: '6vw', 
+          height: '6vw',
+          minWidth: '24px',
+          maxWidth: '32px'
         }}
         alt="Download Excel file"
       />
@@ -46,27 +50,36 @@ export const DateControls: React.FC = () => {
 
   return (
     <div 
-      className="flex items-center justify-between w-full bg-transparent border-b border-gray-100/50"
+      className="flex items-center justify-between w-full bg-transparent border-b border-gray-100/50 flex-shrink-0"
       style={{ 
-        height: 'clamp(50px, 6vh, 65px)',
-        padding: 'clamp(6px, 0.8vh, 10px) clamp(12px, 1.5vw, 20px)',
-        flexShrink: 0 // Prevent compression
+        height: '6vh',
+        padding: '0.8vh 1.5vw'
       }}
     >
       {/* Left Section - Date Controls */}
-      <div className="flex items-center" style={{ gap: 'clamp(8px, 1.2vw, 16px)' }}>
-        <div className="flex items-center font-medium" style={{ 
-          gap: 'clamp(8px, 1vw, 14px)',
-          fontSize: 'clamp(12px, 1.4vw, 16px)'
-        }}>
+      <div 
+        className="flex items-center" 
+        style={{ gap: '1.2vw' }}
+      >
+        <div 
+          className="flex items-center font-medium" 
+          style={{ 
+            gap: '1vw',
+            fontSize: '1.4vw',
+            minFontSize: '12px',
+            maxFontSize: '16px'
+          }}
+        >
           <time className="text-black whitespace-nowrap" dateTime="2024-12-12">
             {selectedDate}
           </time>
           <button 
             className="bg-[rgba(37,56,120,1)] text-white rounded-md hover:bg-[rgba(37,56,120,0.9)] transition-colors whitespace-nowrap"
             style={{ 
-              padding: 'clamp(4px, 0.6vh, 7px) clamp(8px, 1vw, 10px)',
-              fontSize: 'clamp(10px, 1.2vw, 14px)'
+              padding: '0.6vh 1vw',
+              fontSize: '1.2vw',
+              minFontSize: '10px',
+              maxFontSize: '14px'
             }}
           >
             Today
@@ -80,9 +93,10 @@ export const DateControls: React.FC = () => {
               src="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/a61f79a38046a5976e936e19def26c56447ce67c?placeholderIfAbsent=true"
               className="object-contain"
               style={{ 
-                width: 'clamp(35px, 3.5vw, 50px)', 
+                width: '3.5vw', 
                 height: 'auto',
-                minWidth: '35px', 
+                minWidth: '35px',
+                maxWidth: '50px',
                 minHeight: '24px' 
               }}
               alt="Calendar controls"
@@ -94,15 +108,26 @@ export const DateControls: React.FC = () => {
         <button 
           className="bg-[rgba(245,167,40,1)] hidden sm:flex items-center justify-center rounded-lg hover:bg-[rgba(245,167,40,0.9)] transition-colors flex-shrink-0"
           style={{ 
-            width: 'clamp(30px, 3vw, 40px)', 
-            height: 'clamp(30px, 3vw, 40px)' 
+            width: '3vw', 
+            height: '3vw',
+            minWidth: '30px',
+            maxWidth: '40px',
+            minHeight: '30px',
+            maxHeight: '40px'
           }}
           aria-label="Refresh data"
         >
-          <RefreshCw style={{ 
-            width: 'clamp(14px, 1.5vw, 18px)', 
-            height: 'clamp(14px, 1.5vw, 18px)' 
-          }} className="text-white" />
+          <RefreshCw 
+            style={{ 
+              width: '1.5vw', 
+              height: '1.5vw',
+              minWidth: '14px',
+              maxWidth: '18px',
+              minHeight: '14px',
+              maxHeight: '18px'
+            }} 
+            className="text-white" 
+          />
         </button>
       </div>
 

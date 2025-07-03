@@ -16,27 +16,26 @@ const Comparison: React.FC = () => {
     >
       <DateControls />
 
-      {/* Content with responsive padding that fills remaining space */}
+      {/* Content with proportional viewport-based spacing */}
       <div 
         className="flex-1 overflow-y-auto"
         style={{ 
-          padding: 'clamp(8px, 1.2vh, 16px) clamp(12px, 1.5vw, 20px)',
-          minHeight: '0' // Allow flex shrinking
+          padding: '1.2vh 1.5vw',
+          minHeight: '0'
         }}
       >
         <div 
           className="h-full flex flex-col"
           style={{ 
-            gap: 'clamp(12px, 1.8vh, 20px)'
+            gap: '1.8vh'
           }}
         >
-          {/* Top row - Comparison tables with responsive grid */}
+          {/* Top row - Two equal sized comparison tables */}
           <div 
             className="grid grid-cols-1 xl:grid-cols-2 flex-1"
             style={{ 
-              gap: 'clamp(8px, 1.2vw, 16px)',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(350px, 40vw, 450px), 1fr))',
-              minHeight: '0' // Allow grid to shrink
+              gap: '1.2vw',
+              minHeight: '0'
             }}
           >
             <div className="bg-white/90 backdrop-blur-sm rounded-lg">
@@ -57,13 +56,12 @@ const Comparison: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom row - Charts with responsive grid */}
+          {/* Bottom row - Two equal sized charts */}
           <div 
             className="grid grid-cols-1 xl:grid-cols-2 flex-1"
             style={{ 
-              gap: 'clamp(8px, 1.2vw, 16px)',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(350px, 40vw, 450px), 1fr))',
-              minHeight: '0' // Allow grid to shrink
+              gap: '1.2vw',
+              minHeight: '0'
             }}
           >
             <div className="bg-white/90 backdrop-blur-sm rounded-lg">

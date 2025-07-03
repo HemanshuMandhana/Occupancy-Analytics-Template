@@ -19,27 +19,26 @@ const Index: React.FC = () => {
     >
       <DateControls />
       
-      {/* Content with responsive padding that fills remaining space */}
+      {/* Content with proportional viewport-based spacing */}
       <div 
         className="flex-1 overflow-y-auto"
         style={{ 
-          padding: 'clamp(8px, 1.2vh, 16px) clamp(12px, 1.5vw, 20px)',
-          minHeight: '0' // Allow flex shrinking
+          padding: '1.2vh 1.5vw',
+          minHeight: '0'
         }}
       >
         <div 
           className="h-full flex flex-col"
           style={{ 
-            gap: 'clamp(8px, 1.2vh, 16px)'
+            gap: '1.2vh'
           }}
         >
-          {/* Top row - Primary metrics with responsive grid */}
+          {/* Top row - Equal sized cards using exact proportions */}
           <div 
-            className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 flex-1"
+            className="grid grid-cols-1 lg:grid-cols-3 flex-1"
             style={{ 
-              gap: 'clamp(8px, 1.2vw, 16px)',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(250px, 28vw, 320px), 1fr))',
-              minHeight: '0' // Allow grid to shrink
+              gap: '1.2vw',
+              minHeight: '0'
             }}
           >
             <OccupancyCard />
@@ -47,13 +46,12 @@ const Index: React.FC = () => {
             <ChartCard title="Zone Occupancy Day" />
           </div>
 
-          {/* Bottom row - Heatmaps and charts with responsive grid */}
+          {/* Bottom row - Equal sized cards using exact proportions */}
           <div 
-            className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 flex-1"
+            className="grid grid-cols-1 lg:grid-cols-3 flex-1"
             style={{ 
-              gap: 'clamp(8px, 1.2vw, 16px)',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(250px, 28vw, 320px), 1fr))',
-              minHeight: '0' // Allow grid to shrink
+              gap: '1.2vw',
+              minHeight: '0'
             }}
           >
             <HeatMapCard

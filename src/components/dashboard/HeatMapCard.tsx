@@ -20,34 +20,46 @@ export const HeatMapCard: React.FC<HeatMapCardProps> = ({
     <article 
       className="border border-gray-200 rounded-xl shadow-sm bg-[#f6f7ff] flex flex-col"
       style={{
-        height: 'clamp(280px, 35vh, 389px)',
-        padding: 'clamp(16px, 2vh, 24px)'
+        height: '100%',
+        padding: '2vh 1.5vw'
       }}
     >
       <div 
-        className="flex items-start justify-between mb-4 flex-shrink-0"
-        style={{ marginBottom: 'clamp(16px, 2vh, 24px)' }}
+        className="flex items-start justify-between flex-shrink-0"
+        style={{ marginBottom: '2vh' }}
       >
         <div className="flex-1">
           <h2 
             className="text-[rgba(46,75,181,1)] font-semibold mb-1"
-            style={{ fontSize: 'clamp(18px, 2.2vw, 24px)' }}
+            style={{ 
+              fontSize: '1.8vw',
+              lineHeight: '1.2',
+              minFontSize: '18px',
+              maxFontSize: '28px'
+            }}
           >
             {title}
           </h2>
           <p 
             className="text-blue-600"
-            style={{ fontSize: 'clamp(14px, 1.6vw, 18px)' }}
+            style={{ 
+              fontSize: '1.2vw',
+              minFontSize: '14px',
+              maxFontSize: '18px'
+            }}
           >
             {subtitle}
           </p>
         </div>
         {showDropdown && (
           <div 
-            className="bg-[rgba(37,56,120,1)] text-white rounded flex items-center gap-2 flex-shrink-0"
+            className="bg-[rgba(37,56,120,1)] text-white rounded flex items-center flex-shrink-0"
             style={{ 
-              padding: 'clamp(6px, 0.8vh, 8px) clamp(12px, 1.5vw, 16px)',
-              fontSize: 'clamp(14px, 1.6vw, 18px)'
+              padding: '0.8vh 1.5vw',
+              fontSize: '1.2vw',
+              minFontSize: '14px',
+              maxFontSize: '18px',
+              gap: '0.5vw'
             }}
           >
             <span className="font-medium">{selectedFloor}</span>
@@ -58,8 +70,12 @@ export const HeatMapCard: React.FC<HeatMapCardProps> = ({
               <svg 
                 className="object-contain" 
                 style={{ 
-                  width: 'clamp(12px, 1.2vw, 16px)', 
-                  height: 'clamp(12px, 1.2vw, 16px)' 
+                  width: '1.2vw', 
+                  height: '1.2vw',
+                  minWidth: '12px',
+                  minHeight: '12px',
+                  maxWidth: '16px',
+                  maxHeight: '16px'
                 }}
                 fill="currentColor" 
                 viewBox="0 0 20 20"
@@ -77,7 +93,7 @@ export const HeatMapCard: React.FC<HeatMapCardProps> = ({
       
       <div 
         className="bg-gray-50 rounded-lg flex-1 min-h-0"
-        style={{ padding: 'clamp(12px, 1.5vh, 16px)' }}
+        style={{ padding: '1.5vh 1vw' }}
       >
         <div className="w-full h-full">
           <img 
