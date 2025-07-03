@@ -13,18 +13,18 @@ const Index: React.FC = () => {
       
       {/* Content with responsive scaling */}
       <div 
-        className="space-y-[clamp(16px,2.5vh,32px)]"
+        className="space-y-[clamp(12px,2vh,24px)]"
         style={{ 
-          paddingTop: 'clamp(16px, 3vh, 40px)',
-          paddingLeft: 'clamp(16px, 2.5vw, 32px)',
-          paddingRight: 'clamp(16px, 2.5vw, 32px)',
-          paddingBottom: 'clamp(16px, 2vh, 24px)'
+          paddingTop: 'clamp(12px, 2.5vh, 32px)',
+          paddingLeft: 'clamp(12px, 2vw, 24px)',
+          paddingRight: 'clamp(12px, 2vw, 24px)',
+          paddingBottom: 'clamp(12px, 1.5vh, 20px)'
         }}
       >
         {/* Top row - Primary metrics */}
         <div 
           className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
-          style={{ gap: 'clamp(16px, 2.5vw, 32px)' }}
+          style={{ gap: 'clamp(12px, 2vw, 24px)' }}
         >
           <OccupancyCard />
           <VisitorCard />
@@ -34,7 +34,7 @@ const Index: React.FC = () => {
         {/* Bottom row - Heatmaps and charts */}
         <div 
           className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3"
-          style={{ gap: 'clamp(16px, 2.5vw, 32px)' }}
+          style={{ gap: 'clamp(12px, 2vw, 24px)' }}
         >
           <HeatMapCard
             title="Visitors by Zone"

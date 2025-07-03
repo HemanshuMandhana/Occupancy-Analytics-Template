@@ -21,18 +21,18 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
     <article 
       className={`bg-[#f6f7ff] border border-gray-200 rounded-xl shadow-sm flex flex-col ${className}`}
       style={{
-        minHeight: 'clamp(300px, 50vh, 500px)',
-        padding: 'clamp(16px, 2.5vw, 32px)'
+        minHeight: 'clamp(250px, 40vh, 400px)',
+        padding: 'clamp(12px, 2vw, 24px)'
       }}
     >
       <div 
-        className="flex items-start gap-[clamp(12px,2vw,24px)] mb-[clamp(16px,2.5vh,32px)]"
+        className="flex items-start gap-[clamp(8px,1.5vw,16px)] mb-[clamp(12px,2vh,20px)]"
       >
         <div 
           className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center flex-shrink-0"
           style={{
-            width: 'clamp(48px, 8vw, 64px)',
-            height: 'clamp(48px, 8vw, 64px)'
+            width: 'clamp(36px, 6vw, 48px)',
+            height: 'clamp(36px, 6vw, 48px)'
           }}
         >
           <img 
@@ -45,7 +45,7 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
           <h2 
             className="text-[rgba(46,75,181,1)] font-semibold mb-1"
             style={{
-              fontSize: 'clamp(18px, 3vw, 28px)',
+              fontSize: 'clamp(14px, 2.5vw, 22px)',
               lineHeight: '1.2'
             }}
           >
@@ -56,29 +56,29 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
 
       <div 
         className="border border-gray-200 rounded-lg flex-1 flex flex-col"
-        style={{ padding: 'clamp(12px, 2vw, 24px)' }}
+        style={{ padding: 'clamp(8px, 1.5vw, 16px)' }}
       >
         {/* Legend */}
         <div 
-          className="flex gap-[clamp(16px,3vw,32px)] mb-[clamp(16px,2.5vh,24px)]"
-          style={{ fontSize: 'clamp(12px, 1.5vw, 16px)' }}
+          className="flex gap-[clamp(12px,2.5vw,24px)] mb-[clamp(12px,2vh,18px)]"
+          style={{ fontSize: 'clamp(10px, 1.3vw, 14px)' }}
         >
           <div className="flex items-center gap-2">
             <div 
               className="bg-[rgba(66,103,177,1)] rounded"
               style={{
-                width: 'clamp(10px, 1.5vw, 16px)',
-                height: 'clamp(10px, 1.5vw, 16px)'
+                width: 'clamp(8px, 1.2vw, 12px)',
+                height: 'clamp(8px, 1.2vw, 12px)'
               }}
             ></div>
             <span className="text-gray-600">Occupied</span>
           </div>
           <div className="flex items-center gap-2">
             <div 
-              className="bg-[rgba(189,203,253,0.5)] rounded"
+              className="bg-[rgba(189,203,253,0.7)] rounded"
               style={{
-                width: 'clamp(10px, 1.5vw, 16px)',
-                height: 'clamp(10px, 1.5vw, 16px)'
+                width: 'clamp(8px, 1.2vw, 12px)',
+                height: 'clamp(8px, 1.2vw, 12px)'
               }}
             ></div>
             <span className="text-gray-600">Vacant</span>
@@ -88,16 +88,16 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
         {/* Chart Area */}
         <div className="relative w-full flex-1">
           <div 
-            className="flex items-end justify-between h-full mb-3 relative"
+            className="flex items-end justify-between h-full mb-2 relative"
             style={{
-              paddingLeft: 'clamp(24px, 4vw, 48px)',
-              paddingRight: 'clamp(8px, 1.5vw, 16px)'
+              paddingLeft: 'clamp(18px, 3vw, 36px)',
+              paddingRight: 'clamp(6px, 1.2vw, 12px)'
             }}
           >
             {/* Y-axis labels */}
             <div 
               className="flex flex-col justify-between h-full text-gray-500 absolute left-0 top-0"
-              style={{ fontSize: 'clamp(10px, 1.2vw, 14px)' }}
+              style={{ fontSize: 'clamp(8px, 1vw, 12px)' }}
             >
               <span>80</span>
               <span>60</span>
@@ -107,25 +107,25 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
             </div>
 
             {/* Chart bars container */}
-            <div className="flex-1 flex items-end justify-between gap-2 h-full">
+            <div className="flex-1 flex items-end justify-between gap-1 h-full">
               {chartData.map((data, index) => {
                 const total = data.occupied + data.vacant;
-                const occupiedHeight = Math.min((data.occupied / 80) * 100, 95);
-                const vacantHeight = Math.min((data.vacant / 80) * 100, 95);
+                const occupiedHeight = Math.max((data.occupied / 80) * 100, 5);
+                const vacantHeight = Math.max((data.vacant / 80) * 100, 5);
                 
                 return (
                   <div 
                     key={data.month} 
                     className="flex flex-col items-center relative flex-1"
-                    style={{ maxWidth: 'clamp(32px, 8vw, 64px)' }}
+                    style={{ maxWidth: 'clamp(24px, 6vw, 48px)' }}
                   >
                     {/* Tooltip */}
                     {hoveredBar === data.month && (
                       <div 
-                        className="absolute bg-black text-white rounded p-2 shadow-lg z-10 whitespace-nowrap"
+                        className="absolute bg-black text-white rounded p-1 shadow-lg z-10 whitespace-nowrap"
                         style={{
-                          top: '-64px',
-                          fontSize: 'clamp(10px, 1vw, 12px)'
+                          top: '-48px',
+                          fontSize: 'clamp(8px, 0.8vw, 10px)'
                         }}
                       >
                         <div className="flex items-center gap-1 mb-1">
@@ -133,7 +133,7 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
                           <span>{data.occupied}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <div className="w-2 h-2 bg-[rgba(189,203,253,0.5)] rounded-sm"></div>
+                          <div className="w-2 h-2 bg-[rgba(189,203,253,0.7)] rounded-sm"></div>
                           <span>{data.vacant}</span>
                         </div>
                       </div>
@@ -141,22 +141,22 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
                     
                     {/* Stacked Bar */}
                     <div 
-                      className="w-full mb-2 relative cursor-pointer bg-gray-100 rounded"
-                      style={{ height: 'clamp(120px, 25vh, 200px)' }}
+                      className="w-full mb-1 relative cursor-pointer bg-gray-100 rounded flex flex-col-reverse"
+                      style={{ height: 'clamp(100px, 20vh, 160px)' }}
                       onMouseEnter={() => setHoveredBar(data.month)}
                       onMouseLeave={() => setHoveredBar(null)}
                     >
                       {/* Occupied portion (bottom) */}
                       <div 
-                        className="bg-[rgba(66,103,177,1)] w-full absolute bottom-0 rounded-b"
-                        style={{ height: `${occupiedHeight}%` }}
+                        className="bg-[rgba(66,103,177,1)] w-full rounded-b transition-all duration-200"
+                        style={{ height: `${occupiedHeight}%`, minHeight: '4px' }}
                       ></div>
                       {/* Vacant portion (top) */}
                       <div 
-                        className="bg-[rgba(189,203,253,0.5)] w-full absolute rounded-t"
+                        className="bg-[rgba(189,203,253,0.7)] w-full rounded-t transition-all duration-200"
                         style={{ 
                           height: `${vacantHeight}%`,
-                          bottom: `${occupiedHeight}%`
+                          minHeight: '4px'
                         }}
                       ></div>
                     </div>
@@ -164,7 +164,7 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
                     {/* Month label */}
                     <span 
                       className="font-medium text-gray-700"
-                      style={{ fontSize: 'clamp(10px, 1.2vw, 14px)' }}
+                      style={{ fontSize: 'clamp(8px, 1vw, 12px)' }}
                     >
                       {data.month}
                     </span>

@@ -10,18 +10,18 @@ const Comparison: React.FC = () => {
 
       {/* Content with responsive scaling */}
       <div 
-        className="space-y-[clamp(24px,4vh,48px)]"
+        className="space-y-[clamp(16px,3vh,32px)]"
         style={{ 
-          paddingTop: 'clamp(16px, 3vh, 40px)',
-          paddingLeft: 'clamp(16px, 2.5vw, 32px)',
-          paddingRight: 'clamp(16px, 2.5vw, 32px)',
-          paddingBottom: 'clamp(16px, 2vh, 24px)'
+          paddingTop: 'clamp(12px, 2.5vh, 32px)',
+          paddingLeft: 'clamp(12px, 2vw, 24px)',
+          paddingRight: 'clamp(12px, 2vw, 24px)',
+          paddingBottom: 'clamp(12px, 1.5vh, 20px)'
         }}
       >
         {/* Top row - Comparison tables */}
         <div 
           className="grid grid-cols-1 xl:grid-cols-2"
-          style={{ gap: 'clamp(16px, 2.5vw, 32px)' }}
+          style={{ gap: 'clamp(12px, 2vw, 24px)' }}
         >
           <div className="bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard
@@ -44,7 +44,7 @@ const Comparison: React.FC = () => {
         {/* Bottom row - Charts */}
         <div 
           className="grid grid-cols-1 xl:grid-cols-2"
-          style={{ gap: 'clamp(16px, 2.5vw, 32px)' }}
+          style={{ gap: 'clamp(12px, 2vw, 24px)' }}
         >
           <div className="bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
