@@ -1,19 +1,10 @@
-
 import React from 'react';
 import { DateControls } from '../components/dashboard/DateControls';
 import { ComparisonCard } from '../components/dashboard/ComparisonCard';
 
 const Comparison: React.FC = () => {
   return (
-    <div 
-      className="min-h-full"
-      style={{ 
-        backgroundImage: 'url(/lovable-uploads/0b9933c1-1a2b-48be-a2dd-99bc9eee0647.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
-    >
+    <div className="min-h-full">
       <DateControls />
 
       {/* Content with minimal padding and spacing */}

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AppSidebar from './AppSidebar';
 import Backdrop from './Backdrop';
@@ -54,15 +53,59 @@ const AppLayoutContent: React.FC = () => {
         }}
       >
         <UniversalHeader />
-        {/* Main content region with proper spacing below header */}
+        {/* Main content region with proper height constraints and scrolling */}
         <main 
-          className="flex-1 overflow-y-auto bg-white/80 backdrop-blur-sm"
+          className="relative"
           style={{ 
-            height: `calc(100vh - clamp(60px, 8vh, 78.5px))`,
-            marginTop: 'clamp(60px, 8vh, 78.5px)' // Add top margin to push content below header
+            position: 'fixed',
+            top: 'clamp(60px, 8vh, 78.5px)', // Start exactly after header
+            left: getContentMargin(),
+            right: '0',
+            bottom: '0',
+            overflow: 'hidden'
           }}
         >
-          <Outlet />
+          {/* Fixed background layer that covers the full viewport */}
+          <div 
+            className="fixed inset-0 -z-10"
+            style={{ 
+              backgroundImage: 'url(/lovable-uploads/0b9933c1-1a2b-48be-a2dd-99bc9eee0647.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          />
+          
+          {/* Scrollable content area */}
+          <div 
+            className="h-full overflow-y-auto custom-scrollbar"
+            style={{
+              // Custom scrollbar styles for Firefox
+              scrollbarWidth: 'thin',
+              scrollbarColor: 'rgba(156, 163, 175, 0.3) transparent',
+            }}
+          >
+            <Outlet />
+          </div>
+          
+          {/* Custom scrollbar styles for WebKit browsers */}
+          <style dangerouslySetInnerHTML={{
+            __html: `
+              .custom-scrollbar::-webkit-scrollbar {
+                width: 4px;
+              }
+              .custom-scrollbar::-webkit-scrollbar-track {
+                background: transparent;
+              }
+              .custom-scrollbar::-webkit-scrollbar-thumb {
+                background: rgba(156, 163, 175, 0.3);
+                border-radius: 2px;
+              }
+              .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                background: rgba(156, 163, 175, 0.5);
+              }
+            `
+          }} />
         </main>
       </div>
     </div>
