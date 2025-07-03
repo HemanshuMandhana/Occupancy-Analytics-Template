@@ -1,3 +1,4 @@
+
 // App.tsx
 import { Toaster } from '@/components/ui/toaster';
 import { Toaster as Sonner } from '@/components/ui/sonner';
@@ -7,6 +8,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/Login';
 import Index from './pages/Index';
 import Comparison from './pages/Comparison';
+import DataReports from './pages/DataReports';
+import UserMaster from './pages/UserMaster';
 import NotFound from './pages/NotFound';
 import AppLayout from './layout/AppLayout';
 
@@ -24,6 +27,8 @@ const App = () => (
           <Route element={<AppLayout />}>
             <Route path="/dashboard" element={<Index />} />
             <Route path="/comparison" element={<Comparison />} />
+            <Route path="/data-reports" element={<DataReports />} />
+            <Route path="/user-master" element={<UserMaster />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
