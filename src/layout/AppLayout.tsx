@@ -27,13 +27,17 @@ const AppLayoutContent: React.FC = () => {
     const isDesktop = windowWidth >= 1024;
     
     if (!isDesktop) {
+      // Mobile: no margin, content fills full width
       return '0px';
     }
     
+    // Desktop: use responsive sidebar widths
     if (isExpanded) {
+      // Expanded sidebar width: clamp(250px, 25vw, 280px)
       const expandedWidth = Math.max(250, Math.min(windowWidth * 0.25, 280));
       return `${expandedWidth}px`;
     } else {
+      // Collapsed sidebar width: clamp(50px, 6vw, 60px)
       const collapsedWidth = Math.max(50, Math.min(windowWidth * 0.06, 60));
       return `${collapsedWidth}px`;
     }
@@ -50,17 +54,15 @@ const AppLayoutContent: React.FC = () => {
         }}
       >
         <UniversalHeader />
-        {/* Main content region with viewport-based proportional sizing */}
+        {/* Main content region with proper spacing below header */}
         <main 
-          className="flex-1 bg-white/80 backdrop-blur-sm relative overflow-hidden"
+          className="flex-1 overflow-y-auto bg-white/80 backdrop-blur-sm"
           style={{ 
-            height: `calc(100vh - 8vh)`,
-            marginTop: `8vh`,
+            height: `calc(100vh - clamp(60px, 8vh, 78.5px))`,
+            marginTop: 'clamp(60px, 8vh, 78.5px)' // Add top margin to push content below header
           }}
         >
-          <div className="w-full h-full overflow-y-auto">
-            <Outlet />
-          </div>
+          <Outlet />
         </main>
       </div>
     </div>
