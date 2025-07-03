@@ -1,6 +1,10 @@
-
 import React, { useState } from 'react';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, CalendarDays } from 'lucide-react';
+import { useSidebar } from '@/context/SidebarContext';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 // Updated DownloadButton component with responsive images
 const DownloadButton: React.FC = () => {
@@ -33,26 +37,44 @@ const DownloadButton: React.FC = () => {
 };
 
 export const DateControls: React.FC = () => {
-  const [selectedDate] = useState('Sun, 12 Dec 2024');
+  const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs('2024-12-12'));
+  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  const { isExpanded, isHovered } = useSidebar();
+
+  const handleCalendarToggle = () => {
+    setIsCalendarVisible(!isCalendarVisible);
+  };
+
+  const handleDateChange = (newDate: Dayjs | null) => {
+    if (newDate) {
+      setSelectedDate(newDate);
+      setIsCalendarVisible(false); // Close calendar after date selection
+    }
+  };
+
+  const formatDisplayDate = (date: Dayjs) => {
+    return date.format('ddd, DD MMM YYYY');
+  };
 
   return (
-      <div 
-        className="flex items-center justify-between w-full px-4 lg:px-6 py-2 lg:py-3 bg-transparent"
-        style={{ height: 'clamp(60px, 8vh, 78.5px)' }}
-      >
+      <div className="flex items-center justify-between w-full h-[78.5px] px-4 lg:px-6">
         {/* Left Section - Date Controls */}
         <div className="flex items-center gap-3 lg:gap-6">
           {/* Date starts directly at the left edge, aligned with hamburger icon */}
-          <div className="flex items-center gap-3 lg:gap-5 font-medium" style={{ fontSize: 'clamp(14px, 2vw, 18px)' }}>
-            <time className="text-black" dateTime="2024-12-12">
-              {selectedDate}
+          <div className="flex items-center gap-3 lg:gap-5 text-[16px] lg:text-[18px] font-medium">
+            <time className="text-black" dateTime={selectedDate.format('YYYY-MM-DD')}>
+              {formatDisplayDate(selectedDate)}
             </time>
+            
+            {/* Calendar Days Icon Button */}
             <button 
-              className="bg-[rgba(37,56,120,1)] text-white px-2.5 lg:px-3 py-1.5 lg:py-2 rounded-md hover:bg-[rgba(37,56,120,0.9)] transition-colors"
-              style={{ fontSize: 'clamp(12px, 1.5vw, 16px)' }}
+              className="bg-[rgba(37,56,120,1)] text-white p-2.5 lg:p-3 rounded-md hover:bg-[rgba(37,56,120,0.9)] transition-colors flex items-center justify-center"
+              onClick={handleCalendarToggle}
+              aria-label="Toggle calendar"
             >
-              Today
+              <CalendarDays className="w-4 h-4 lg:w-5 lg:h-5" />
             </button>
+            
             {/* Calendar navigation - hidden on mobile */}
             <button 
               className="hover:opacity-80 transition-opacity hidden sm:block" 
@@ -60,25 +82,16 @@ export const DateControls: React.FC = () => {
             >
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/a61f79a38046a5976e936e19def26c56447ce67c?placeholderIfAbsent=true"
-                className="object-contain"
-                style={{ 
-                  width: 'clamp(40px, 5vw, 55px)', 
-                  height: 'auto',
-                  minWidth: '40px', 
-                  minHeight: '28px' 
-                }}
+                className="w-[45px] lg:w-[55px] h-auto object-contain"
                 alt="Calendar controls"
+                style={{ minWidth: '45px', minHeight: '32px' }}
               />
             </button>
           </div>
 
           {/* Refresh button - hidden on mobile */}
           <button 
-            className="bg-[rgba(245,167,40,1)] hidden sm:flex items-center justify-center rounded-lg hover:bg-[rgba(245,167,40,0.9)] transition-colors flex-shrink-0"
-            style={{ 
-              width: 'clamp(35px, 4vw, 45px)', 
-              height: 'clamp(35px, 4vw, 45px)' 
-            }}
+            className="bg-[rgba(245,167,40,1)] hidden sm:flex items-center justify-center w-[40px] lg:w-[45px] h-[40px] lg:h-[45px] rounded-lg hover:bg-[rgba(245,167,40,0.9)] transition-colors flex-shrink-0"
             aria-label="Refresh data"
           >
             <RefreshCw className="w-5 h-5 text-white" />
@@ -87,8 +100,32 @@ export const DateControls: React.FC = () => {
 
         {/* Right Section - Download Button */}
         <div className="flex items-center">
+          {/* Use the DownloadButton component from the separate file */}
           <DownloadButton />
         </div>
+
+        {/* MUI DateCalendar - Shows on page when calendar icon is clicked */}
+        {isCalendarVisible && (
+          <div className="absolute top-[78.5px] left-4 lg:left-6 z-50 bg-white rounded-lg shadow-lg border border-gray-200">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateCalendar
+                value={selectedDate}
+                onChange={handleDateChange}
+                sx={{
+                  '& .MuiPickersDay-root': {
+                    borderRadius: '8px',
+                  },
+                  '& .MuiPickersDay-root.Mui-selected': {
+                    backgroundColor: 'rgba(37,56,120,1)',
+                    '&:hover': {
+                      backgroundColor: 'rgba(37,56,120,0.9)',
+                    },
+                  },
+                }}
+              />
+            </LocalizationProvider>
+          </div>
+        )}
       </div>
   );
 };

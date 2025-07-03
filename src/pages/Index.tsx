@@ -10,8 +10,11 @@ const Index: React.FC = () => {
     <div className="min-h-full">
       <DateControls />
       
-      {/* Content with minimal padding and spacing */}
-      <div className="px-4 lg:px-6 pb-4 space-y-4 lg:space-y-6">
+      {/* Content with responsive top padding and minimal padding and spacing */}
+      <div 
+        className="px-4 lg:px-6 pb-4 space-y-4 lg:space-y-6"
+        style={{ paddingTop: 'clamp(24px, 3.5vh, 56px)' }}
+      >
         {/* Top row - Primary metrics */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
           <OccupancyCard />

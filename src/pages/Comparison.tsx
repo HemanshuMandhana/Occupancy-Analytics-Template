@@ -7,8 +7,11 @@ const Comparison: React.FC = () => {
     <div className="min-h-full">
       <DateControls />
 
-      {/* Content with minimal padding and spacing */}
-      <div className="px-4 lg:px-6 pb-4 space-y-6">
+      {/* Content with responsive top padding and minimal padding and spacing */}
+      <div 
+        className="px-4 lg:px-6 pb-4 space-y-6"
+        style={{ paddingTop: 'clamp(24px, 3.5vh, 56px)' }}
+      >
         {/* Top row - Comparison tables */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
           <div className="bg-white/90 backdrop-blur-sm rounded-lg">
