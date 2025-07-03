@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { File } from 'lucide-react';
 
 interface ComparisonCardProps {
@@ -18,6 +18,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
   chartType 
 }) => {
   const [hoveredBar, setHoveredBar] = useState<string | null>(null);
+  const [animationStarted, setAnimationStarted] = useState(false);
 
   const chartData = [
     { month: 'Jan', current: 60, last: 45 },
@@ -27,18 +28,28 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
     { month: 'May', current: 15, last: 25 }
   ];
 
+  useEffect(() => {
+    if (chartType) {
+      const timer = setTimeout(() => {
+        setAnimationStarted(true);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [chartType]);
+
   const renderTable = () => {
     if (tableType === 'occupancy') {
       return (
-        <div className="w-full overflow-hidden rounded-lg border border-gray-200">
+        <div className="w-full overflow-auto rounded-lg border border-gray-200" style={{ maxHeight: 'clamp(150px, 25vh, 300px)' }}>
           <table className="w-full table-fixed">
-            <thead>
+            <thead className="sticky top-0">
               <tr className="bg-[rgba(37,56,120,1)] text-white">
                 <th 
                   className="w-1/6 text-left font-medium border-r border-gray-300"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
+                    fontSize: 'clamp(8px, 1vw, 12px)',
+                    minHeight: 'clamp(32px, 5vh, 48px)'
                   }}
                 >
                   ZONE
@@ -46,7 +57,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                 <th 
                   className="w-1/6 text-left font-medium border-r border-gray-300"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                     fontSize: 'clamp(8px, 1vw, 12px)'
                   }}
                 >
@@ -55,7 +66,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                 <th 
                   className="w-1/6 text-left font-medium border-r border-gray-300"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                     fontSize: 'clamp(8px, 1vw, 12px)'
                   }}
                 >
@@ -64,7 +75,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                 <th 
                   className="w-1/6 text-left font-medium border-r border-gray-300"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                     fontSize: 'clamp(8px, 1vw, 12px)'
                   }}
                 >
@@ -73,7 +84,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                 <th 
                   className="w-1/6 text-left font-medium border-r border-gray-300"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                     fontSize: 'clamp(8px, 1vw, 12px)'
                   }}
                 >
@@ -82,7 +93,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                 <th 
                   className="w-1/6 text-left font-medium"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                     fontSize: 'clamp(8px, 1vw, 12px)'
                   }}
                 >
@@ -96,7 +107,17 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                   <td 
                     className="text-gray-600 border-r border-gray-200"
                     style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
+                      fontSize: 'clamp(8px, 1vw, 12px)',
+                      minHeight: 'clamp(32px, 5vh, 48px)'
+                    }}
+                  >
+                    -
+                  </td>
+                  <td 
+                    className="text-gray-600 border-r border-gray-200"
+                    style={{
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                       fontSize: 'clamp(8px, 1vw, 12px)'
                     }}
                   >
@@ -105,7 +126,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                   <td 
                     className="text-gray-600 border-r border-gray-200"
                     style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                       fontSize: 'clamp(8px, 1vw, 12px)'
                     }}
                   >
@@ -114,7 +135,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                   <td 
                     className="text-gray-600 border-r border-gray-200"
                     style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                       fontSize: 'clamp(8px, 1vw, 12px)'
                     }}
                   >
@@ -123,16 +144,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                   <td 
                     className="text-gray-600 border-r border-gray-200"
                     style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                       fontSize: 'clamp(8px, 1vw, 12px)'
                     }}
                   >
@@ -141,7 +153,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                   <td 
                     className="text-gray-600"
                     style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                       fontSize: 'clamp(8px, 1vw, 12px)'
                     }}
                   >
@@ -157,15 +169,16 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
 
     if (tableType === 'visitor') {
       return (
-        <div className="w-full overflow-hidden rounded-lg border border-gray-200">
+        <div className="w-full overflow-auto rounded-lg border border-gray-200" style={{ maxHeight: 'clamp(150px, 25vh, 300px)' }}>
           <table className="w-full table-fixed">
-            <thead>
+            <thead className="sticky top-0">
               <tr className="bg-[rgba(37,56,120,1)] text-white">
                 <th 
                   className="w-1/6 text-left font-medium border-r border-gray-300"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
-                    fontSize: 'clamp(8px, 1vw, 12px)'
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
+                    fontSize: 'clamp(8px, 1vw, 12px)',
+                    minHeight: 'clamp(32px, 5vh, 48px)'
                   }}
                 >
                   Entrance
@@ -173,7 +186,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                 <th 
                   className="w-1/6 text-left font-medium border-r border-gray-300"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                     fontSize: 'clamp(8px, 1vw, 12px)'
                   }}
                 >
@@ -182,7 +195,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                 <th 
                   className="w-1/6 text-left font-medium border-r border-gray-300"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                     fontSize: 'clamp(8px, 1vw, 12px)'
                   }}
                 >
@@ -191,7 +204,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                 <th 
                   className="w-1/6 text-left font-medium border-r border-gray-300"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                     fontSize: 'clamp(8px, 1vw, 12px)'
                   }}
                 >
@@ -200,7 +213,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                 <th 
                   className="w-1/6 text-left font-medium border-r border-gray-300"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                     fontSize: 'clamp(8px, 1vw, 12px)'
                   }}
                 >
@@ -209,7 +222,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                 <th 
                   className="w-1/6 text-left font-medium"
                   style={{
-                    padding: 'clamp(6px, 1.2vw, 12px)',
+                    padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                     fontSize: 'clamp(8px, 1vw, 12px)'
                   }}
                 >
@@ -223,7 +236,17 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                   <td 
                     className="text-gray-600 border-r border-gray-200"
                     style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
+                      fontSize: 'clamp(8px, 1vw, 12px)',
+                      minHeight: 'clamp(32px, 5vh, 48px)'
+                    }}
+                  >
+                    -
+                  </td>
+                  <td 
+                    className="text-gray-600 border-r border-gray-200"
+                    style={{
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                       fontSize: 'clamp(8px, 1vw, 12px)'
                     }}
                   >
@@ -232,7 +255,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                   <td 
                     className="text-gray-600 border-r border-gray-200"
                     style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                       fontSize: 'clamp(8px, 1vw, 12px)'
                     }}
                   >
@@ -241,7 +264,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                   <td 
                     className="text-gray-600 border-r border-gray-200"
                     style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                       fontSize: 'clamp(8px, 1vw, 12px)'
                     }}
                   >
@@ -250,16 +273,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                   <td 
                     className="text-gray-600 border-r border-gray-200"
                     style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
-                      fontSize: 'clamp(8px, 1vw, 12px)'
-                    }}
-                  >
-                    -
-                  </td>
-                  <td 
-                    className="text-gray-600 border-r border-gray-200"
-                    style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                       fontSize: 'clamp(8px, 1vw, 12px)'
                     }}
                   >
@@ -268,7 +282,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                   <td 
                     className="text-gray-600"
                     style={{
-                      padding: 'clamp(6px, 1.2vw, 12px)',
+                      padding: 'clamp(8px, 1.5vh, 16px) clamp(6px, 1.2vw, 12px)',
                       fontSize: 'clamp(8px, 1vw, 12px)'
                     }}
                   >
@@ -315,8 +329,8 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
             {/* Chart bars container */}
             <div className="flex-1 flex items-end justify-between h-full">
               {chartData.map((data, index) => {
-                const currentHeight = Math.max((data.current / 80) * 100, 5);
-                const lastHeight = Math.max((data.last / 80) * 100, 5);
+                const currentHeight = animationStarted ? Math.max((data.current / 80) * 100, 5) : 0;
+                const lastHeight = animationStarted ? Math.max((data.last / 80) * 100, 5) : 0;
                 
                 return (
                   <div 
@@ -345,10 +359,11 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                       )}
                       
                       <div 
-                        className="w-full bg-[rgba(66,103,177,1)] rounded cursor-pointer transition-all duration-200 hover:opacity-80"
+                        className="w-full bg-[rgba(66,103,177,1)] rounded cursor-pointer transition-all duration-1000 ease-out hover:opacity-80"
                         style={{ 
                           height: `${currentHeight}%`,
-                          minHeight: '4px'
+                          minHeight: animationStarted ? '4px' : '0px',
+                          transitionDelay: `${index * 100}ms`
                         }}
                         onMouseEnter={() => setHoveredBar(`${data.month}-current`)}
                         onMouseLeave={() => setHoveredBar(null)}
@@ -373,10 +388,11 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                       )}
                       
                       <div 
-                        className="w-full bg-[rgba(189,203,253,0.7)] rounded cursor-pointer transition-all duration-200 hover:opacity-80"
+                        className="w-full bg-[rgba(189,203,253,0.7)] rounded cursor-pointer transition-all duration-1000 ease-out hover:opacity-80"
                         style={{ 
                           height: `${lastHeight}%`,
-                          minHeight: '4px'
+                          minHeight: animationStarted ? '4px' : '0px',
+                          transitionDelay: `${index * 100 + 200}ms`
                         }}
                         onMouseEnter={() => setHoveredBar(`${data.month}-last`)}
                         onMouseLeave={() => setHoveredBar(null)}

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ChartCardProps {
   title: string;
@@ -8,6 +8,7 @@ interface ChartCardProps {
 
 export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) => {
   const [hoveredBar, setHoveredBar] = useState<string | null>(null);
+  const [animationStarted, setAnimationStarted] = useState(false);
   
   const chartData = [
     { month: 'Jan', occupied: 35, vacant: 25 },
@@ -16,6 +17,13 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
     { month: 'Apr', occupied: 32, vacant: 20 },
     { month: 'May', occupied: 15, vacant: 8 }
   ];
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationStarted(true);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <article 
@@ -110,8 +118,8 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
             <div className="flex-1 flex items-end justify-between gap-1 h-full">
               {chartData.map((data, index) => {
                 const total = data.occupied + data.vacant;
-                const occupiedHeight = Math.max((data.occupied / 80) * 100, 5);
-                const vacantHeight = Math.max((data.vacant / 80) * 100, 5);
+                const occupiedHeight = animationStarted ? Math.max((data.occupied / 80) * 100, 5) : 0;
+                const vacantHeight = animationStarted ? Math.max((data.vacant / 80) * 100, 5) : 0;
                 
                 return (
                   <div 
@@ -141,22 +149,27 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
                     
                     {/* Stacked Bar */}
                     <div 
-                      className="w-full mb-1 relative cursor-pointer bg-gray-100 rounded flex flex-col-reverse"
+                      className="w-full mb-1 relative cursor-pointer flex flex-col-reverse"
                       style={{ height: 'clamp(100px, 20vh, 160px)' }}
                       onMouseEnter={() => setHoveredBar(data.month)}
                       onMouseLeave={() => setHoveredBar(null)}
                     >
                       {/* Occupied portion (bottom) */}
                       <div 
-                        className="bg-[rgba(66,103,177,1)] w-full rounded-b transition-all duration-200"
-                        style={{ height: `${occupiedHeight}%`, minHeight: '4px' }}
+                        className="bg-[rgba(66,103,177,1)] w-full rounded-b transition-all duration-1000 ease-out"
+                        style={{ 
+                          height: `${occupiedHeight}%`, 
+                          minHeight: animationStarted ? '4px' : '0px',
+                          transitionDelay: `${index * 100}ms`
+                        }}
                       ></div>
                       {/* Vacant portion (top) */}
                       <div 
-                        className="bg-[rgba(189,203,253,0.7)] w-full rounded-t transition-all duration-200"
+                        className="bg-[rgba(189,203,253,0.7)] w-full rounded-t transition-all duration-1000 ease-out"
                         style={{ 
                           height: `${vacantHeight}%`,
-                          minHeight: '4px'
+                          minHeight: animationStarted ? '4px' : '0px',
+                          transitionDelay: `${index * 100 + 200}ms`
                         }}
                       ></div>
                     </div>
