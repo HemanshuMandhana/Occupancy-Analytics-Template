@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface LoginLayoutProps {
@@ -17,15 +16,12 @@ export const LoginLayout: React.FC<LoginLayoutProps> = ({ children }) => {
         />
       </div>
 
-      {/* Right Image - Hidden on mobile and tablets, responsive sizing for desktop */}
-      <div className="absolute top-0 right-0 z-0 hidden xl:block h-full">
+      {/* Right Image - Only show on desktop (lg and above), hide on tablets */}
+      <div className="absolute top-0 right-0 z-0 hidden lg:block h-full w-[49vw]">
         <img
           src="/images/img_mask_group.png"
           alt="Theater"
-          className="h-full object-cover"
-          style={{
-            width: 'clamp(45vw, 52vw, 50vw)'
-          }}
+          className="h-[100vh] w-[49vw] object-cover"
         />
       </div>
 
