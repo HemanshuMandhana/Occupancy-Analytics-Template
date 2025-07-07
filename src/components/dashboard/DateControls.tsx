@@ -27,7 +27,10 @@ export const DateControls: React.FC = () => {
   };
 
   return (
-      <div className="flex items-center justify-between w-full h-[78.5px] px-4 lg:px-6">
+      <div 
+        className="flex items-center justify-between w-full px-4 lg:px-6"
+        style={{ height: 'clamp(60px, 7.269vh, 78.5px)' }}
+      >
         {/* Left Section - Date Controls */}
         <div className="flex items-center gap-3 lg:gap-6">
           {/* Date starts directly at the left edge, aligned with hamburger icon */}
@@ -75,7 +78,10 @@ export const DateControls: React.FC = () => {
 
         {/* MUI DateCalendar - Shows on page when calendar icon is clicked */}
         {isCalendarVisible && (
-          <div className="absolute top-[78.5px] left-4 lg:left-6 z-50 bg-white rounded-lg shadow-lg border border-gray-200">
+          <div 
+            className="absolute left-4 lg:left-6 z-50 bg-white rounded-lg shadow-lg border border-gray-200"
+            style={{ top: 'clamp(60px, 7.269vh, 78.5px)' }}
+          >
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar
                 value={selectedDate}

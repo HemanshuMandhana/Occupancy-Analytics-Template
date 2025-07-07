@@ -38,27 +38,30 @@ const DownloadButton: React.FC = () => {
 const Index: React.FC = () => {
   return (
     <div className="min-h-full relative">
-      <DateControls />
-      
-      {/* Download Button positioned absolutely to align with DateControls */}
-      <div className="absolute top-0 right-4 lg:right-6 h-[78.5px] flex items-center z-10">
-        <DownloadButton />
+      {/* Header container with relative positioning */}
+      <div className="relative">
+        <DateControls />
+        
+        {/* Download Button positioned absolutely within the header container */}
+        <div className="absolute top-0 right-[0.833vw] lg:right-[1.25vw] h-full flex items-center z-10">
+          <DownloadButton />
+        </div>
       </div>
       
       {/* Content with responsive top padding and minimal padding and spacing */}
       <div 
-        className="px-4 lg:px-6 pb-4 space-y-4 lg:space-y-6"
-        style={{ paddingTop: 'clamp(24px, 3.5vh, 56px)' }}
+        className="px-[0.833vw] lg:px-[1.25vw] pb-[1.481vh] space-y-[1.481vh] lg:space-y-[2.222vh]"
+        style={{ paddingTop: 'clamp(2.222vh, 5.185vh, 5.185vh)' }}
       >
         {/* Top row - Primary metrics */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[0.833vw] lg:gap-[1.25vw]">
           <OccupancyCard />
           <VisitorCard />
           <ChartCard title="Zone Occupancy Day" />
         </div>
 
         {/* Bottom row - Heatmaps and charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[0.833vw] lg:gap-[1.25vw]">
           <HeatMapCard
             title="Visitors by Zone"
             subtitle="Heat Map"
