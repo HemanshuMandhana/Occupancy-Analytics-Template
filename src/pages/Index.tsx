@@ -5,10 +5,45 @@ import { ChartCard } from '../components/dashboard/ChartCard';
 import { HeatMapCard } from '../components/dashboard/HeatMapCard';
 import { DateControls } from '../components/dashboard/DateControls';
 
+// Download Button Component
+const DownloadButton: React.FC = () => {
+  const handleDownload = () => {
+    // Implement download functionality
+    console.log('Download initiated');
+  };
+
+  return (
+    <button 
+      className="hover:opacity-80 transition-opacity"
+      onClick={handleDownload}
+      aria-label="Download data as Excel file"
+    >
+      {/* Desktop view - Primary Download Button */}
+      <img
+        src="/images/Primary Download Button.svg"
+        className="hidden sm:block w-auto h-auto object-contain"
+        alt="Download button"
+      />
+      
+      {/* Mobile view - Excel icon only */}
+      <img
+        src="/images/Excel icon.svg"
+        className="block sm:hidden w-auto h-auto object-contain"
+        alt="Download Excel file"
+      />
+    </button>
+  );
+};
+
 const Index: React.FC = () => {
   return (
-    <div className="min-h-full">
+    <div className="min-h-full relative">
       <DateControls />
+      
+      {/* Download Button positioned absolutely to align with DateControls */}
+      <div className="absolute top-0 right-4 lg:right-6 h-[78.5px] flex items-center z-10">
+        <DownloadButton />
+      </div>
       
       {/* Content with responsive top padding and minimal padding and spacing */}
       <div 

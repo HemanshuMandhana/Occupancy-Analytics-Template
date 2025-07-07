@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { DateControls } from '../components/dashboard/DateControls';
 import { Button } from '@/components/ui/button';
@@ -10,6 +9,36 @@ import { CalendarIcon, Plus, Edit, Trash2, User, Building } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 
+// Action Buttons Component
+const ActionButtons: React.FC = () => {
+  const handleAdd = () => {
+    console.log('Adding new user...');
+  };
+
+  const handleModify = () => {
+    console.log('Modifying user...');
+  };
+
+  return (
+    <div className="flex gap-3">
+      <Button 
+        onClick={handleAdd}
+        className="bg-green-600 hover:bg-green-700 text-white"
+      >
+        <Plus className="mr-2 h-4 w-4" />
+        Add
+      </Button>
+      <Button 
+        onClick={handleModify}
+        className="bg-orange-500 hover:bg-orange-600 text-white"
+      >
+        <Edit className="mr-2 h-4 w-4" />
+        Modify
+      </Button>
+    </div>
+  );
+};
+
 const UserMaster: React.FC = () => {
   const [userName, setUserName] = useState('Canizajo');
   const [userType, setUserType] = useState('SU0001');
@@ -17,7 +46,6 @@ const UserMaster: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('10/02/2025');
   const [emailId, setEmailId] = useState('Canizajo');
   const [expireDate, setExpireDate] = useState<Date>(new Date(2025, 1, 10));
-  const [currentDate] = useState(new Date(2024, 11, 12)); // Dec 12, 2024
 
   const buildings = [
     { name: 'Roddenberry', authorities: true },
@@ -38,58 +66,19 @@ const UserMaster: React.FC = () => {
     console.log('Deleting user...');
   };
 
-  const handleAdd = () => {
-    console.log('Adding new user...');
-  };
-
-  const handleModify = () => {
-    console.log('Modifying user...');
-  };
-
   return (
-    <div className="min-h-full">
+    <div className="min-h-full relative">
       <DateControls />
+      
+      {/* Action Buttons positioned absolutely to align with DateControls */}
+      <div className="absolute top-0 right-4 lg:right-6 h-[78.5px] flex items-center z-10">
+        <ActionButtons />
+      </div>
       
       <div 
         className="px-4 lg:px-6 pb-4 space-y-6"
         style={{ paddingTop: 'clamp(24px, 3.5vh, 56px)' }}
       >
-        {/* Header with date and action buttons */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div className="flex items-center gap-4">
-            <div className="text-lg text-gray-700">
-              {format(currentDate, "EEE, dd MMM yyyy")}
-            </div>
-            <Button className="bg-[rgba(48,66,127,1)] hover:bg-[rgba(48,66,127,0.9)] text-white">
-              Today
-            </Button>
-            <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm">‹</Button>
-              <Button variant="outline" size="sm">›</Button>
-              <Button variant="outline" size="sm" className="bg-orange-500 text-white border-orange-500">
-                ↻
-              </Button>
-            </div>
-          </div>
-          
-          <div className="flex gap-3">
-            <Button 
-              onClick={handleAdd}
-              className="bg-green-600 hover:bg-green-700 text-white"
-            >
-              <Plus className="mr-2 h-4 w-4" />
-              Add
-            </Button>
-            <Button 
-              onClick={handleModify}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Edit className="mr-2 h-4 w-4" />
-              Modify
-            </Button>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           {/* User Form Section */}
           <div className="xl:col-span-2">

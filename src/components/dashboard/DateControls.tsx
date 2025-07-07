@@ -6,36 +6,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 
-// Updated DownloadButton component with responsive images
-const DownloadButton: React.FC = () => {
-  const handleDownload = () => {
-    // Implement download functionality
-    console.log('Download initiated');
-  };
-
-  return (
-    <button 
-      className="hover:opacity-80 transition-opacity"
-      onClick={handleDownload}
-      aria-label="Download data as Excel file"
-    >
-      {/* Desktop view - Primary Download Button */}
-      <img
-        src="/images/Primary Download Button.svg"
-        className="hidden sm:block w-auto h-auto object-contain"
-        alt="Download button"
-      />
-      
-      {/* Mobile view - Excel icon only */}
-      <img
-        src="/images/Excel icon.svg"
-        className="block sm:hidden w-auto h-auto object-contain"
-        alt="Download Excel file"
-      />
-    </button>
-  );
-};
-
 export const DateControls: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs('2024-12-12'));
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
@@ -98,10 +68,9 @@ export const DateControls: React.FC = () => {
           </button>
         </div>
 
-        {/* Right Section - Download Button */}
+        {/* Right Section - Empty space for download button alignment */}
         <div className="flex items-center">
-          {/* Use the DownloadButton component from the separate file */}
-          <DownloadButton />
+          {/* This space is reserved for the download button which will be positioned absolutely */}
         </div>
 
         {/* MUI DateCalendar - Shows on page when calendar icon is clicked */}
