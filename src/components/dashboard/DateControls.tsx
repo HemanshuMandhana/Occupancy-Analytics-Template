@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { RefreshCw, CalendarDays } from 'lucide-react';
 import { useSidebar } from '@/context/SidebarContext';
@@ -29,60 +28,46 @@ export const DateControls: React.FC = () => {
 
   return (
       <div 
-        className="flex items-center justify-between w-full px-[0.833vw] lg:px-[1.25vw]"
-        style={{ height: 'clamp(4.444vh, 7.269vh, 5.815vh)' }}
+        className="flex items-center justify-between w-full px-4 lg:px-6"
+        style={{ height: 'clamp(60px, 7.269vh, 78.5px)' }}
       >
         {/* Left Section - Date Controls */}
-        <div className="flex items-center gap-[0.625vw] lg:gap-[1.25vw]">
+        <div className="flex items-center gap-3 lg:gap-6">
           {/* Date starts directly at the left edge, aligned with hamburger icon */}
-          <div className="flex items-center gap-[0.625vw] lg:gap-[1.042vw]" style={{ fontSize: 'clamp(1.185vh, 1.333vh, 1.333vh)' }}>
-            <time className="text-black font-medium" dateTime={selectedDate.format('YYYY-MM-DD')}>
+          <div className="flex items-center gap-3 lg:gap-5 text-[16px] lg:text-[18px] font-medium">
+            <time className="text-black" dateTime={selectedDate.format('YYYY-MM-DD')}>
               {formatDisplayDate(selectedDate)}
             </time>
             
             {/* Calendar Days Icon Button */}
             <button 
-              className="bg-[rgba(37,56,120,1)] text-white rounded-md hover:bg-[rgba(37,56,120,0.9)] transition-colors flex items-center justify-center"
-              style={{ 
-                padding: 'clamp(0.741vh, 0.926vh, 1.111vh)',
-                width: 'clamp(3.333vh, 3.704vh, 4.074vh)',
-                height: 'clamp(3.333vh, 3.704vh, 4.074vh)'
-              }}
+              className="bg-[rgba(37,56,120,1)] text-white p-2.5 lg:p-3 rounded-md hover:bg-[rgba(37,56,120,0.9)] transition-colors flex items-center justify-center"
               onClick={handleCalendarToggle}
               aria-label="Toggle calendar"
             >
-              <CalendarDays style={{ width: 'clamp(1.185vh, 1.481vh, 1.481vh)', height: 'clamp(1.185vh, 1.481vh, 1.481vh)' }} />
+              <CalendarDays className="w-4 h-4 lg:w-5 lg:h-5" />
             </button>
             
             {/* Calendar navigation - hidden on mobile */}
             <button 
               className="hover:opacity-80 transition-opacity hidden sm:block" 
               aria-label="Calendar navigation"
-              style={{
-                width: 'clamp(3.333vw, 3.542vw, 4.063vw)',
-                height: 'auto',
-                minWidth: 'clamp(2.5vw, 3.333vw, 3.333vw)',
-                minHeight: 'clamp(2.37vh, 2.37vh, 2.37vh)'
-              }}
             >
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/a61f79a38046a5976e936e19def26c56447ce67c?placeholderIfAbsent=true"
-                className="w-full h-auto object-contain"
+                className="w-[45px] lg:w-[55px] h-auto object-contain"
                 alt="Calendar controls"
+                style={{ minWidth: '45px', minHeight: '32px' }}
               />
             </button>
           </div>
 
           {/* Refresh button - hidden on mobile */}
           <button 
-            className="bg-[rgba(245,167,40,1)] hidden sm:flex items-center justify-center rounded-lg hover:bg-[rgba(245,167,40,0.9)] transition-colors flex-shrink-0"
-            style={{
-              width: 'clamp(2.963vh, 3.333vh, 3.333vh)',
-              height: 'clamp(2.963vh, 3.333vh, 3.333vh)'
-            }}
+            className="bg-[rgba(245,167,40,1)] hidden sm:flex items-center justify-center w-[40px] lg:w-[45px] h-[40px] lg:h-[45px] rounded-lg hover:bg-[rgba(245,167,40,0.9)] transition-colors flex-shrink-0"
             aria-label="Refresh data"
           >
-            <RefreshCw style={{ width: 'clamp(1.481vh, 1.481vh, 1.481vh)', height: 'clamp(1.481vh, 1.481vh, 1.481vh)' }} className="text-white" />
+            <RefreshCw className="w-5 h-5 text-white" />
           </button>
         </div>
 
@@ -94,8 +79,8 @@ export const DateControls: React.FC = () => {
         {/* MUI DateCalendar - Shows on page when calendar icon is clicked */}
         {isCalendarVisible && (
           <div 
-            className="absolute left-[0.833vw] lg:left-[1.25vw] z-50 bg-white rounded-lg shadow-lg border border-gray-200"
-            style={{ top: 'clamp(4.444vh, 7.269vh, 5.815vh)' }}
+            className="absolute left-4 lg:left-6 z-50 bg-white rounded-lg shadow-lg border border-gray-200"
+            style={{ top: 'clamp(60px, 7.269vh, 78.5px)' }}
           >
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar
