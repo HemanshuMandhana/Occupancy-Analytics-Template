@@ -36,19 +36,19 @@ export const VisitorCard: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="border-b border-gray-200">
+            <tr className="border-b border-gray-200 bg-[#FFFFFF00]">
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 border-r border-gray-200 text-[1.48vh]">-</td>
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 border-r border-gray-200 text-[1.48vh]">-</td>
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 border-r border-gray-200 text-[1.48vh]">-</td>
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 text-[1.48vh]">-</td>
             </tr>
-            <tr className="border-b border-gray-200 bg-gray-50">
+            <tr className="border-b border-gray-200 bg-[#DADEFB5C]">
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 border-r border-gray-200 text-[1.48vh]">-</td>
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 border-r border-gray-200 text-[1.48vh]">-</td>
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 border-r border-gray-200 text-[1.48vh]">-</td>
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 text-[1.48vh]">-</td>
             </tr>
-            <tr>
+            <tr className="border-b border-gray-200 bg-[#FFFFFF00]">
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 border-r border-gray-200 text-[1.48vh]">-</td>
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 border-r border-gray-200 text-[1.48vh]">-</td>
               <td className="px-[1.48vh] py-[1.11vh] text-center text-gray-600 border-r border-gray-200 text-[1.48vh]">-</td>

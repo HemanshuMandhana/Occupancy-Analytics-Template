@@ -38,18 +38,15 @@ const Comparison: React.FC = () => {
       <DateControls />
       
       {/* Download Button positioned absolutely to align with DateControls */}
-      <div className="absolute top-0 right-4 lg:right-6 h-[78.5px] flex items-center z-10">
+      <div className="absolute top-0 right-4 lg:right-6 h-[7.269vh] flex items-center z-10">
         <DownloadButton />
       </div>
 
-      {/* Content with responsive top padding and minimal padding and spacing */}
-      <div 
-        className="px-4 lg:px-6 pb-4 space-y-6"
-        style={{ paddingTop: 'clamp(24px, 3.5vh, 56px)' }}
-      >
-        {/* Top row - Comparison tables */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+      {/* Content with 8px space between DateControls and charts */}
+      <div className="px-4 lg:px-6 pb-4" style={{ marginTop: '0.741vh' }}>
+        {/* Top row - Comparison tables with exactly 34px gap between columns */}
+        <div className="flex mb-5" style={{ gap: '1.771vw' }}>
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '35.37vh' }}>
             <ComparisonCard
               title="Zone Occupancy Day- Last week Comparison"
               subtitle="Total Building Occupancy"
@@ -57,7 +54,7 @@ const Comparison: React.FC = () => {
               tableType="occupancy"
             />
           </div>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '35.37vh' }}>
             <ComparisonCard
               title="Zone Visitor Count- Last week Comparison"
               subtitle="Total Building Visitor count"
@@ -67,12 +64,12 @@ const Comparison: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom row - Charts */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+        {/* Bottom row - Charts with exactly 34px gap between columns */}
+        <div className="flex" style={{ gap: '1.771vw' }}>
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '43.056vh' }}>
             <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
           </div>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg">
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '43.056vh' }}>
             <ComparisonCard title="Zone Visitor Count Week" chartType="visitor" />
           </div>
         </div>
