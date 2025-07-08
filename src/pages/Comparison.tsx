@@ -38,15 +38,29 @@ const Comparison: React.FC = () => {
       <DateControls />
       
       {/* Download Button positioned absolutely to align with DateControls */}
-      <div className="absolute top-0 right-4 lg:right-6 h-[7.269vh] flex items-center z-10">
+      <div className="absolute top-0 right-0 flex items-center z-10" style={{ 
+        right: 'clamp(1rem, 2vw, 2rem)', 
+        height: 'clamp(4rem, 7.269vh, 8rem)' 
+      }}>
         <DownloadButton />
       </div>
 
-      {/* Content with 8px space between DateControls and charts */}
-      <div className="px-4 lg:px-6 pb-4" style={{ marginTop: '0.741vh' }}>
-        {/* Top row - Comparison tables with exactly 34px gap between columns */}
-        <div className="flex mb-5" style={{ gap: '1.771vw' }}>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '35.37vh' }}>
+      {/* Content with responsive spacing */}
+      <div style={{ 
+        paddingLeft: 'clamp(1rem, 2vw, 2rem)', 
+        paddingRight: 'clamp(1rem, 2vw, 2rem)', 
+        paddingBottom: 'clamp(1rem, 2vh, 2rem)',
+        marginTop: 'clamp(0.4rem, 0.741vh, 1rem)' 
+      }}>
+        {/* Top row - Comparison tables with responsive gap */}
+        <div className="flex flex-col lg:flex-row" style={{ 
+          gap: 'clamp(1rem, 1.771vw, 2rem)',
+          marginBottom: 'clamp(1rem, 2vh, 2rem)'
+        }}>
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg flex-1" style={{ 
+            minHeight: 'clamp(20rem, 35.37vh, 25rem)',
+            height: 'clamp(20rem, 35.37vh, 25rem)'
+          }}>
             <ComparisonCard
               title="Zone Occupancy Day- Last week Comparison"
               subtitle="Total Building Occupancy"
@@ -54,7 +68,10 @@ const Comparison: React.FC = () => {
               tableType="occupancy"
             />
           </div>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '35.37vh' }}>
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg flex-1" style={{ 
+            minHeight: 'clamp(20rem, 35.37vh, 25rem)',
+            height: 'clamp(20rem, 35.37vh, 25rem)'
+          }}>
             <ComparisonCard
               title="Zone Visitor Count- Last week Comparison"
               subtitle="Total Building Visitor count"
@@ -64,12 +81,18 @@ const Comparison: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom row - Charts with exactly 34px gap between columns */}
-        <div className="flex" style={{ gap: '1.771vw' }}>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '43.056vh' }}>
+        {/* Bottom row - Charts with responsive gap */}
+        <div className="flex flex-col lg:flex-row" style={{ gap: 'clamp(1rem, 1.771vw, 2rem)' }}>
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg flex-1" style={{ 
+            minHeight: 'clamp(25rem, 43.056vh, 35rem)',
+            height: 'clamp(25rem, 43.056vh, 35rem)'
+          }}>
             <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
           </div>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '43.056vh' }}>
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg flex-1" style={{ 
+            minHeight: 'clamp(25rem, 43.056vh, 35rem)',
+            height: 'clamp(25rem, 43.056vh, 35rem)'
+          }}>
             <ComparisonCard title="Zone Visitor Count Week" chartType="visitor" />
           </div>
         </div>

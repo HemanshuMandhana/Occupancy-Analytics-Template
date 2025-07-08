@@ -29,23 +29,44 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
   const renderTables = () => {
     if (tableType === 'occupancy') {
       return (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'clamp(0.5rem, 1vw, 1rem)' }}>
           {/* Left Table */}
-          <div className="w-full overflow-hidden border border-gray-200">
+          <div className="w-full overflow-hidden border border-gray-200 rounded">
             <table className="w-full">
               <thead>
                 <tr className="bg-[rgba(37,56,120,1)] text-white">
-                  <th className="px-3 py-2 text-left font-medium text-sm border-r border-gray-300">ZONE</th>
-                  <th className="px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Last</th>
-                  <th className="px-3 py-2 text-left font-medium text-sm">Zone</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left border-r border-gray-300">ZONE</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left border-r border-gray-300">Last</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left">Zone</th>
                 </tr>
               </thead>
               <tbody>
                 {[...Array(3)].map((_, index) => (
                   <tr key={index} className={`border-b border-gray-200 ${index === 0 ? 'bg-[#FFFFFF00]' : index === 1 ? 'bg-[#DADEFB5C]' : 'bg-[#FFFFFF00]'}`}>
-                    <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
-                    <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
-                    <td className="px-3 py-2 text-gray-600 text-sm">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600 border-r border-gray-200">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600 border-r border-gray-200">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600">-</td>
                   </tr>
                 ))}
               </tbody>
@@ -53,21 +74,42 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
           </div>
 
           {/* Right Table */}
-          <div className="w-full overflow-hidden border border-gray-200">
+          <div className="w-full overflow-hidden border border-gray-200 rounded">
             <table className="w-full">
               <thead>
                 <tr className="bg-[rgba(37,56,120,1)] text-white">
-                  <th className="px-3 py-2 text-left font-medium text-sm border-r border-gray-300">ZONE</th>
-                  <th className="px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Last</th>
-                  <th className="px-3 py-2 text-left font-medium text-sm">Zone</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left border-r border-gray-300">ZONE</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left border-r border-gray-300">Last</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left">Zone</th>
                 </tr>
               </thead>
               <tbody>
                 {[...Array(3)].map((_, index) => (
                   <tr key={index} className={`border-b border-gray-200 ${index === 0 ? 'bg-[#FFFFFF00]' : index === 1 ? 'bg-[#DADEFB5C]' : 'bg-[#FFFFFF00]'}`}>
-                    <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
-                    <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
-                    <td className="px-3 py-2 text-gray-600 text-sm">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600 border-r border-gray-200">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600 border-r border-gray-200">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600">-</td>
                   </tr>
                 ))}
               </tbody>
@@ -79,23 +121,44 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
 
     if (tableType === 'visitor') {
       return (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'clamp(0.5rem, 1vw, 1rem)' }}>
           {/* Left Table */}
-          <div className="w-full overflow-hidden border border-gray-200">
+          <div className="w-full overflow-hidden border border-gray-200 rounded">
             <table className="w-full">
               <thead>
                 <tr className="bg-[rgba(37,56,120,1)] text-white">
-                  <th className="px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Entrance</th>
-                  <th className="px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Last</th>
-                  <th className="px-3 py-2 text-left font-medium text-sm">Current</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left border-r border-gray-300">Entrance</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left border-r border-gray-300">Last</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left">Current</th>
                 </tr>
               </thead>
               <tbody>
                 {[...Array(3)].map((_, index) => (
                   <tr key={index} className={`border-b border-gray-200 ${index === 0 ? 'bg-[#FFFFFF00]' : index === 1 ? 'bg-[#DADEFB5C]' : 'bg-[#FFFFFF00]'}`}>
-                    <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
-                    <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
-                    <td className="px-3 py-2 text-gray-600 text-sm">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600 border-r border-gray-200">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600 border-r border-gray-200">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600">-</td>
                   </tr>
                 ))}
               </tbody>
@@ -103,21 +166,42 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
           </div>
 
           {/* Right Table */}
-          <div className="w-full overflow-hidden border border-gray-200">
+          <div className="w-full overflow-hidden border border-gray-200 rounded">
             <table className="w-full">
               <thead>
                 <tr className="bg-[rgba(37,56,120,1)] text-white">
-                  <th className="px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Entrance</th>
-                  <th className="px-3 py-2 text-left font-medium text-sm border-r border-gray-300">Last</th>
-                  <th className="px-3 py-2 text-left font-medium text-sm">Current</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left border-r border-gray-300">Entrance</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left border-r border-gray-300">Last</th>
+                  <th style={{ 
+                    padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                    fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)',
+                    fontWeight: '500'
+                  }} className="text-left">Current</th>
                 </tr>
               </thead>
               <tbody>
                 {[...Array(3)].map((_, index) => (
                   <tr key={index} className={`border-b border-gray-200 ${index === 0 ? 'bg-[#FFFFFF00]' : index === 1 ? 'bg-[#DADEFB5C]' : 'bg-[#FFFFFF00]'}`}>
-                    <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
-                    <td className="px-3 py-2 text-gray-600 text-sm border-r border-gray-200">-</td>
-                    <td className="px-3 py-2 text-gray-600 text-sm">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600 border-r border-gray-200">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600 border-r border-gray-200">-</td>
+                    <td style={{ 
+                      padding: 'clamp(0.25rem, 0.5vw, 0.5rem) clamp(0.5rem, 1vw, 1rem)', 
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+                    }} className="text-gray-600">-</td>
                   </tr>
                 ))}
               </tbody>
@@ -138,12 +222,23 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
       : { current: 'Visitor Current Week', last: 'Visitor Last week' };
 
     return (
-      <div className="mt-4">
-        {/* Chart Area with Outline - Fixed size 714x318.21 */}
-        <div className="relative border border-gray-200 p-4 bg-white" style={{ width: '37.188vw', height: '29.464vh' }}>
-          <div className="flex items-end justify-between h-full relative pl-8 pr-4">
-            {/* Y-axis labels positioned to end below legends */}
-            <div className="flex flex-col justify-between text-xs text-gray-500 absolute left-0 top-8 bottom-6">
+      <div style={{ marginTop: 'clamp(0.5rem, 1vh, 1rem)' }}>
+        {/* Chart Area with responsive sizing */}
+        <div className="relative border border-gray-200 bg-white rounded" style={{ 
+          width: '100%',
+          height: 'clamp(15rem, 29.464vh, 20rem)',
+          padding: 'clamp(0.5rem, 1vw, 1rem)'
+        }}>
+          <div className="flex items-end justify-between h-full relative" style={{ 
+            paddingLeft: 'clamp(1.5rem, 3vw, 2rem)', 
+            paddingRight: 'clamp(0.5rem, 1vw, 1rem)' 
+          }}>
+            {/* Y-axis labels */}
+            <div className="flex flex-col justify-between h-full text-gray-500 absolute left-0" style={{ 
+              fontSize: 'clamp(0.5rem, 1vw, 0.75rem)',
+              top: 'clamp(1.5rem, 3vh, 2rem)',
+              bottom: 'clamp(1rem, 2vh, 1.5rem)'
+            }}>
               <span>80</span>
               <span>60</span>
               <span>40</span>
@@ -152,36 +247,59 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
             </div>
 
             {/* Chart bars container with legend inside */}
-            <div className="flex-1 flex flex-col h-full ml-4">
+            <div className="flex-1 flex flex-col h-full" style={{ marginLeft: 'clamp(0.5rem, 1vw, 1rem)' }}>
               {/* Legend inside chart bars container */}
-              <div className="flex gap-6 mb-4 text-sm flex-shrink-0">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-[rgba(66,103,177,1)] rounded"></div>
+              <div className="flex flex-shrink-0" style={{ 
+                gap: 'clamp(1rem, 2vw, 1.5rem)', 
+                marginBottom: 'clamp(0.5rem, 1vh, 1rem)',
+                fontSize: 'clamp(0.6rem, 1.2vw, 0.875rem)'
+              }}>
+                <div className="flex items-center" style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}>
+                  <div className="bg-[rgba(66,103,177,1)] rounded" style={{ 
+                    width: 'clamp(0.75rem, 1.5vw, 1rem)', 
+                    height: 'clamp(0.75rem, 1.5vw, 1rem)' 
+                  }}></div>
                   <span className="text-gray-600">{legendText.current}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-[rgba(189,203,253,0.5)] rounded"></div>
+                <div className="flex items-center" style={{ gap: 'clamp(0.25rem, 0.5vw, 0.5rem)' }}>
+                  <div className="bg-[rgba(189,203,253,0.5)] rounded" style={{ 
+                    width: 'clamp(0.75rem, 1.5vw, 1rem)', 
+                    height: 'clamp(0.75rem, 1.5vw, 1rem)' 
+                  }}></div>
                   <span className="text-gray-600">{legendText.last}</span>
                 </div>
               </div>
 
-              {/* Chart bars with proper height calculation */}
-              <div className="flex items-end justify-between gap-2 flex-1" style={{ height: '20.37vh' }}>
+              {/* Chart bars with responsive height */}
+              <div className="flex items-end justify-between flex-1" style={{ 
+                gap: 'clamp(0.125rem, 0.25vw, 0.25rem)',
+                height: 'clamp(10rem, 20.37vh, 15rem)'
+              }}>
                 {chartData.map((data, index) => {
-                  // Calculate heights based on actual chart area height
+                  // Calculate heights based on container height
                   const maxValue = 80;
-                  const chartHeight = 220; // Available height for bars
-                  const currentHeight = Math.max((data.current / maxValue) * chartHeight, data.current > 0 ? 8 : 0);
-                  const lastHeight = Math.max((data.last / maxValue) * chartHeight, data.last > 0 ? 8 : 0);
+                  const containerHeight = window.innerHeight * 0.15; // Responsive height calculation
+                  const currentHeight = Math.max((data.current / maxValue) * containerHeight, data.current > 0 ? 8 : 0);
+                  const lastHeight = Math.max((data.last / maxValue) * containerHeight, data.last > 0 ? 8 : 0);
                   
                   return (
-                    <div key={data.month} className="flex gap-1 items-end flex-1 max-w-[60px] relative">
+                    <div key={data.month} className="flex items-end flex-1 relative" style={{ 
+                      gap: 'clamp(0.125rem, 0.25vw, 0.25rem)',
+                      maxWidth: 'clamp(2rem, 4vw, 4rem)'
+                    }}>
                       {/* Current week bar */}
                       <div className="flex flex-col items-center relative flex-1">
                         {hoveredBar === `${data.month}-current` && (
-                          <div className="absolute -top-12 bg-black text-white rounded p-2 text-xs shadow-lg z-10 whitespace-nowrap">
-                            <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-[rgba(66,103,177,1)] rounded-sm"></div>
+                          <div className="absolute bg-black text-white rounded shadow-lg z-10 whitespace-nowrap" style={{ 
+                            top: 'clamp(-3rem, -6vh, -2rem)',
+                            padding: 'clamp(0.25rem, 0.5vw, 0.5rem)',
+                            fontSize: 'clamp(0.5rem, 1vw, 0.75rem)'
+                          }}>
+                            <div className="flex items-center" style={{ gap: 'clamp(0.125rem, 0.25vw, 0.25rem)' }}>
+                              <div className="bg-[rgba(66,103,177,1)] rounded-sm" style={{ 
+                                width: 'clamp(0.375rem, 0.75vw, 0.5rem)', 
+                                height: 'clamp(0.375rem, 0.75vw, 0.5rem)' 
+                              }}></div>
                               <span>{data.current}</span>
                             </div>
                           </div>
@@ -190,7 +308,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                         <div 
                           className="w-full bg-[rgba(66,103,177,1)] rounded-t cursor-pointer transition-all duration-200 hover:opacity-80"
                           style={{ 
-                            height: `${currentHeight}px`
+                            height: `clamp(0.5rem, ${(data.current / maxValue) * 100}%, 15rem)`
                           }}
                           onMouseEnter={() => setHoveredBar(`${data.month}-current`)}
                           onMouseLeave={() => setHoveredBar(null)}
@@ -200,9 +318,16 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                       {/* Last week bar */}
                       <div className="flex flex-col items-center relative flex-1">
                         {hoveredBar === `${data.month}-last` && (
-                          <div className="absolute -top-12 bg-black text-white rounded p-2 text-xs shadow-lg z-10 whitespace-nowrap">
-                            <div className="flex items-center gap-1">
-                              <div className="w-2 h-2 bg-[rgba(189,203,253,0.5)] rounded-sm"></div>
+                          <div className="absolute bg-black text-white rounded shadow-lg z-10 whitespace-nowrap" style={{ 
+                            top: 'clamp(-3rem, -6vh, -2rem)',
+                            padding: 'clamp(0.25rem, 0.5vw, 0.5rem)',
+                            fontSize: 'clamp(0.5rem, 1vw, 0.75rem)'
+                          }}>
+                            <div className="flex items-center" style={{ gap: 'clamp(0.125rem, 0.25vw, 0.25rem)' }}>
+                              <div className="bg-[rgba(189,203,253,0.5)] rounded-sm" style={{ 
+                                width: 'clamp(0.375rem, 0.75vw, 0.5rem)', 
+                                height: 'clamp(0.375rem, 0.75vw, 0.5rem)' 
+                              }}></div>
                               <span>{data.last}</span>
                             </div>
                           </div>
@@ -211,7 +336,7 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
                         <div 
                           className="w-full bg-[rgba(189,203,253,0.5)] rounded-t cursor-pointer transition-all duration-200 hover:opacity-80"
                           style={{ 
-                            height: `${lastHeight}px`
+                            height: `clamp(0.5rem, ${(data.last / maxValue) * 100}%, 15rem)`
                           }}
                           onMouseEnter={() => setHoveredBar(`${data.month}-last`)}
                           onMouseLeave={() => setHoveredBar(null)}
@@ -223,7 +348,10 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
               </div>
 
               {/* Month labels */}
-              <div className="flex justify-between mt-2 text-xs text-gray-500">
+              <div className="flex justify-between text-gray-500" style={{ 
+                marginTop: 'clamp(0.25rem, 0.5vh, 0.5rem)',
+                fontSize: 'clamp(0.5rem, 1vw, 0.75rem)'
+              }}>
                 {chartData.map((data) => (
                   <span key={data.month} className="flex-1 text-center">{data.month}</span>
                 ))}
@@ -235,20 +363,26 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
     );
   };
 
-  // Function to render title with special formatting for 3rd card
+  // Function to render title with responsive formatting
   const renderTitle = () => {
     if (title === "Zone Occupancy Day Last week Comparison") {
       return (
-        <div style={{ height: '6.574vh' }}>
+        <div style={{ height: 'clamp(3rem, 6.574vh, 4rem)' }}>
           <div 
             className="text-[rgba(46,75,181,1)] font-semibold leading-none" 
-            style={{ fontSize: '1.702vw', height: '3.611vh' }}
+            style={{ 
+              fontSize: 'clamp(0.875rem, 1.702vw, 1.25rem)', 
+              height: 'clamp(1.5rem, 3.611vh, 2rem)' 
+            }}
           >
             Zone Occupancy Day
           </div>
           <div 
             className="text-[rgba(46,75,181,1)] leading-none" 
-            style={{ fontSize: '1.458vw', height: '2.963vh' }}
+            style={{ 
+              fontSize: 'clamp(0.75rem, 1.458vw, 1.125rem)', 
+              height: 'clamp(1.25rem, 2.963vh, 1.75rem)' 
+            }}
           >
             Last week Comparison
           </div>
@@ -258,60 +392,75 @@ export const ComparisonCard: React.FC<ComparisonCardProps> = ({
     return (
       <h2 
         className="text-[rgba(46,75,181,1)] font-semibold leading-none" 
-        style={{ fontSize: '1.702vw', height: '3.611vh' }}
+        style={{ 
+          fontSize: 'clamp(0.875rem, 1.702vw, 1.25rem)', 
+          height: 'clamp(1.5rem, 3.611vh, 2rem)' 
+        }}
       >
         {title}
       </h2>
     );
   };
 
-  // Function to determine spacing between title/subtitle and content
+  // Function to determine responsive spacing between title/subtitle and content
   const getContentSpacing = () => {
     if (title === "Zone Occupancy Day Last week Comparison") {
-      // 3rd card - 31px between title and chart
-      return { marginTop: '2.87vh' };
+      // 3rd card - responsive spacing between title and chart
+      return { marginTop: 'clamp(1rem, 2.87vh, 2rem)' };
     } else if (chartType && !tableType) {
-      // 4th card - 46px between title and chart
-      return { marginTop: '4.259vh' };
+      // 4th card - responsive spacing between title and chart
+      return { marginTop: 'clamp(1.5rem, 4.259vh, 3rem)' };
     } else if (tableType) {
-      // 1st and 2nd cards - 65.19px between subtitle and table
-      return { marginTop: '6.036vh' };
+      // 1st and 2nd cards - responsive spacing between subtitle and table
+      return { marginTop: 'clamp(2rem, 6.036vh, 4rem)' };
     }
     return {};
   };
 
   return (
-    <article className="border border-gray-200 p-6 shadow-sm bg-[#F7F8FF] w-full h-full relative">
+    <article className="border border-gray-200 shadow-sm bg-[#F7F8FF] w-full h-full relative rounded" style={{ 
+      padding: 'clamp(1rem, 2vw, 1.5rem)' 
+    }}>
       {/* Header with title and download button for charts */}
       <div className="relative">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             {renderTitle()}
             {subtitle && value && (
-              <div className="flex items-center gap-3 mt-2">
-                <span className="text-gray-500" style={{ fontSize: '0.993vw' }}>{subtitle}</span>
-                <div className="bg-[rgba(189,203,253,0.3)] border border-[rgba(39,60,134,1)] rounded px-3 py-1 flex items-center justify-center" style={{ width: '6.235vw', height: '4.259vh' }}>
-                  <span className="text-[rgba(33,63,172,1)] font-bold" style={{ fontSize: '1.702vw' }}>{value}</span>
+              <div className="flex flex-col sm:flex-row sm:items-center" style={{ 
+                gap: 'clamp(0.5rem, 1vw, 1rem)', 
+                marginTop: 'clamp(0.25rem, 0.5vh, 0.5rem)' 
+              }}>
+                <span className="text-gray-500" style={{ fontSize: 'clamp(0.625rem, 0.993vw, 0.875rem)' }}>{subtitle}</span>
+                <div className="bg-[rgba(189,203,253,0.3)] border border-[rgba(39,60,134,1)] rounded flex items-center justify-center" style={{ 
+                  width: 'clamp(4rem, 6.235vw, 6rem)', 
+                  height: 'clamp(2rem, 4.259vh, 3rem)',
+                  padding: 'clamp(0.25rem, 0.5vw, 0.75rem)'
+                }}>
+                  <span className="text-[rgba(33,63,172,1)] font-bold" style={{ fontSize: 'clamp(0.875rem, 1.702vw, 1.25rem)' }}>{value}</span>
                 </div>
               </div>
             )}
           </div>
           
-          {/* Download button for charts - aligned with title in top-right */}
+          {/* Download button for charts - responsive sizing */}
           {chartType && (
-            <div className="flex-shrink-0 ml-4">
+            <div className="flex-shrink-0" style={{ marginLeft: 'clamp(0.5rem, 1vw, 1rem)' }}>
               <img
                 src="/images/Primary Download Button.svg"
                 alt="Download button"
                 className="hover:opacity-80 transition-opacity cursor-pointer"
-                style={{ width: '7vw', height: '5.185vh' }}
+                style={{ 
+                  width: 'clamp(3rem, 7vw, 5rem)', 
+                  height: 'clamp(2rem, 5.185vh, 3rem)' 
+                }}
               />
             </div>
           )}
         </div>
       </div>
       
-      {/* Content with appropriate spacing */}
+      {/* Content with responsive spacing */}
       <div style={getContentSpacing()}>
         {renderTables()}
         {renderChart()}
