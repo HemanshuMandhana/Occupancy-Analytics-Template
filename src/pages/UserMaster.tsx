@@ -25,15 +25,15 @@ const ActionButtons: React.FC = () => {
         onClick={handleAdd}
         className="bg-green-600 hover:bg-green-700 text-white"
       >
-        <Plus className="mr-2 h-4 w-4" />
-        Add
+        <Plus className="md:mr-2 h-4 w-4" />
+        <span className="hidden md:inline">Add</span>
       </Button>
       <Button 
         onClick={handleModify}
         className="bg-orange-500 hover:bg-orange-600 text-white"
       >
-        <Edit className="mr-2 h-4 w-4" />
-        Modify
+        <Edit className="md:mr-2 h-4 w-4" />
+        <span className="hidden md:inline">Modify</span>
       </Button>
     </div>
   );
@@ -46,12 +46,13 @@ const UserMaster: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('10/02/2025');
   const [emailId, setEmailId] = useState('Canizajo');
   const [expireDate, setExpireDate] = useState<Date>(new Date(2025, 1, 10));
+  const [selectedBuilding, setSelectedBuilding] = useState<string>('Roddenberry');
 
   const buildings = [
-    { name: 'Roddenberry', authorities: true },
-    { name: 'Building 213', authorities: true },
-    { name: 'Zukor', authorities: true },
-    { name: 'Bluhdorn', authorities: true },
+    { name: 'Roddenberry' },
+    { name: 'Building 213' },
+    { name: 'Zukor' },
+    { name: 'Bluhdorn' },
   ];
 
   const handleSave = () => {
@@ -66,88 +67,126 @@ const UserMaster: React.FC = () => {
     console.log('Deleting user...');
   };
 
+  const handleBuildingSelect = (buildingName: string) => {
+    setSelectedBuilding(buildingName);
+  };
+
   return (
-    <div className="min-h-full relative">
-      <DateControls />
-      
-      {/* Action Buttons positioned absolutely to align with DateControls */}
-      <div className="absolute top-0 right-4 lg:right-6 h-[78.5px] flex items-center z-10">
-        <ActionButtons />
+    <div className="h-full flex flex-col">
+      {/* Date Controls with Action Buttons */}
+      <div className="relative flex-shrink-0">
+        <DateControls />
+        <div className="absolute top-0 right-0 flex items-center z-10 h-[7.27vh] pr-6">
+          <ActionButtons />
+        </div>
       </div>
-      
-      <div 
-        className="px-4 lg:px-6 pb-4 space-y-6"
-        style={{ paddingTop: 'clamp(24px, 3.5vh, 56px)' }}
-      >
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-          {/* User Form Section */}
-          <div className="xl:col-span-2">
-            <div className="bg-[rgba(48,66,127,1)] rounded-xl p-6 text-white">
-              <div className="space-y-6">
+      <div className="pt-[1.389vh] px-[1.875vw] flex-1">
+        {/* Main Section - Takes remaining space */}
+        <div className="flex-1 bg-[#F7F8FF] pt-[2.22vh] h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6 h-full mx-[1.25vw] pb-[6.72vh]">
+            {/* User Form Section */}
+            <div className="bg-[#253878] rounded-2xl text-white px-[1.25vw] py-[3.65vh]">
+              <div className="space-y-0">
+                {/* User Name */}
                 <div>
-                  <Label htmlFor="userName" className="text-white mb-2 block">User Name</Label>
+                  <Label 
+                    htmlFor="userName" 
+                    className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]"
+                  >
+                    User Name
+                  </Label>
                   <Input
                     id="userName"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]"
                   />
                 </div>
 
-                <div>
-                  <Label htmlFor="userType" className="text-white mb-2 block">User Type</Label>
-                  <p className="text-sm text-white/80 mb-2">Note: The admin have access of all the report</p>
+                {/* User Type */}
+                <div className="pt-[3.13vh]">
+                  <Label 
+                    htmlFor="userType" 
+                    className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]"
+                  >
+                    User Type
+                  </Label>
+                  <p className="text-white/80 text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]">
+                    Note: The admin have access of all the report
+                  </p>
                   <Input
                     id="userType"
                     value={userType}
                     onChange={(e) => setUserType(e.target.value)}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]"
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="password" className="text-white mb-2 block">Password</Label>
-                    <Input
-                      id="password"
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="confirmPassword" className="text-white mb-2 block">Confirm Password</Label>
-                    <Input
-                      id="confirmPassword"
-                      type="password"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
-                    />
+                {/* Password Section */}
+                <div className="pt-[3.13vh]">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label 
+                        htmlFor="password" 
+                        className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]"
+                      >
+                        Password
+                      </Label>
+                      <Input
+                        id="password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]"
+                      />
+                    </div>
+                    
+                    <div>
+                      <Label 
+                        htmlFor="confirmPassword" 
+                        className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]"
+                      >
+                        Confirm Password
+                      </Label>
+                      <Input
+                        id="confirmPassword"
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]"
+                      />
+                    </div>
                   </div>
                 </div>
 
-                <div>
-                  <Label htmlFor="emailId" className="text-white mb-2 block">Email Id</Label>
+                {/* Email Id */}
+                <div className="pt-[3.13vh]">
+                  <Label 
+                    htmlFor="emailId" 
+                    className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]"
+                  >
+                    Email Id
+                  </Label>
                   <Input
                     id="emailId"
                     type="email"
                     value={emailId}
                     onChange={(e) => setEmailId(e.target.value)}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]"
                   />
                 </div>
 
-                <div>
-                  <Label className="text-white mb-2 block">Account expire date</Label>
+                {/* Account Expire Date */}
+                <div className="pt-[3.13vh]">
+                  <Label className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]">
+                    Account expire date
+                  </Label>
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button
                         variant="outline"
                         className={cn(
-                          "w-full justify-start text-left font-normal bg-white/10 border-white/20 text-white hover:bg-white/20",
+                          "w-full justify-start text-left font-normal bg-white/10 border-white/20 text-white hover:bg-white/20 h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]",
                           !expireDate && "text-white/60"
                         )}
                       >
@@ -169,63 +208,83 @@ const UserMaster: React.FC = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex justify-end gap-4 mt-6">
-              <Button 
-                onClick={handleSave}
-                className="bg-green-600 hover:bg-green-700 text-white px-8"
-              >
-                Save
-              </Button>
-              <Button 
-                onClick={handleCancel}
-                className="bg-orange-500 hover:bg-orange-600 text-white px-8"
-              >
-                Cancel
-              </Button>
-              <Button 
-                onClick={handleDelete}
-                variant="outline"
-                className="border-red-300 text-red-600 hover:bg-red-50 px-8"
-              >
-                <Trash2 className="mr-2 h-4 w-4" />
-                Delete
-              </Button>
-            </div>
-          </div>
-
-          {/* Assign Building Section */}
-          <div>
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-8 h-8 bg-[rgba(48,66,127,1)] rounded flex items-center justify-center">
-                  <Building className="w-4 h-4 text-white" />
+            {/* Assign Building Section */}
+            <div className="bg-transparent text-black font-['Inter'] pl-[5.885vw]">
+              <div className="flex flex-col h-full">
+                {/* Header */}
+                <div className="flex items-center gap-2 mb-4">
+                  <Building className="text-[#253878] w-[2.30vw] h-[4.08vh]" />
+                  <h3 className="font-semibold text-gray-800 text-[5vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.04vw] h-[4.35vh] leading-[4.35vh]">
+                    Assign Building
+                  </h3>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">Assign Building</h3>
-              </div>
 
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-4 text-sm font-medium text-gray-600 mb-2">
-                  <div>Building name</div>
-                  <div>Authorities</div>
+                {/* Table Headers */}
+                <div className="grid grid-cols-2 gap-4 mb-4 mt-[2.66vh]">
+                  <div className="font-medium text-gray-800 text-[3.8vw] sm:text-[3.2vw] md:text-[2.2vw] lg:text-[1.14vw]">
+                    Building name
+                  </div>
+                  <div className="font-medium text-gray-800 text-[3.8vw] sm:text-[3.2vw] md:text-[2.2vw] lg:text-[1.14vw]">
+                    Authorities
+                  </div>
                 </div>
                 
-                {buildings.map((building, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gray-300 rounded"></div>
-                      <span className="font-medium text-gray-800">{building.name}</span>
+                {/* Building List */}
+                <div className="flex-1 space-y-0">
+                  {buildings.map((building, index) => (
+                    <div 
+                      key={index} 
+                      className={cn(
+                        "grid grid-cols-2 gap-4 items-center",
+                        index > 0 && "pt-[2.66vh]"
+                      )}
+                    >
+                      <div className="flex items-center gap-3">
+                        <input
+                          type="checkbox"
+                          checked={selectedBuilding === building.name}
+                          onChange={() => handleBuildingSelect(building.name)}
+                          className="border-gray-300 w-[1.93vw] h-[3.15vh] cursor-pointer"
+                        />
+                        <span className="font-medium text-gray-800 text-[4.5vw] sm:text-[3.8vw] md:text-[2.8vw] lg:text-[1.65vw]">
+                          {building.name}
+                        </span>
+                      </div>
+                      <div className="flex items-center">
+                        <User className="text-green-600 w-7 h-7" />
+                      </div>
                     </div>
-                    <div className="flex items-center">
-                      <User className="w-5 h-5 text-green-600" />
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                {/* Action Buttons at Bottom */}
+                <div className="flex gap-4 mt-auto pt-4">
+                  <Button 
+                    onClick={handleSave}
+                    className="bg-green-600 hover:bg-green-700 text-white px-2 md:px-8 w-[22vw] md:w-[7.0vw] h-[5.19vh] text-[2.5vw] sm:text-[2.2vw] md:text-[2.3vw] lg:text-[1.25vw]"
+                  >
+                    Save
+                  </Button>
+                  <Button 
+                    onClick={handleCancel}
+                    className="bg-orange-500 hover:bg-orange-600 text-white px-2 md:px-8 w-[22vw] md:w-[7.0vw] h-[5.19vh] text-[2.5vw] sm:text-[2.2vw] md:text-[2.3vw] lg:text-[1.25vw]"
+                  >
+                    Cancel
+                  </Button>
+                  <Button 
+                    onClick={handleDelete}
+                    variant="outline"
+                    className="border-red-300 text-red-600 hover:bg-red-50 px-3 md:px-8 w-[14vw] sm:w-[18vw] xl:w-[7.0vw] h-[5.19vh] text-[2.5vw] sm:text-[2.2vw] md:text-[2.3vw] lg:text-[1.25vw]"
+                  >
+                    <Trash2 className="md:mr-2 h-4 w-4" />
+                    <span className="hidden md:inline">Delete</span>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>  
     </div>
   );
 };

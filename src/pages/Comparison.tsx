@@ -35,18 +35,22 @@ const DownloadButton: React.FC = () => {
 const Comparison: React.FC = () => {
   return (
     <div className="min-h-full relative">
-      <DateControls />
-      
-      {/* Download Button positioned absolutely to align with DateControls */}
-      <div className="absolute top-0 right-4 lg:right-6 h-[7.269vh] flex items-center z-10">
-        <DownloadButton />
-      </div>
+      {/* Header container with relative positioning */}
+      <div className="relative">
+        <DateControls />
 
-      {/* Content with 8px space between DateControls and charts */}
-      <div className="px-4 lg:px-6 pb-4" style={{ marginTop: '0.741vh' }}>
-        {/* Top row - Comparison tables with exactly 34px gap between columns */}
-        <div className="flex mb-5" style={{ gap: '1.771vw' }}>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '35.37vh' }}>
+        {/* Download Button positioned absolutely within the header container */}
+        <div className="absolute top-0 right-[0.833vw] lg:right-[1.25vw] h-full flex items-center z-10">
+          <DownloadButton />
+        </div>
+      </div>      
+
+      {/* Content with dynamic viewport-based sizing */}
+      <div className="px-[1.875vw] lg:px-[1.875vw] pt-[1.389vh] pb-[1.481vh]">
+        {/* Grid container - responsive with dynamic sizing */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.458vw] lg:gap-[1.458vw] w-full">
+          {/* Top row - dynamic sizing cards */}
+          <div className="w-full max-w-none h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard
               title="Zone Occupancy Day- Last week Comparison"
               subtitle="Total Building Occupancy"
@@ -54,7 +58,7 @@ const Comparison: React.FC = () => {
               tableType="occupancy"
             />
           </div>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '35.37vh' }}>
+          <div className="w-full max-w-none h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard
               title="Zone Visitor Count- Last week Comparison"
               subtitle="Total Building Visitor count"
@@ -62,14 +66,12 @@ const Comparison: React.FC = () => {
               tableType="visitor"
             />
           </div>
-        </div>
 
-        {/* Bottom row - Charts with exactly 34px gap between columns */}
-        <div className="flex" style={{ gap: '1.771vw' }}>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '43.056vh' }}>
+          {/* Bottom row - dynamic sizing cards */}
+          <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
           </div>
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg" style={{ width: '39.948vw', height: '43.056vh' }}>
+          <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard title="Zone Visitor Count Week" chartType="visitor" />
           </div>
         </div>
