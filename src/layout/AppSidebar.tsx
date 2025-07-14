@@ -103,7 +103,7 @@ const AppSidebar: React.FC = () => {
                         ? 'clamp(8px, 1vh, 12px) clamp(12px, 1.5vw, 16px)' 
                         : 'clamp(8px, 1vh, 12px)',
                       gap: isDesktopOpen ? 'clamp(8px, 1vw, 12px)' : '0',
-                      fontSize: isDesktopOpen ? 'clamp(12px, 1.2vw, 14px)' : '0'
+                      fontSize: isDesktopOpen ? 'clamp(15px, 1.8vw, 17.34px)' : '0'
                     }}
                   >
                     <img
@@ -136,7 +136,7 @@ const AppSidebar: React.FC = () => {
                     ? 'clamp(8px, 1vh, 12px) clamp(12px, 1.5vw, 16px)' 
                     : 'clamp(8px, 1vh, 12px)',
                   gap: isDesktopOpen ? 'clamp(8px, 1vw, 12px)' : '0',
-                  fontSize: isDesktopOpen ? 'clamp(12px, 1.2vw, 14px)' : '0'
+                  fontSize: isDesktopOpen ? 'clamp(15px, 1.8vw, 17.34px)' : '0'
                 }}
               >
                 <img 
@@ -205,7 +205,7 @@ const AppSidebar: React.FC = () => {
                       minHeight: 'clamp(36px, 6vh, 48px)',
                       padding: 'clamp(6px, 1.5vh, 12px) clamp(8px, 2vw, 16px)',
                       gap: 'clamp(6px, 1.5vw, 12px)',
-                      fontSize: 'clamp(11px, 2.5vw, 14px)'
+                      fontSize: 'clamp(15px, 1.8vw, 17.34px)'
                     }}
                   >
                     <img
@@ -233,7 +233,7 @@ const AppSidebar: React.FC = () => {
                   minHeight: 'clamp(36px, 6vh, 48px)',
                   padding: 'clamp(6px, 1.5vh, 12px) clamp(8px, 2vw, 16px)',
                   gap: 'clamp(6px, 1.5vw, 12px)',
-                  fontSize: 'clamp(11px, 2.5vw, 14px)'
+                  fontSize: 'clamp(15px, 1.8vw, 17.34px)'
                 }}
               >
                 <img 

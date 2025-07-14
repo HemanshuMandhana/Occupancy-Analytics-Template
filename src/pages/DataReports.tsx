@@ -8,6 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { CalendarIcon, Download, RotateCcw } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+
 
 const DataReports: React.FC = () => {
   const [buildingName, setBuildingName] = useState('Roddenberry');
@@ -51,29 +53,29 @@ const DataReports: React.FC = () => {
             {/* Desktop Layout - 3 columns */}
             <div className="hidden lg:flex h-full">
               {/* First Column - Icon and Title */}
-              <div className="flex flex-col items-start justify-center px-[1vw]" style={{ flex: '0 0 20%' }}>
+              <div className="flex flex-col items-start justify-center px-[1vw]" style={{ flex: '0 0 30%' }}>
                 {/* Icon */}
-                <div className="bg-white/20 rounded-full flex items-center justify-center mb-[1vh]" 
+                <div className="bg-white/20 rounded-full flex items-center justify-center mb-[1vh] overflow-hidden aspect-square" 
                      style={{ 
-                       width: 'clamp(40px, 3.5vw, 60px)', 
-                       height: 'clamp(40px, 5vh, 60px)' 
+                       width: 'clamp(60px, 4.792vw, 92px)', 
+                       height: 'clamp(60px, 4.792vw, 92px)' 
                      }}>
-                  <div className="bg-white/40 rounded-full" 
-                       style={{ 
-                         width: 'clamp(20px, 1.8vw, 30px)', 
-                         height: 'clamp(20px, 2.5vh, 30px)' 
-                       }}></div>
+                      <img
+                        src="/images/Data-report-filter icon.svg"
+                        alt="Filter Icon"
+                        className="w-full h-full object-cover rounded-full"
+                      />                      
                 </div>
                 
                 {/* Text below icon */}
                 <h1 className="font-semibold text-left leading-tight" 
-                    style={{ fontSize: 'clamp(12px, 1.1vw, 16px)' }}>
+                    style={{ fontSize: 'clamp(24px, 2.2vw, 32px)' }}>
                   Select Report Filter
                 </h1>
               </div>
 
               {/* Second Column - Building and Dates */}
-              <div className="flex flex-col justify-center px-[1vw]" style={{ flex: '0 0 40%' }}>
+              <div className="flex flex-col justify-center px-[1vw]" style={{ flex: '0 0 35%' }}>
                 {/* Building Name */}
                 <div className="mb-[1.5vh]">
                   <Label className="text-white mb-1 block" 
@@ -177,7 +179,7 @@ const DataReports: React.FC = () => {
               </div>
 
               {/* Third Column - Zone and Entrance */}
-              <div className="flex flex-col justify-center px-[1vw]" style={{ flex: '0 0 40%' }}>
+              <div className="flex flex-col justify-center px-[1vw]" style={{ flex: '0 0 35%' }}>
                 {/* Zone */}
                 <div className="mb-[1.5vh]">
                   <Label className="text-white mb-1 block" 
@@ -219,12 +221,26 @@ const DataReports: React.FC = () => {
             <div className="lg:hidden flex flex-col space-y-[2vh] h-full">
               {/* Header with icon and title */}
               <div className="flex items-center justify-center space-x-3 mb-[1vh]">
-                <div className="bg-white/20 rounded-full flex items-center justify-center" 
-                     style={{ width: 'clamp(40px, 8vw, 50px)', height: 'clamp(40px, 8vw, 50px)' }}>
-                  <div className="bg-white/40 rounded" 
-                       style={{ width: 'clamp(20px, 4vw, 25px)', height: 'clamp(20px, 4vw, 25px)' }}></div>
+                <div
+                  className="bg-white/20 rounded-full flex items-center justify-center overflow-hidden aspect-square"
+                  style={{
+                    width: 'clamp(60px, 4.792vw, 92px)',
+                    height: 'clamp(60px, 4.792vw, 92px)'
+                  }}
+                >
+                  <img
+                    src="/images/Data-report-filter icon.svg"
+                    alt="Filter Icon"
+                    className="w-full h-full object-cover rounded-full"
+                  />
                 </div>
-                <h1 className="font-semibold" style={{ fontSize: 'clamp(14px, 3vw, 18px)' }}>Select Report Filter</h1>
+                {/* Text */}
+                <h1
+                  className="font-semibold text-left leading-tight"
+                  style={{ fontSize: 'clamp(24px, 2.2vw, 32px)' }}
+                >
+                  Select Report Filter
+                </h1>
               </div>
 
               {/* Form fields in mobile layout */}
@@ -329,23 +345,29 @@ const DataReports: React.FC = () => {
           </div>
           
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-end mt-[2vh] gap-[1vw] flex-shrink-0">
+          <div className="flex flex-row justify-center sm:justify-end items-center mt-[2vh] gap-[1vw] flex-shrink-0">
             <Button 
               onClick={handleReset}
               variant="outline"
-              className="bg-orange-500 hover:bg-orange-600 text-white border-orange-500 flex-1 sm:flex-initial"
+              className="bg-[#F5A728] hover:bg-[#f5a7009c] text-[#333333] border-transparent font-semibold"
               style={{ 
                 height: 'clamp(36px, 5vh, 48px)',
-                fontSize: 'clamp(12px, 1.2vw, 16px)',
+                fontSize: 'clamp(16px, 1.2vw, 24px)',
                 minWidth: 'clamp(80px, 10vw, 120px)'
               }}
             >
-              <RotateCcw className="mr-2" style={{ width: 'clamp(14px, 1.2vw, 16px)', height: 'clamp(14px, 1.2vw, 16px)' }} />
+              <AutorenewIcon 
+                className="mr-1 font-semibold"
+                sx={{ 
+                  width: '24px',
+                  height: '24px',
+                }}
+              />
               Reset
             </Button>
             <Button 
               onClick={handleView}
-              className="bg-green-600 hover:bg-green-700 text-white flex-1 sm:flex-initial"
+              className="bg-[#20744A] hover:bg-[#20744ae1] text-white"
               style={{ 
                 height: 'clamp(36px, 5vh, 48px)',
                 fontSize: 'clamp(12px, 1.2vw, 16px)',
@@ -357,35 +379,43 @@ const DataReports: React.FC = () => {
           </div>
           
           {/* Report Results Section */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-[2vh] gap-[1vh] sm:gap-0 flex-shrink-0">
-            <div>
-              <h2 className="font-semibold text-[rgba(48,66,127,1)]" style={{ fontSize: 'clamp(16px, 2vw, 24px)' }}>
+          <div className="flex flex-row justify-between items-center mt-[2vh] gap-[1vw] flex-shrink-0">
+            <div className="flex-1 min-w-0">
+              <h2 className="font-semibold text-[rgba(48,66,127,1)]" style={{ fontSize: 'clamp(24px, 2.5vw, 32.68px)' }}>
                 Data Report
               </h2>
-              <p className="text-gray-600" style={{ fontSize: 'clamp(12px, 1.2vw, 16px)' }}>
+              <p className="text-gray-600" style={{ fontSize: 'clamp(16px, 1.8vw, 24px)' }}>
                 Data: {fromDate ? format(fromDate, "dd/MM/yyyy") : "10/02/2025"} to {toDate ? format(toDate, "dd/MM/yyyy") : "18/02/2025"}
               </p>
             </div>
-            <Button 
-              onClick={handleDownload}
-              className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto"
-              style={{ 
-                height: 'clamp(36px, 5vh, 48px)',
-                fontSize: 'clamp(12px, 1.2vw, 16px)',
-                minWidth: 'clamp(100px, 12vw, 140px)'
-              }}
-            >
-              <Download className="mr-2" style={{ width: 'clamp(14px, 1.2vw, 16px)', height: 'clamp(14px, 1.2vw, 16px)' }} />
-              Download
-            </Button>
+            <div className="flex-shrink-0">
+              <button 
+                className="hover:opacity-80 transition-opacity"
+                onClick={handleDownload}
+                aria-label="Download data as Excel file"
+              >
+                {/* Download Button - visible on all screen sizes */}
+                <img
+                  src="/images/Primary Download Button.svg"
+                  className="hidden sm:block w-auto h-auto object-contain"
+                  alt="Download button"
+                />
+                {/* Mobile view - Excel icon only */}
+                <img
+                  src="/images/Excel icon.svg"
+                  className="block sm:hidden w-auto h-auto object-contain"
+                  alt="Download Excel file"
+                />
+              </button>
+            </div>
           </div>
 
           {/* Data Table - Responsive with horizontal scroll */}
-          <div className="flex-1 overflow-auto border border-gray-300 rounded-lg mt-[2vh] min-h-0">
+          <div className="flex-1 overflow-auto border border-gray-300 mt-[2vh] min-h-0">
             <div className="min-w-full overflow-x-auto">
               <table className="w-full border-collapse min-w-[700px]">
                 <thead className="sticky top-0 z-10">
-                  <tr className="bg-[rgba(48,66,127,1)] text-white">
+                  <tr className="bg-[#4267B1] text-white">
                     <th className="border border-gray-300 text-center font-medium px-[1vw] py-[1vh]" style={{ fontSize: 'clamp(10px, 1.1vw, 14px)' }}>
                       Building
                     </th>

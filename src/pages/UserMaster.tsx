@@ -9,30 +9,38 @@ import { CalendarIcon, Plus, Edit, Trash2, User, Building } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 
-// Action Buttons Component
+// ActionButtons Functional Component
 const ActionButtons: React.FC = () => {
   const handleAdd = () => {
-    console.log('Adding new user...');
+    console.log("Adding new user...");
   };
 
   const handleModify = () => {
-    console.log('Modifying user...');
+    console.log("Modifying user...");
   };
 
   return (
     <div className="flex gap-3">
-      <Button 
+      <Button
         onClick={handleAdd}
-        className="bg-green-600 hover:bg-green-700 text-white"
+        className="bg-[#E0F0E4] hover:bg-[#e0f0e492] text-[#20744A] border border-[#20744A]"
       >
-        <Plus className="md:mr-2 h-4 w-4" />
+        <img
+          src="/images/Add-UserMaster-icon.svg"
+          alt="Add Icon"
+          className="md:mr-2 h-4 w-4"
+        />
         <span className="hidden md:inline">Add</span>
       </Button>
-      <Button 
+      <Button
         onClick={handleModify}
-        className="bg-orange-500 hover:bg-orange-600 text-white"
+        className="bg-[#F5A72838] hover:bg-[#f5a62871] text-[#F5A728] border border-[#F5A728]"
       >
-        <Edit className="md:mr-2 h-4 w-4" />
+        <img
+          src="/images/modify-UserMaster-icon.svg"
+          alt="Modify Icon"
+          className="md:mr-2 h-4 w-4"
+        />
         <span className="hidden md:inline">Modify</span>
       </Button>
     </div>
@@ -213,7 +221,11 @@ const UserMaster: React.FC = () => {
               <div className="flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-center gap-2 mb-4">
-                  <Building className="text-[#253878] w-[2.30vw] h-[4.08vh]" />
+                  <img
+                    src="/images/AssignBuilding-icon-UserMaster.svg"
+                    alt="Assign Building Icon"
+                    className="w-[2.30vw] h-[4.08vh]"
+                  />
                   <h3 className="font-semibold text-gray-800 text-[5vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.04vw] h-[4.35vh] leading-[4.35vh]">
                     Assign Building
                   </h3>
@@ -240,44 +252,74 @@ const UserMaster: React.FC = () => {
                       )}
                     >
                       <div className="flex items-center gap-3">
-                        <input
-                          type="checkbox"
-                          checked={selectedBuilding === building.name}
-                          onChange={() => handleBuildingSelect(building.name)}
-                          className="border-gray-300 w-[1.93vw] h-[3.15vh] cursor-pointer"
-                        />
+                        <label className="relative inline-flex items-center cursor-pointer w-[1.93vw] h-[3.15vh]">
+                          <input
+                            type="checkbox"
+                            checked={selectedBuilding === building.name}
+                            onChange={() => handleBuildingSelect(building.name)}
+                            className="peer appearance-none w-full h-full bg-[#D9D9D9] checked:bg-[#F5A728] border border-gray-300 rounded-sm"
+                          />
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="white"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="pointer-events-none absolute inset-0 m-auto w-[60%] h-[60%] hidden peer-checked:block"
+                          >
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                        </label>
                         <span className="font-medium text-gray-800 text-[4.5vw] sm:text-[3.8vw] md:text-[2.8vw] lg:text-[1.65vw]">
                           {building.name}
                         </span>
                       </div>
                       <div className="flex items-center">
-                        <User className="text-green-600 w-7 h-7" />
+                        <img
+                          src="/images/Authority-icon-UserMaster.svg"
+                          alt="Authority Icon"
+                          className="w-7 h-7"
+                        />
                       </div>
                     </div>
                   ))}
                 </div>
 
                 {/* Action Buttons at Bottom */}
-                <div className="flex gap-4 mt-auto pt-4">
-                  <Button 
+                <div
+                  className="flex mt-auto pt-4 items-left justify-left"
+                  style={{ gap: "18px" }} // fixed 18px gap
+                >
+                  <Button
                     onClick={handleSave}
-                    className="bg-green-600 hover:bg-green-700 text-white px-2 md:px-8 w-[22vw] md:w-[7.0vw] h-[5.19vh] text-[2.5vw] sm:text-[2.2vw] md:text-[2.3vw] lg:text-[1.25vw]"
+                    className="border-none bg-transparent hover:bg-transparent p-0 w-[14vw] sm:w-[18vw] xl:w-[7vw] h-[5.19vh] flex items-left justify-left"
                   >
-                    Save
+                    <img
+                      src="/images/Save-UserMaster.svg"
+                      alt="Save Icon"
+                      className="w-full h-full object-contain"
+                    />
                   </Button>
-                  <Button 
+                  <Button
                     onClick={handleCancel}
-                    className="bg-orange-500 hover:bg-orange-600 text-white px-2 md:px-8 w-[22vw] md:w-[7.0vw] h-[5.19vh] text-[2.5vw] sm:text-[2.2vw] md:text-[2.3vw] lg:text-[1.25vw]"
+                    className="border-none bg-transparent hover:bg-transparent p-0 w-[14vw] sm:w-[18vw] xl:w-[7vw] h-[5.19vh] flex items-left justify-left"
                   >
-                    Cancel
+                    <img
+                      src="/images/Cancel-UserMaster.svg"
+                      alt="Cancel Icon"
+                      className="w-full h-full object-contain"
+                    />
                   </Button>
-                  <Button 
+                  <Button
                     onClick={handleDelete}
-                    variant="outline"
-                    className="border-red-300 text-red-600 hover:bg-red-50 px-3 md:px-8 w-[14vw] sm:w-[18vw] xl:w-[7.0vw] h-[5.19vh] text-[2.5vw] sm:text-[2.2vw] md:text-[2.3vw] lg:text-[1.25vw]"
+                    className="border-none bg-transparent hover:bg-transparent p-0 w-[14vw] sm:w-[18vw] xl:w-[7vw] h-[5.19vh] flex items-left justify-left"
                   >
-                    <Trash2 className="md:mr-2 h-4 w-4" />
-                    <span className="hidden md:inline">Delete</span>
+                    <img
+                      src="/images/DeleteButton-UserMaster.svg"
+                      alt="Delete Icon"
+                      className="w-full h-full object-contain"
+                    />
                   </Button>
                 </div>
               </div>
