@@ -38,6 +38,16 @@ const DownloadButton: React.FC = () => {
 const Index: React.FC = () => {
   return (
     <div className="min-h-full relative">
+      {/* Fixed background layer that covers the full viewport */}
+      <div 
+        className="fixed inset-0 -z-10"
+        style={{ 
+          backgroundImage: 'url(/lovable-uploads/0b9933c1-1a2b-48be-a2dd-99bc9eee0647.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
       {/* Header container with relative positioning */}
       <div className="relative">
         <DateControls />
