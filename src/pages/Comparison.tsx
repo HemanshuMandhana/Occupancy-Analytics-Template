@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { DateControls } from '../components/dashboard/DateControls';
 import { ComparisonCard } from '../components/dashboard/ComparisonCard';
@@ -34,7 +35,7 @@ const DownloadButton: React.FC = () => {
 
 const Comparison: React.FC = () => {
   return (
-    <div className="min-h-full relative">
+    <div className="h-full relative overflow-hidden">
       {/* Fixed background layer that covers the full viewport */}
       <div 
         className="fixed inset-0 -z-10"
@@ -45,22 +46,29 @@ const Comparison: React.FC = () => {
           backgroundRepeat: 'no-repeat'
         }}
       />
-      {/* Header container with relative positioning */}
-      <div className="relative">
+      
+      {/* Header container with viewport-based sizing */}
+      <div className="relative h-[8vh] min-h-[60px] max-h-[80px]">
         <DateControls />
 
         {/* Download Button positioned absolutely within the header container */}
-        <div className="absolute top-0 right-[0.833vw] lg:right-[1.25vw] h-full flex items-center z-10">
+        <div className="absolute top-0 right-[1vw] h-full flex items-center z-10">
           <DownloadButton />
         </div>
       </div>      
 
-      {/* Content with dynamic viewport-based sizing */}
-      <div className="px-[1.875vw] lg:px-[1.875vw] pt-[1.389vh] pb-[1.481vh]">
+      {/* Content with dynamic viewport-based sizing that accounts for header */}
+      <div 
+        className="px-[2vw] py-[1vh]"
+        style={{ height: 'calc(92vh - 60px)', minHeight: 'calc(100vh - 140px)' }}
+      >
         {/* Grid container - responsive with dynamic sizing */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.458vw] lg:gap-[1.458vw] w-full">
-          {/* Top row - dynamic sizing cards */}
-          <div className="w-full max-w-none h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.5vw] w-full h-full">
+          {/* Top row - cards that scale with available height */}
+          <div 
+            className="w-full bg-white/90 backdrop-blur-sm rounded-lg"
+            style={{ height: 'calc(40vh - 40px)', minHeight: '280px' }}
+          >
             <ComparisonCard
               title="Zone Occupancy Day- Last week Comparison"
               subtitle="Total Building Occupancy"
@@ -68,7 +76,10 @@ const Comparison: React.FC = () => {
               tableType="occupancy"
             />
           </div>
-          <div className="w-full max-w-none h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg">
+          <div 
+            className="w-full bg-white/90 backdrop-blur-sm rounded-lg"
+            style={{ height: 'calc(40vh - 40px)', minHeight: '280px' }}
+          >
             <ComparisonCard
               title="Zone Visitor Count- Last week Comparison"
               subtitle="Total Building Visitor count"
@@ -77,11 +88,17 @@ const Comparison: React.FC = () => {
             />
           </div>
 
-          {/* Bottom row - dynamic sizing cards */}
-          <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
+          {/* Bottom row - charts that scale with remaining height */}
+          <div 
+            className="w-full bg-white/90 backdrop-blur-sm rounded-lg"
+            style={{ height: 'calc(52vh - 40px)', minHeight: '320px' }}
+          >
             <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
           </div>
-          <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
+          <div 
+            className="w-full bg-white/90 backdrop-blur-sm rounded-lg"
+            style={{ height: 'calc(52vh - 40px)', minHeight: '320px' }}
+          >
             <ComparisonCard title="Zone Visitor Count Week" chartType="visitor" />
           </div>
         </div>
