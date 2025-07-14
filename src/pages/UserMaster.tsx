@@ -90,7 +90,13 @@ const UserMaster: React.FC = () => {
       </div>
       <div className="pt-[1.389vh] px-[1.875vw] flex-1">
         {/* Main Section - Takes remaining space */}
-        <div className="flex-1 bg-[#F7F8FF] pt-[2.22vh] h-full">
+        <div className="relative flex-1 bg-[#F7F8FF] pt-[2.22vh] h-full overflow-hidden">
+          <div
+            className="absolute inset-0 bg-center bg-cover opacity-45 pointer-events-none"
+            style={{
+              backgroundImage: "url('/images/cropped bg image.svg')"
+            }}
+          />
           <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-6 h-full mx-[1.25vw] pb-[6.72vh]">
             {/* User Form Section */}
             <div className="bg-[#253878] rounded-2xl text-white px-[1.25vw] py-[3.65vh]">

@@ -45,9 +45,16 @@ const DataReports: React.FC = () => {
       {/* Main content container that fills available space */}
       <div className="flex-1 flex flex-col px-[1.9vw] pt-[8.66vh] min-h-0">
         {/* Main section with flexible layout */}
-        <div className="bg-[#F7F8FF] flex-1 flex flex-col rounded-lg p-[1.5vw] min-h-0">
+        <div className="relative bg-[#F7F8FF] flex-1 flex flex-col p-[1.5vw] min-h-0 overflow-hidden">
+          <div
+            className="absolute inset-0 bg-center bg-cover opacity-45 pointer-events-none"
+            style={{
+              backgroundImage: "url('/images/cropped bg image.svg')"
+            }}
+          />
+
           {/* Filter Section - Responsive layout */}
-          <div className="bg-[rgba(48,66,127,1)] rounded-xl text-white flex-shrink-0 p-[1.5vw]" 
+          <div className="bg-[rgba(48,66,127,1)] rounded-lg text-white flex-shrink-0 p-[1.5vw]" 
                style={{ minHeight: 'clamp(160px, 20vh, 220px)' }}>
             
             {/* Desktop Layout - 3 columns */}
@@ -439,28 +446,52 @@ const DataReports: React.FC = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="opacity-90">
                   {Array.from({ length: 20 }).map((_, index) => (
-                    <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                      <td className="border border-gray-300 text-center px-[1vw] py-[1vh]" style={{ fontSize: 'clamp(10px, 1vw, 14px)' }}>
-                        {index < 12 ? 'Roddenberry' : 'Building A'}
+                    <tr
+                      key={index}
+                      className={index % 2 === 0 ? "bg-[#FFFFFF]" : "bg-[#ECEFFD]"}
+                    >
+                      <td
+                        className="border border-gray-300 text-center px-[1vw] py-[1vh]"
+                        style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+                      >
+                        {index < 12 ? "Roddenberry" : "Building A"}
                       </td>
-                      <td className="border border-gray-300 text-center px-[1vw] py-[1vh]" style={{ fontSize: 'clamp(10px, 1vw, 14px)' }}>
+                      <td
+                        className="border border-gray-300 text-center px-[1vw] py-[1vh]"
+                        style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+                      >
                         Floor {Math.floor(index / 2) + 1}
                       </td>
-                      <td className="border border-gray-300 text-center px-[1vw] py-[1vh]" style={{ fontSize: 'clamp(10px, 1vw, 14px)' }}>
+                      <td
+                        className="border border-gray-300 text-center px-[1vw] py-[1vh]"
+                        style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+                      >
                         {format(fromDate, "dd/MM/yyyy")}
                       </td>
-                      <td className="border border-gray-300 text-center px-[1vw] py-[1vh]" style={{ fontSize: 'clamp(10px, 1vw, 14px)' }}>
+                      <td
+                        className="border border-gray-300 text-center px-[1vw] py-[1vh]"
+                        style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+                      >
                         {format(toDate, "dd/MM/yyyy")}
                       </td>
-                      <td className="border border-gray-300 text-center px-[1vw] py-[1vh]" style={{ fontSize: 'clamp(10px, 1vw, 14px)' }}>
+                      <td
+                        className="border border-gray-300 text-center px-[1vw] py-[1vh]"
+                        style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+                      >
                         {Math.floor(Math.random() * 50) + 20}
                       </td>
-                      <td className="border border-gray-300 text-center px-[1vw] py-[1vh]" style={{ fontSize: 'clamp(10px, 1vw, 14px)' }}>
+                      <td
+                        className="border border-gray-300 text-center px-[1vw] py-[1vh]"
+                        style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+                      >
                         {Math.floor(Math.random() * 40) + 15}
                       </td>
-                      <td className="border border-gray-300 text-center px-[1vw] py-[1vh]" style={{ fontSize: 'clamp(10px, 1vw, 14px)' }}>
+                      <td
+                        className="border border-gray-300 text-center px-[1vw] py-[1vh]"
+                        style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+                      >
                         {Math.floor(Math.random() * 30) + 10}
                       </td>
                     </tr>
