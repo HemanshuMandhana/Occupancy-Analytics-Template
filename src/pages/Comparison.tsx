@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { DateControls } from '../components/dashboard/DateControls';
 import { ComparisonCard } from '../components/dashboard/ComparisonCard';
@@ -35,7 +34,7 @@ const DownloadButton: React.FC = () => {
 
 const Comparison: React.FC = () => {
   return (
-    <div className="min-h-screen h-screen relative overflow-hidden">
+    <div className="min-h-full relative">
       {/* Fixed background layer that covers the full viewport */}
       <div 
         className="fixed inset-0 -z-10"
@@ -46,23 +45,22 @@ const Comparison: React.FC = () => {
           backgroundRepeat: 'no-repeat'
         }}
       />
-      
-      {/* Header container with responsive height */}
-      <div className="relative h-[8vh] min-h-[60px] max-h-[80px]">
+      {/* Header container with relative positioning */}
+      <div className="relative">
         <DateControls />
 
         {/* Download Button positioned absolutely within the header container */}
-        <div className="absolute top-0 right-[2vw] h-full flex items-center z-10">
+        <div className="absolute top-0 right-[0.833vw] lg:right-[1.25vw] h-full flex items-center z-10">
           <DownloadButton />
         </div>
       </div>      
 
-      {/* Content with viewport-based scaling and proper height constraints */}
-      <div className="px-[2vw] py-[1vh] h-[92vh] max-h-[calc(100vh-60px)]">
-        {/* Grid container - viewport-based scaling with proper height management */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-[2vw] w-full h-full">
-          {/* Top row - proportionally scaled cards */}
-          <div className="w-full h-[45vh] min-h-[300px] max-h-[400px] bg-white/90 backdrop-blur-sm rounded-lg">
+      {/* Content with dynamic viewport-based sizing */}
+      <div className="px-[1.875vw] lg:px-[1.875vw] pt-[1.389vh] pb-[1.481vh]">
+        {/* Grid container - responsive with dynamic sizing */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.458vw] lg:gap-[1.458vw] w-full">
+          {/* Top row - dynamic sizing cards */}
+          <div className="w-full max-w-none h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard
               title="Zone Occupancy Day- Last week Comparison"
               subtitle="Total Building Occupancy"
@@ -70,7 +68,7 @@ const Comparison: React.FC = () => {
               tableType="occupancy"
             />
           </div>
-          <div className="w-full h-[45vh] min-h-[300px] max-h-[400px] bg-white/90 backdrop-blur-sm rounded-lg">
+          <div className="w-full max-w-none h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard
               title="Zone Visitor Count- Last week Comparison"
               subtitle="Total Building Visitor count"
@@ -79,11 +77,11 @@ const Comparison: React.FC = () => {
             />
           </div>
 
-          {/* Bottom row - proportionally scaled cards with chart content */}
-          <div className="w-full h-[45vh] min-h-[350px] max-h-[450px] bg-white/90 backdrop-blur-sm rounded-lg">
+          {/* Bottom row - dynamic sizing cards */}
+          <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
           </div>
-          <div className="w-full h-[45vh] min-h-[350px] max-h-[450px] bg-white/90 backdrop-blur-sm rounded-lg">
+          <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard title="Zone Visitor Count Week" chartType="visitor" />
           </div>
         </div>
