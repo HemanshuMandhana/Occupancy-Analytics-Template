@@ -391,7 +391,7 @@ const DataReports: React.FC = () => {
               <h2 className="font-semibold text-[rgba(48,66,127,1)]" style={{ fontSize: 'clamp(24px, 2.5vw, 32.68px)' }}>
                 Data Report
               </h2>
-              <p className="text-gray-600" style={{ fontSize: 'clamp(16px, 1.8vw, 24px)' }}>
+              <p className="text-[#4267B1]" style={{ fontSize: 'clamp(16px, 1.8vw, 24px)' }}>
                 Data: {fromDate ? format(fromDate, "dd/MM/yyyy") : "10/02/2025"} to {toDate ? format(toDate, "dd/MM/yyyy") : "18/02/2025"}
               </p>
             </div>
