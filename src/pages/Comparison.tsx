@@ -60,23 +60,22 @@ const Comparison: React.FC = () => {
         {/* Grid container - responsive with dynamic sizing */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.458vw] lg:gap-[1.458vw] w-full">
           {/* Top row - dynamic sizing cards */}
-          <div className="w-full max-w-none h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg">
+          <div className="w-full max-w-none min-h-[35.37vh] lg:min-h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg flex flex-col">
             <ComparisonCard
-              title="Zone Occupancy Day- Last week Comparison"
+              title="Zone Occupancy Day - Last week Comparison"
               subtitle="Total Building Occupancy"
               value="62"
               tableType="occupancy"
             />
           </div>
-          <div className="w-full max-w-none h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg">
+          <div className="w-full max-w-none min-h-[35.37vh] lg:min-h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg flex flex-col">
             <ComparisonCard
-              title="Zone Visitor Count- Last week Comparison"
+              title="Zone Visitor Count - Last week Comparison"
               subtitle="Total Building Visitor count"
               value="693"
               tableType="visitor"
             />
           </div>
-
           {/* Bottom row - dynamic sizing cards */}
           <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
