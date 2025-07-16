@@ -32,7 +32,7 @@ export const UniversalHeader: React.FC = () => {
 
   return (
     <header 
-      className="bg-[rgba(246,247,255,1)] fixed top-0 z-40 border-b border-gray-200 transition-all duration-300 left-0 right-0"
+      className="bg-[rgba(246,247,255,1)] fixed top-0 z-40 border-transparent transition-all duration-300 left-0 right-0"
       style={{
         height: 'clamp(60px, 8vh, 78.5px)',
         // Only adjust margin based on expanded state, not hover

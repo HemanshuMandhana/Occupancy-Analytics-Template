@@ -40,7 +40,7 @@ const AppSidebar: React.FC = () => {
       {/* Desktop Sidebar */}
       <aside
         className={cn(
-          'fixed top-0 left-0 h-screen transition-all duration-300 border-r border-gray-200 bg-[rgba(246,247,255,0.95)] backdrop-blur-sm',
+          'fixed top-0 left-0 h-screen transition-all duration-300 border-r border-transparent bg-[rgba(246,247,255,0.95)] backdrop-blur-sm',
           'hidden lg:flex flex-col',
           // Higher z-index when hovered but not expanded, to overlay on content
           isHovered && !isExpanded ? 'z-50' : 'z-40'
