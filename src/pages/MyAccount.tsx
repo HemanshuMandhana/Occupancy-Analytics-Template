@@ -29,7 +29,7 @@ const MyAccount: React.FC = () => {
   };
 
   return (
-    <div className="min-h-full relative">
+    <div className="h-full relative">
       {/* Fixed background layer that covers the full viewport */}
       <div 
         className="fixed inset-0 -z-10"
@@ -42,10 +42,9 @@ const MyAccount: React.FC = () => {
       />
       
       {/* Content container with responsive padding */}
-      <div className="relative z-10" style={{ 
+      <div className="relative z-10 h-full" style={{ 
         padding: 'clamp(10px, 2vw, 36px)',
         paddingTop: 'clamp(20px, 8.7vh, 93.5px)',
-        minHeight: '100vh',
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center'
@@ -56,8 +55,8 @@ const MyAccount: React.FC = () => {
           style={{ 
             backgroundColor: '#253878',
             width: 'clamp(320px, 95vw, 1568px)',
-            height: 'auto', // Changed from fixed height to auto
-            minHeight: 'clamp(400px, 51vh, 550px)', // Minimum height for larger screens
+            height: 'auto',
+            minHeight: 'clamp(400px, 80vh, 550px)',
             maxWidth: '95vw',
             display: 'flex',
             flexDirection: 'column'
