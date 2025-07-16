@@ -5,11 +5,9 @@ import { Label } from '@/components/ui/label';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { CalendarIcon, Download, RotateCcw } from 'lucide-react';
+import { CalendarIcon } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
-import AutorenewIcon from '@mui/icons-material/Autorenew';
-
 
 const DataReports: React.FC = () => {
   const [buildingName, setBuildingName] = useState('Roddenberry');
@@ -363,13 +361,9 @@ const DataReports: React.FC = () => {
                 minWidth: 'clamp(80px, 10vw, 120px)'
               }}
             >
-              <AutorenewIcon 
-                className="mr-1 font-semibold"
-                sx={{ 
-                  width: '24px',
-                  height: '24px',
-                }}
-              />
+              <svg className="mr-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+              </svg>
               Reset
             </Button>
             <Button 
@@ -417,9 +411,9 @@ const DataReports: React.FC = () => {
             </div>
           </div>
 
-          {/* Data Table - Responsive with horizontal scroll */}
-          <div className="flex-1 overflow-auto border border-gray-300 mt-[2vh] min-h-0">
-            <div className="min-w-full overflow-x-auto">
+          {/* Data Table - Fixed header with scrollable body and invisible scrollbar */}
+          <div className="flex-1 border border-gray-300 mt-[2vh] min-h-0 overflow-hidden">
+            <div className="h-full overflow-auto scrollbar-hide">
               <table className="w-full border-collapse min-w-[700px]">
                 <thead className="sticky top-0 z-10">
                   <tr className="bg-[#4267B1] text-white">
@@ -502,6 +496,19 @@ const DataReports: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* CSS for hiding scrollbar */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          .scrollbar-hide {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+        `
+      }} />
     </div>
   );
 };

@@ -22,6 +22,10 @@ export const DateControls: React.FC = () => {
     }
   };
 
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   const formatDisplayDate = (date: Dayjs) => {
     return date.format('ddd, DD MMM YYYY');
   };
@@ -47,27 +51,15 @@ export const DateControls: React.FC = () => {
             >
               <CalendarDays className="w-4 h-4 lg:w-5 lg:h-5" />
             </button>
-            
-            {/* Calendar navigation - hidden on mobile */}
-            <button 
-              className="hover:opacity-80 transition-opacity hidden sm:block" 
-              aria-label="Calendar navigation"
-            >
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/a61f79a38046a5976e936e19def26c56447ce67c?placeholderIfAbsent=true"
-                className="w-[45px] lg:w-[55px] h-auto object-contain"
-                alt="Calendar controls"
-                style={{ minWidth: '45px', minHeight: '32px' }}
-              />
-            </button>
           </div>
 
           {/* Refresh button - hidden on mobile */}
           <button 
             className="bg-[rgba(245,167,40,1)] hidden sm:flex items-center justify-center w-[40px] lg:w-[45px] h-[40px] lg:h-[45px] rounded-lg hover:bg-[rgba(245,167,40,0.9)] transition-colors flex-shrink-0"
+            onClick={handleRefresh}
             aria-label="Refresh data"
           >
-            <RefreshCw className="w-5 h-5 text-white" />
+            <RefreshCw className="w-5 h-5 text-black" />
           </button>
         </div>
 

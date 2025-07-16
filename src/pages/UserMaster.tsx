@@ -105,7 +105,7 @@ const UserMaster: React.FC = () => {
                 <div>
                   <Label 
                     htmlFor="userName" 
-                    className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]"
+                    className="text-white block text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw] h-[3.7vh] leading-[3.7vh]"
                   >
                     User Name
                   </Label>
@@ -113,7 +113,7 @@ const UserMaster: React.FC = () => {
                     id="userName"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw]"
                   />
                 </div>
 
@@ -121,18 +121,18 @@ const UserMaster: React.FC = () => {
                 <div className="pt-[3.13vh]">
                   <Label 
                     htmlFor="userType" 
-                    className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]"
+                    className="text-white block text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw] h-[3.7vh] leading-[3.7vh]"
                   >
                     User Type
                   </Label>
-                  <p className="text-white/80 text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]">
+                  <p className="text-white/80 text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw] h-[3.7vh] leading-[3.7vh]">
                     Note: The admin have access of all the report
                   </p>
                   <Input
                     id="userType"
                     value={userType}
                     onChange={(e) => setUserType(e.target.value)}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw]"
                   />
                 </div>
 
@@ -142,7 +142,7 @@ const UserMaster: React.FC = () => {
                     <div>
                       <Label 
                         htmlFor="password" 
-                        className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]"
+                        className="text-white block text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw] h-[3.7vh] leading-[3.7vh]"
                       >
                         Password
                       </Label>
@@ -151,14 +151,14 @@ const UserMaster: React.FC = () => {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]"
+                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw]"
                       />
                     </div>
                     
                     <div>
                       <Label 
                         htmlFor="confirmPassword" 
-                        className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]"
+                        className="text-white block text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw] h-[3.7vh] leading-[3.7vh]"
                       >
                         Confirm Password
                       </Label>
@@ -167,7 +167,7 @@ const UserMaster: React.FC = () => {
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]"
+                        className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw]"
                       />
                     </div>
                   </div>
@@ -177,7 +177,7 @@ const UserMaster: React.FC = () => {
                 <div className="pt-[3.13vh]">
                   <Label 
                     htmlFor="emailId" 
-                    className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]"
+                    className="text-white block text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw] h-[3.7vh] leading-[3.7vh]"
                   >
                     Email Id
                   </Label>
@@ -186,13 +186,13 @@ const UserMaster: React.FC = () => {
                     type="email"
                     value={emailId}
                     onChange={(e) => setEmailId(e.target.value)}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/60 w-full h-[5.99vh] text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw]"
                   />
                 </div>
 
                 {/* Account Expire Date */}
                 <div className="pt-[3.13vh]">
-                  <Label className="text-white block text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw] h-[3.7vh] leading-[3.7vh]">
+                  <Label className="text-white block text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw] h-[3.7vh] leading-[3.7vh]">
                     Account expire date
                   </Label>
                   <Popover>
@@ -200,7 +200,7 @@ const UserMaster: React.FC = () => {
                       <Button
                         variant="outline"
                         className={cn(
-                          "w-full justify-start text-left font-normal bg-white/10 border-white/20 text-white hover:bg-white/20 h-[5.99vh] text-[4vw] sm:text-[3.5vw] md:text-[2.5vw] lg:text-[1.32vw]",
+                          "w-full justify-start text-left font-normal bg-white/10 border-white/20 text-white hover:bg-white/20 h-[5.99vh] text-[3.5vw] sm:text-[3.0vw] md:text-[2.0vw] lg:text-[1.2vw]",
                           !expireDate && "text-white/60"
                         )}
                       >
@@ -230,7 +230,7 @@ const UserMaster: React.FC = () => {
                   <img
                     src="/images/AssignBuilding-icon-UserMaster.svg"
                     alt="Assign Building Icon"
-                    className="w-[2.30vw] h-[4.08vh]"
+                    className="w-[4.5vw] sm:w-[4.0vw] md:w-[3.5vw] lg:w-[2.0vw] h-[4.5vw] sm:h-[4.0vw] md:h-[3.5vw] lg:h-[2.0vw] aspect-square"
                   />
                   <h3 className="font-semibold text-gray-800 text-[5vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.04vw] h-[4.35vh] leading-[4.35vh]">
                     Assign Building
@@ -258,7 +258,7 @@ const UserMaster: React.FC = () => {
                       )}
                     >
                       <div className="flex items-center gap-3">
-                        <label className="relative inline-flex items-center cursor-pointer w-[1.93vw] h-[3.15vh]">
+                        <label className="relative inline-flex items-center cursor-pointer w-[3.5vw] sm:w-[3.0vw] md:w-[2.5vw] lg:w-[1.5vw] h-[3.5vw] sm:h-[3.0vw] md:h-[2.5vw] lg:h-[1.5vw] aspect-square">
                           <input
                             type="checkbox"
                             checked={selectedBuilding === building.name}
@@ -285,7 +285,7 @@ const UserMaster: React.FC = () => {
                         <img
                           src="/images/Authority-icon-UserMaster.svg"
                           alt="Authority Icon"
-                          className="w-7 h-7"
+                          className="w-[6vw] sm:w-[5vw] md:w-[4vw] lg:w-[2.5vw] h-[6vw] sm:h-[5vw] md:h-[4vw] lg:h-[2.5vw] aspect-square"
                         />
                       </div>
                     </div>
