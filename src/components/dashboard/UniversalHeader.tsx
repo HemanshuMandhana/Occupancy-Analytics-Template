@@ -79,7 +79,7 @@ export const UniversalHeader: React.FC = () => {
                   />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-white border border-gray-200 shadow-lg rounded-md mt-2">
+              <DropdownMenuContent align="end" className="bg-[rgba(246,247,255,1)] border border-gray-200 shadow-lg rounded-md mt-2 w-[140px] lg:w-[175px]">
                 <DropdownMenuItem className="cursor-pointer hover:bg-gray-100 px-4 py-2">
                   Roddenberry
                 </DropdownMenuItem>
@@ -107,7 +107,7 @@ export const UniversalHeader: React.FC = () => {
                   />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-white border border-gray-200 shadow-lg rounded-md mt-2">
+              <DropdownMenuContent align="end" className="bg-[rgba(246,247,255,1)] border border-gray-200 shadow-lg rounded-md mt-2">
                 <DropdownMenuItem 
                   className="cursor-pointer hover:bg-gray-100 px-4 py-2" 
                   onClick={() => navigate('/my-account')}
@@ -148,7 +148,7 @@ export const UniversalHeader: React.FC = () => {
                   />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-white border border-gray-200 shadow-lg rounded-md mt-2">
+              <DropdownMenuContent align="end" className="bg-[rgba(246,247,255,1)] border border-gray-200 shadow-lg rounded-md mt-2 w-[120px]">
                 <DropdownMenuItem className="cursor-pointer hover:bg-gray-100 px-4 py-2">
                   Roddenberry
                 </DropdownMenuItem>
@@ -176,7 +176,7 @@ export const UniversalHeader: React.FC = () => {
                   />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-white border border-gray-200 shadow-lg rounded-md mt-2">
+              <DropdownMenuContent align="end" className="bg-[rgba(246,247,255,1)] border border-gray-200 shadow-lg rounded-md mt-2">
                 <DropdownMenuItem 
                   className="cursor-pointer hover:bg-gray-100 px-4 py-2" 
                   onClick={() => navigate('/my-account')}
