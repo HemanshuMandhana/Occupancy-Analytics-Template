@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { CalendarIcon } from 'lucide-react';
+import { Calendar as CalendarIcon } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 
@@ -378,6 +378,9 @@ const DataReports: React.FC = () => {
               View
             </Button>
           </div>
+          
+          {/* Horizontal Line */}
+          <div className="w-full h-0 border-t border-[#4248AC] mt-[2vh] flex-shrink-0" />
           
           {/* Report Results Section */}
           <div className="flex flex-row justify-between items-center mt-[2vh] gap-[1vw] flex-shrink-0">
