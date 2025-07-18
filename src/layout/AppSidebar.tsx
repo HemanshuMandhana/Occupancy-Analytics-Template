@@ -3,20 +3,82 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSidebar } from '../context/SidebarContext';
 import { cn } from '@/lib/utils';
 
+// Modified navigationItems array with custom icon sizes
 const navigationItems = [
-  { icon: '/Navigation bar icons/Dashboard icon.svg', label: 'Dashboard', href: '/dashboard' },
-  { icon: '/Navigation bar icons/Comparision Dashboard icon.svg', label: 'Comparison Dashboard', href: '/comparison' },
-  { icon: '/Navigation bar icons/Occupancy trend icon.svg', label: 'Occupancy Trend', href: '/occupancy-trend' },
-  { icon: '/Navigation bar icons/Occupancy Comparision icon.svg', label: 'Occupancy Comparison', href: '/occupancy-comparison' },
-  { icon: '/Navigation bar icons/Visitor count icon.svg', label: 'Visitor Count', href: '/visitor-count' },
-  { icon: '/Navigation bar icons/Visitor Comparision icon.svg', label: 'Visitor Comparison', href: '/visitor-comparison' },
-  { icon: '/Navigation bar icons/Data reports icon.svg', label: 'Data Reports', href: '/data-reports' },
-  { icon: '/Navigation bar icons/Capacity Master icon.svg', label: 'Capacity Master', href: '/capacity-master' },
-  { icon: '/Navigation bar icons/Email report config icon.svg', label: 'Email Report Config', href: '/email-config' },
-  { icon: '/Navigation bar icons/login history icon.svg', label: 'Login History', href: '/login-history' },
-  { icon: '/Navigation bar icons/My account icon.svg', label: 'My Account', href: '/my-account' },
-  { icon: '/Navigation bar icons/User Master icon.svg', label: 'User Master', href: '/user-master' },
+  { 
+    icon: '/Navigation bar icons/Dashboard icon.svg', 
+    label: 'Dashboard', 
+    href: '/dashboard',
+    iconSize: { width: '18px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/Comparision Dashboard icon.svg', 
+    label: 'Comparison Dashboard', 
+    href: '/comparison',
+    iconSize: { width: '28px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/Occupancy trend icon.svg', 
+    label: 'Occupancy Trend', 
+    href: '/occupancy-trend',
+    iconSize: { width: '18px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/Occupancy Comparision icon.svg', 
+    label: 'Occupancy Comparison', 
+    href: '/occupancy-comparison',
+    iconSize: { width: '18px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/Visitor count icon.svg', 
+    label: 'Visitor Count', 
+    href: '/visitor-count',
+    iconSize: { width: '18px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/Visitor Comparision icon.svg', 
+    label: 'Visitor Comparison', 
+    href: '/visitor-comparison',
+    iconSize: { width: '24px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/Data reports icon.svg', 
+    label: 'Data Reports', 
+    href: '/data-reports',
+    iconSize: { width: '18px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/Capacity Master icon.svg', 
+    label: 'Capacity Master', 
+    href: '/capacity-master',
+    iconSize: { width: '18px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/Email report config icon.svg', 
+    label: 'Email Report Config', 
+    href: '/email-config',
+    iconSize: { width: '18px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/login history icon.svg', 
+    label: 'Login History', 
+    href: '/login-history',
+    iconSize: { width: '18px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/My account icon.svg', 
+    label: 'My Account', 
+    href: '/my-account',
+    iconSize: { width: '18px', height: '18px' }
+  },
+  { 
+    icon: '/Navigation bar icons/User Master icon.svg', 
+    label: 'User Master', 
+    href: '/user-master',
+    iconSize: { width: '24px', height: '24px' }
+  },
 ];
+
 
 const AppSidebar: React.FC = () => {
   const location = useLocation();
@@ -111,10 +173,10 @@ const AppSidebar: React.FC = () => {
                       alt={item.label}
                       className={cn('object-contain flex-shrink-0', active && 'filter brightness-0 invert')}
                       style={{ 
-                        width: 'clamp(16px, 2vw, 20px)', 
-                        height: 'clamp(16px, 2vw, 20px)',
-                        minWidth: 'clamp(16px, 2vw, 20px)', 
-                        minHeight: 'clamp(16px, 2vw, 20px)' 
+                        width: item.iconSize.width, 
+                        height: item.iconSize.height,
+                        minWidth: item.iconSize.width, 
+                        minHeight: item.iconSize.height
                       }}
                     />
                     {isDesktopOpen && <span className="truncate">{item.label}</span>}
@@ -144,10 +206,8 @@ const AppSidebar: React.FC = () => {
                   alt="Log out" 
                   className="object-contain flex-shrink-0"
                   style={{ 
-                    width: 'clamp(16px, 2vw, 20px)', 
-                    height: 'clamp(16px, 2vw, 20px)',
-                    minWidth: 'clamp(16px, 2vw, 20px)', 
-                    minHeight: 'clamp(16px, 2vw, 20px)' 
+                    width: '18px', 
+                    height: '18px'
                   }}
                 />
                 {isDesktopOpen && <span>Log out</span>}
@@ -176,7 +236,7 @@ const AppSidebar: React.FC = () => {
           <img 
             src="/lovable-uploads/company-logo.png" 
             alt="Logo" 
-            className="w-[100px] object-contain h-auto"
+            className="w-[187px] object-contain h-auto"
           />
         </div>
 
@@ -213,10 +273,10 @@ const AppSidebar: React.FC = () => {
                       alt={item.label}
                       className={cn('object-contain flex-shrink-0', active && 'filter brightness-0 invert')}
                       style={{ 
-                        width: 'clamp(14px, 3vw, 20px)', 
-                        height: 'clamp(14px, 3vw, 20px)',
-                        minWidth: 'clamp(14px, 3vw, 20px)', 
-                        minHeight: 'clamp(14px, 3vw, 20px)' 
+                        width: item.iconSize.width, 
+                        height: item.iconSize.height,
+                        minWidth: item.iconSize.width, 
+                        minHeight: item.iconSize.height
                       }}
                     />
                     <span className="truncate">{item.label}</span>
@@ -241,10 +301,8 @@ const AppSidebar: React.FC = () => {
                   alt="Log out" 
                   className="object-contain flex-shrink-0"
                   style={{ 
-                    width: 'clamp(14px, 3vw, 20px)', 
-                    height: 'clamp(14px, 3vw, 20px)',
-                    minWidth: 'clamp(14px, 3vw, 20px)', 
-                    minHeight: 'clamp(14px, 3vw, 20px)' 
+                    width: '18px', 
+                    height: '18px'
                   }}
                 />
                 <span>Log out</span>
