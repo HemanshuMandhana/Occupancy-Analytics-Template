@@ -14,26 +14,40 @@ const DownloadButton: React.FC = () => {
 
   return (
     <button 
-      className="hover:opacity-80 transition-opacity"
+      className="hover:opacity-80 transition-opacity p-0 border-0 bg-transparent"
       onClick={handleDownload}
       aria-label="Download data as Excel file"
+      style={{ 
+        height: 'clamp(2rem, 5.2vmin, 4rem)',
+        width: 'auto',
+        aspectRatio: 'auto'
+      }}
     >
       {/* Desktop view - Primary Download Button */}
       <img
         src="/images/Primary Download Button.svg"
-        className="hidden sm:block w-auto h-auto object-contain"
+        className="hidden sm:block w-full h-full object-contain"
         alt="Download button"
+        style={{ 
+          height: 'clamp(2rem, 5.2vmin, 4rem)',
+          width: 'auto'
+        }}
       />
       
       {/* Mobile view - Excel icon only */}
       <img
         src="/images/Excel icon.svg"
-        className="block sm:hidden w-auto h-auto object-contain"
+        className="block sm:hidden w-full h-full object-contain"
         alt="Download Excel file"
+        style={{ 
+          height: 'clamp(2rem, 5.2vmin, 4rem)',
+          width: 'auto'
+        }}
       />
     </button>
   );
 };
+
 
 const Index: React.FC = () => {
   return (
@@ -60,18 +74,18 @@ const Index: React.FC = () => {
       
       {/* Content with responsive top padding and minimal padding and spacing */}
       <div 
-        className="px-[0.833vw] lg:px-[1.25vw] pb-[1.481vh] space-y-[1.481vh] lg:space-y-[2.222vh]"
-        style={{ paddingTop: 'clamp(2.222vh, 5.185vh, 5.185vh)' }}
+        className="px-[0.833vw] lg:px-[1.25vw] pb-[1.481vh] space-y-[2.222vh] lg:space-y-[2.222vh]"
+        style={{ paddingTop: 'clamp(2.222vh, 2.222vh, 4.444vh)' }}
       >
         {/* Top row - Primary metrics */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[0.833vw] lg:gap-[1.25vw]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[2vw] lg:gap-[1.25vw]">
           <OccupancyCard />
           <VisitorCard />
           <ChartCard title="Zone Occupancy Day" />
         </div>
 
         {/* Bottom row - Heatmaps and charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[0.833vw] lg:gap-[1.25vw]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[2vw] lg:gap-[1.25vw]">
           <HeatMapCard
             title="Visitors by Zone"
             subtitle="Heat Map"

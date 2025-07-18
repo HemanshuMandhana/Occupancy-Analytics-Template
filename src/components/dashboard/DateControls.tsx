@@ -38,28 +38,40 @@ export const DateControls: React.FC = () => {
         {/* Left Section - Date Controls */}
         <div className="flex items-center gap-3 lg:gap-6">
           {/* Date starts directly at the left edge, aligned with hamburger icon */}
-          <div className="flex items-center gap-3 lg:gap-5 text-[16px] lg:text-[18px] font-medium">
+          <div className="flex items-center gap-3 lg:gap-5 font-medium text-sm sm:text-base md:text-lg lg:text-xl"
+               style={{ fontSize: 'clamp(0.875rem, 1.042vw, 1.25rem)' }}>
             <time className="text-black" dateTime={selectedDate.format('YYYY-MM-DD')}>
               {formatDisplayDate(selectedDate)}
             </time>
             
             {/* Calendar Days Icon Button */}
             <button 
-              className="bg-[rgba(37,56,120,1)] text-white p-2.5 lg:p-3 rounded-md hover:bg-[rgba(37,56,120,0.9)] transition-colors flex items-center justify-center"
+              className="bg-[rgba(37,56,120,1)] text-white rounded-md hover:bg-[rgba(37,56,120,0.9)] transition-colors flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              style={{ 
+                padding: 'clamp(0.5rem, 1.5vmin, 0.75rem)',
+                width: 'clamp(2rem, 5vmin, 3rem)',
+                height: 'clamp(2rem, 5vmin, 3rem)'
+              }}
               onClick={handleCalendarToggle}
               aria-label="Toggle calendar"
             >
-              <CalendarDays className="w-4 h-4 lg:w-5 lg:h-5" />
+              <CalendarDays className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" 
+                           style={{ width: 'clamp(1rem, 2.5vmin, 1.75rem)', height: 'clamp(1rem, 2.5vmin, 1.75rem)' }} />
             </button>
           </div>
 
           {/* Refresh button - hidden on mobile */}
           <button 
-            className="bg-[rgba(245,167,40,1)] hidden sm:flex items-center justify-center w-[40px] lg:w-[45px] h-[40px] lg:h-[45px] rounded-lg hover:bg-[rgba(245,167,40,0.9)] transition-colors flex-shrink-0"
+            className="bg-[rgba(245,167,40,1)] hidden sm:flex items-center justify-center rounded-lg hover:bg-[rgba(245,167,40,0.9)] transition-colors flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+            style={{ 
+              width: 'clamp(2rem, 5vmin, 3rem)',
+              height: 'clamp(2rem, 5vmin, 3rem)'
+            }}
             onClick={handleRefresh}
             aria-label="Refresh data"
           >
-            <RefreshCw className="w-5 h-5 text-black" />
+            <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-black" 
+                       style={{ width: 'clamp(1rem, 2.5vmin, 1.75rem)', height: 'clamp(1rem, 2.5vmin, 1.75rem)' }} />
           </button>
         </div>
 

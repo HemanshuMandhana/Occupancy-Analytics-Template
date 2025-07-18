@@ -11,22 +11,35 @@ const DownloadButton: React.FC = () => {
 
   return (
     <button 
-      className="hover:opacity-80 transition-opacity"
+      className="hover:opacity-80 transition-opacity p-0 border-0 bg-transparent"
       onClick={handleDownload}
       aria-label="Download data as Excel file"
+      style={{ 
+        height: 'clamp(2rem, 5.2vmin, 4rem)',
+        width: 'auto',
+        aspectRatio: 'auto'
+      }}
     >
       {/* Desktop view - Primary Download Button */}
       <img
         src="/images/Primary Download Button.svg"
-        className="hidden sm:block w-auto h-auto object-contain"
+        className="hidden sm:block w-full h-full object-contain"
         alt="Download button"
+        style={{ 
+          height: 'clamp(2rem, 5.2vmin, 4rem)',
+          width: 'auto'
+        }}
       />
       
       {/* Mobile view - Excel icon only */}
       <img
         src="/images/Excel icon.svg"
-        className="block sm:hidden w-auto h-auto object-contain"
+        className="block sm:hidden w-full h-full object-contain"
         alt="Download Excel file"
+        style={{ 
+          height: 'clamp(2rem, 5.2vmin, 4rem)',
+          width: 'auto'
+        }}
       />
     </button>
   );
