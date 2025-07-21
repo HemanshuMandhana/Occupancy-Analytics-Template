@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BarChart } from '@mui/x-charts';
 
 interface ChartCardProps {
   title: string;
@@ -6,22 +7,50 @@ interface ChartCardProps {
 }
 
 export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) => {
-  const [hoveredBar, setHoveredBar] = useState<string | null>(null);
-  
   const chartData = [
     { month: 'Jan', occupied: 35, vacant: 25 },
     { month: 'Feb', occupied: 20, vacant: 15 },
     { month: 'Mar', occupied: 55, vacant: 10 },
     { month: 'Apr', occupied: 32, vacant: 20 },
-    { month: 'May', occupied: 15, vacant: 8 }
+    { month: 'May', occupied: 15, vacant: 8 },
+  ];
+
+  const xLabels = chartData.map((d) => d.month);
+  const occupiedData = chartData.map((d) => d.occupied);
+  const vacantData = chartData.map((d) => d.vacant);
+
+  const series = [
+    {
+      type: 'bar' as const,
+      data: occupiedData,
+      stack: 'total',
+      label: 'Occupied',
+      color: 'rgba(66,103,177,1)',
+      barStyle: {
+        rx: 6,
+      },
+    },
+    {
+      type: 'bar' as const,
+      data: vacantData,
+      stack: 'total',
+      label: 'Vacant',
+      color: 'rgba(189,203,253,0.5)',
+      barStyle: {
+        rx: 6,
+      },
+    },
   ];
 
   return (
-    <article className={`bg-[#f6f7ff] border border-gray-200 rounded-xl p-[1.85vh] shadow-sm h-[36.02vh] flex flex-col ${className}`}>
+    <article
+      className={`bg-[#f6f7ff] border border-gray-200 rounded-xl p-[1.85vh] shadow-sm h-[36.02vh] flex flex-col ${className}`}
+    >
+      {/* Header */}
       <div className="flex items-start gap-[1.85vh] mb-[1.85vh]">
         <div className="w-[5.93vh] h-[5.93vh] bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center flex-shrink-0">
-          <img 
-            src="/lovable-uploads/0d596334-15b7-41e8-b632-2f9024e60962.png" 
+          <img
+            src="/lovable-uploads/0d596334-15b7-41e8-b632-2f9024e60962.png"
             alt="Chart icon"
             className="w-[5.93vh] h-[5.93vh]"
           />
@@ -33,83 +62,51 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
         </div>
       </div>
 
-      <div className="border border-gray-200 rounded-lg p-[1.85vh] flex-1 flex flex-col">
-        {/* Legend */}
-        <div className="flex gap-[1.85vh] mb-[1.85vh] text-[1.30vh]">
-          <div className="flex items-center gap-[0.74vh]">
-            <div className="w-[1.11vh] h-[1.11vh] bg-[rgba(66,103,177,1)] rounded"></div>
-            <span className="text-gray-600">Occupied</span>
-          </div>
-          <div className="flex items-center gap-[0.74vh]">
-            <div className="w-[1.11vh] h-[1.11vh] bg-[rgba(189,203,253,0.5)] rounded"></div>
-            <span className="text-gray-600">Vacant</span>
-          </div>
-        </div>
-
-        {/* Chart Area */}
-        <div className="relative w-full flex-1">
-          <div className="flex items-end justify-between h-full mb-[1.11vh] relative pl-[3.70vh] pr-[1.11vh]">
-            {/* Y-axis labels */}
-            <div className="flex flex-col justify-between h-full text-[1.11vh] text-gray-500 absolute left-0 top-0">
-              <span>80</span>
-              <span>60</span>
-              <span>40</span>
-              <span>20</span>
-              <span>0</span>
-            </div>
-
-            {/* Chart bars container */}
-            <div className="flex-1 flex items-end justify-between gap-[0.74vh] h-full">
-              {chartData.map((data, index) => {
-                const total = data.occupied + data.vacant;
-                const occupiedHeight = Math.min((data.occupied / 80) * 100, 95);
-                const vacantHeight = Math.min((data.vacant / 80) * 100, 95);
-                
-                return (
-                  <div key={data.month} className="flex flex-col items-center relative flex-1 max-w-[4.63vh]">
-                    {/* Tooltip */}
-                    {hoveredBar === data.month && (
-                      <div className="absolute -top-[5.93vh] bg-black text-white rounded p-[0.74vh] text-[1.11vh] shadow-lg z-10 whitespace-nowrap">
-                        <div className="flex items-center gap-[0.37vh] mb-[0.37vh]">
-                          <div className="w-[0.74vh] h-[0.74vh] bg-[rgba(66,103,177,1)] rounded-sm"></div>
-                          <span>{data.occupied}</span>
-                        </div>
-                        <div className="flex items-center gap-[0.37vh]">
-                          <div className="w-[0.74vh] h-[0.74vh] bg-[rgba(189,203,253,0.5)] rounded-sm"></div>
-                          <span>{data.vacant}</span>
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* Stacked Bar */}
-                    <div 
-                      className="w-full mb-[0.74vh] relative cursor-pointer bg-gray-100 rounded"
-                      style={{ height: '85%' }}
-                      onMouseEnter={() => setHoveredBar(data.month)}
-                      onMouseLeave={() => setHoveredBar(null)}
-                    >
-                      {/* Occupied portion (bottom) */}
-                      <div 
-                        className="bg-[rgba(66,103,177,1)] w-full absolute bottom-0 rounded-b"
-                        style={{ height: `${occupiedHeight}%` }}
-                      ></div>
-                      {/* Vacant portion (top) */}
-                      <div 
-                        className="bg-[rgba(189,203,253,0.5)] w-full absolute rounded-t"
-                        style={{ 
-                          height: `${vacantHeight}%`,
-                          bottom: `${occupiedHeight}%`
-                        }}
-                      ></div>
-                    </div>
-                    
-                    {/* Month label */}
-                    <span className="text-[1.11vh] font-medium text-gray-700">{data.month}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+      {/* Card Body */}
+      <div className="border border-gray-200 rounded-lg flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 w-full h-full overflow-hidden relative">
+          <BarChart
+            xAxis={[
+              {
+                id: 'months',
+                data: xLabels,
+                scaleType: 'band',
+                tickLabelStyle: {
+                  fontSize: 12,
+                  fill: '#374151',
+                },
+              },
+            ]}
+            yAxis={[
+              {
+                max: 80,
+                tickMinStep: 20,
+                tickLabelStyle: {
+                  fontSize: 11,
+                  fill: '#6B7280',
+                },
+              },
+            ]}
+            series={series}
+            margin={{ top: 10, bottom: 0, left: -10, right: 10 }}
+            height={undefined}
+            width={undefined}
+            sx={{
+              width: '100%',
+              height: '100%',
+              maxHeight: '100%',
+              maxWidth: '100%',
+              '.MuiChartsAxis-line': {
+                stroke: 'transparent',
+              },
+              '.MuiChartsAxis-tick': {
+                stroke: 'transparent',
+              },
+              '.MuiChartsBar-root': {
+                rx: 6, // Rounded corners for bars
+              }
+            }}
+          />
         </div>
       </div>
     </article>
