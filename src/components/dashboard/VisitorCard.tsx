@@ -2,7 +2,7 @@ import React from 'react';
 
 export const VisitorCard: React.FC = () => {
   return (
-    <article className="h-[36.02vh] border border-gray-200 rounded-xl p-[2.22vh] shadow-sm bg-[#f6f7ff]">
+    <article className="h-[36.02vh] min-h-[300px] border border-gray-200 rounded-xl p-[2.22vh] shadow-sm bg-[#f6f7ff]">
       <div className="flex items-start gap-[2.22vh] mb-[2.22vh]">
         <div className="w-[5.93vh] h-[5.93vh] bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center flex-shrink-0">
           <img 

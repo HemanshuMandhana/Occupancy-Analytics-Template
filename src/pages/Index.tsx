@@ -89,13 +89,11 @@ const Index: React.FC = () => {
           <HeatMapCard
             title="Visitors by Zone"
             subtitle="Heat Map"
-            imageUrl="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/1723715243527142b497157a3804e60b44a74ed5"
             showDropdown={true}
           />
           <HeatMapCard
             title="Visitors by Zone"
             subtitle="Heat Map"
-            imageUrl="https://cdn.builder.io/api/v1/image/assets/a25c42157ec74145af9ce40a105adb84/970f6635900e4a9f806bcb4025cddd419ccee06b"
           />
           <ChartCard title="Zone Pick Occupancy Day" />
         </div>
