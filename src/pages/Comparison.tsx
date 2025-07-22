@@ -1,6 +1,8 @@
 import React from 'react';
 import { DateControls } from '../components/dashboard/DateControls';
-import { ComparisonCard } from '../components/dashboard/ComparisonCard';
+import { ComparisonTableCard } from '../components/comparison-dashboard/ComparisonTableCard';
+import { ComparisonChartCard } from '../components/comparison-dashboard/ComparisonChartCard';
+
 
 // Download Button Component
 const DownloadButton: React.FC = () => {
@@ -74,7 +76,7 @@ const Comparison: React.FC = () => {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.458vw] lg:gap-[1.458vw] w-full">
           {/* Top row - dynamic sizing cards */}
           <div className="w-full max-w-none min-h-[35.37vh] lg:min-h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg flex flex-col">
-            <ComparisonCard
+            <ComparisonTableCard
               title="Zone Occupancy Day - Last week Comparison"
               subtitle="Total Building Occupancy"
               value="62"
@@ -82,7 +84,7 @@ const Comparison: React.FC = () => {
             />
           </div>
           <div className="w-full max-w-none min-h-[35.37vh] lg:min-h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg flex flex-col">
-            <ComparisonCard
+            <ComparisonTableCard
               title="Zone Visitor Count - Last week Comparison"
               subtitle="Total Building Visitor count"
               value="693"
@@ -91,10 +93,10 @@ const Comparison: React.FC = () => {
           </div>
           {/* Bottom row - dynamic sizing cards */}
           <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
-            <ComparisonCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
+            <ComparisonChartCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
           </div>
           <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
-            <ComparisonCard title="Zone Visitor Count Week" chartType="visitor" />
+            <ComparisonChartCard title="Zone Visitor Count Week" chartType="visitor" />
           </div>
         </div>
       </div>

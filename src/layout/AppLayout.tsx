@@ -3,7 +3,7 @@ import AppSidebar from './AppSidebar';
 import Backdrop from './Backdrop';
 import { SidebarProvider, useSidebar } from '../context/SidebarContext';
 import { Outlet } from 'react-router-dom';
-import { UniversalHeader } from '../components/dashboard/UniversalHeader';
+import { UniversalHeader } from './UniversalHeader';
 
 const AppLayoutContent: React.FC = () => {
   const { isExpanded } = useSidebar();
