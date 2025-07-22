@@ -113,9 +113,27 @@ export const OccupancyTrendReport: React.FC<OccupancyTrendReportProps> = ({ from
               reverseDirection={{ y: true }}
             />
             <Legend 
-              wrapperStyle={{ paddingBottom: '20px' }}
-              iconType="line"
               verticalAlign="top"
+              iconType="square"
+              content={({ payload }) => (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',  // Center-align the items
+                    gap: '20px',
+                    paddingBottom: '10px',
+                    marginTop: '5px',
+                  }}
+                >
+                  {payload?.map((entry, index) => (
+                    <div key={`item-${index}`} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <div style={{ width: 10, height: 10, backgroundColor: entry.color }} />
+                      <span style={{ color: 'gray', fontSize: '14px' }}>{entry.value}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             />
             <Line 
               type="monotone" 
