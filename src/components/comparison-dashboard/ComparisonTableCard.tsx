@@ -45,9 +45,9 @@ export const ComparisonTableCard: React.FC<ComparisonTableCardProps> = ({
                 <tbody>
                   {tableData.map((item, index) => (
                     <tr key={index} className={`border-b border-gray-200 ${index % 2 === 1 ? 'bg-[#DADEFB5C]' : 'bg-[#FFFFFF00]'}`}>
-                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.zone}</td>
-                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.last}</td>
-                      <td className="w-1/3 text-gray-600 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.current}</td>
+                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.zone}</td>
+                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.last}</td>
+                      <td className="w-1/3 text-gray-600 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.current}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -71,9 +71,9 @@ export const ComparisonTableCard: React.FC<ComparisonTableCardProps> = ({
                 <tbody>
                   {tableData.map((item, index) => (
                     <tr key={index} className={`border-b border-gray-200 ${index % 2 === 1 ? 'bg-[#DADEFB5C]' : 'bg-[#FFFFFF00]'}`}>
-                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.zone}</td>
-                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.last}</td>
-                      <td className="w-1/3 text-gray-600 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.current}</td>
+                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.zone}</td>
+                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.last}</td>
+                      <td className="w-1/3 text-gray-600 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.current}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -103,9 +103,9 @@ export const ComparisonTableCard: React.FC<ComparisonTableCardProps> = ({
                 <tbody>
                   {tableData.map((item, index) => (
                     <tr key={index} className={`border-b border-gray-200 ${index % 2 === 1 ? 'bg-[#DADEFB5C]' : 'bg-[#FFFFFF00]'}`}>
-                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.entrance}</td>
-                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.last}</td>
-                      <td className="w-1/3 text-gray-600 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.current}</td>
+                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.entrance}</td>
+                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.last}</td>
+                      <td className="w-1/3 text-gray-600 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.current}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -129,9 +129,9 @@ export const ComparisonTableCard: React.FC<ComparisonTableCardProps> = ({
                 <tbody>
                   {tableData.map((item, index) => (
                     <tr key={index} className={`border-b border-gray-200 ${index % 2 === 1 ? 'bg-[#DADEFB5C]' : 'bg-[#FFFFFF00]'}`}>
-                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.entrance}</td>
-                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.last}</td>
-                      <td className="w-1/3 text-gray-600 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.8vh]">{item.current}</td>
+                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.entrance}</td>
+                      <td className="w-1/3 text-gray-600 border-r border-gray-200 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.last}</td>
+                      <td className="w-1/3 text-gray-600 text-center text-xs sm:text-sm lg:text-[min(0.707vw,1.257vh)] py-[0.5vh]">{item.current}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -158,7 +158,7 @@ export const ComparisonTableCard: React.FC<ComparisonTableCardProps> = ({
         }
       `}</style>
       
-      <article className="border border-gray-200 shadow-sm bg-[#F7F8FF] w-full h-full relative px-[3vw] sm:px-[2vw] lg:px-[1.152vw] pt-[3vh] sm:pt-[3vh] lg:pt-[2.5vh] pb-0">
+      <article className="border border-gray-200 shadow-sm bg-[#F7F8FF] w-full h-full relative px-[3vw] sm:px-[2vw] lg:px-[1.152vw] pt-[3vh] sm:pt-[3vh] lg:pt-[2.5vh] pb-[2vh]">
         {/* Header */}
         <div className="relative">
           <div className="flex-1">
@@ -177,8 +177,8 @@ export const ComparisonTableCard: React.FC<ComparisonTableCardProps> = ({
         </div>
         
         {/* Content with appropriate spacing */}
-        <div className="mt-[3vh] sm:mt-[4vh] lg:mt-[6.036vh]">
-          <div className="w-full h-auto lg:h-[15.046vh] pb-[2vh] lg:pb-[2.891vh]">
+        <div className="mt-[3vh]">
+          <div className="w-full h-auto lg:h-[20vh]">
             {renderTables()}
           </div>
         </div>
