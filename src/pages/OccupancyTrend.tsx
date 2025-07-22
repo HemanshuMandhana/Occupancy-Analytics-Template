@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { OccupancyTrendReport } from '../components/occupancy-trend/OccupancyTrendReport';
-import { FilterSection } from '../components/occupancy-trend/FilterSection';
+import { OccupancyTrendReport } from '../components/report-components/OccupancyTrendReport';
+import { FilterSection } from '../components/report-components/FilterSection';
 
 const OccupancyTrend: React.FC = () => {
   const [buildingName, setBuildingName] = useState('Roddenberry');
