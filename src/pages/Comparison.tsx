@@ -73,9 +73,9 @@ const Comparison: React.FC = () => {
       {/* Content with dynamic viewport-based sizing */}
       <div className="px-[1.875vw] lg:px-[1.875vw] pt-[1.389vh] pb-[1.481vh]">
         {/* Grid container - responsive with dynamic sizing */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.458vw] lg:gap-[1.458vw] w-full">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-[1.458vw] lg:gap-[1vw] w-full">
           {/* Top row - dynamic sizing cards */}
-          <div className="w-full max-w-none min-h-[35.37vh] lg:min-h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg flex flex-col">
+          <div className="w-full max-w-none min-h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg flex flex-col">
             <ComparisonTableCard
               title="Zone Occupancy Day - Last week Comparison"
               subtitle="Total Building Occupancy"
@@ -83,7 +83,7 @@ const Comparison: React.FC = () => {
               tableType="occupancy"
             />
           </div>
-          <div className="w-full max-w-none min-h-[35.37vh] lg:min-h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg flex flex-col">
+          <div className="w-full max-w-none min-h-[35.37vh] bg-white/90 backdrop-blur-sm rounded-lg flex flex-col">
             <ComparisonTableCard
               title="Zone Visitor Count - Last week Comparison"
               subtitle="Total Building Visitor count"
@@ -92,10 +92,10 @@ const Comparison: React.FC = () => {
             />
           </div>
           {/* Bottom row - dynamic sizing cards */}
-          <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
+          <div className="w-full max-w-none h-[42vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonChartCard title="Zone Occupancy Day Last week Comparison" chartType="occupancy" />
           </div>
-          <div className="w-full max-w-none h-[43.056vh] bg-white/90 backdrop-blur-sm rounded-lg">
+          <div className="w-full max-w-none h-[42vh] bg-white/90 backdrop-blur-sm rounded-lg">
             <ComparisonChartCard title="Zone Visitor Count Week" chartType="visitor" />
           </div>
         </div>

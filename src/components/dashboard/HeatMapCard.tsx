@@ -25,7 +25,14 @@ const values = [
 ];
 
 const HeatMapFromImage = () => {
-  const [hoveredCell, setHoveredCell] = useState<{ day: number; hour: number; x: number; y: number; value: number } | null>(null);
+  const [hoveredCell, setHoveredCell] = useState<{ 
+    day: number; 
+    hour: number; 
+    x: number; 
+    y: number; 
+    value: number;
+    cellCenterX: number; // Add original cell center position
+  } | null>(null);
   
   // Find min and max for color intensity
   const allValues = values.flat();
@@ -56,12 +63,34 @@ const HeatMapFromImage = () => {
 
   const handleCellHover = (event: React.MouseEvent, dayIndex: number, hourIndex: number, value: number) => {
     const rect = event.currentTarget.getBoundingClientRect();
+    const containerRect = event.currentTarget.closest('.heatmap-container')?.getBoundingClientRect();
+    
+    if (!containerRect) return;
+    
+    // Calculate position relative to the container
+    const cellCenterX = rect.left + rect.width / 2;
+    const cellTop = rect.top;
+    
+    // Smart positioning to prevent tooltip from going off-screen
+    let tooltipX = cellCenterX;
+    const tooltipWidth = 120; // Approximate tooltip width
+    const rightBoundary = containerRect.right - 10;
+    const leftBoundary = containerRect.left + 10;
+    
+    // Adjust X position if tooltip would go off-screen
+    if (tooltipX + tooltipWidth / 2 > rightBoundary) {
+      tooltipX = rightBoundary - tooltipWidth / 2;
+    } else if (tooltipX - tooltipWidth / 2 < leftBoundary) {
+      tooltipX = leftBoundary + tooltipWidth / 2;
+    }
+    
     setHoveredCell({
       day: dayIndex,
       hour: hourIndex,
-      x: rect.left + rect.width / 2,
-      y: rect.top,
-      value: value
+      x: tooltipX,
+      y: cellTop,
+      value: value,
+      cellCenterX: cellCenterX // Store original cell center position
     });
   };
 
@@ -70,14 +99,14 @@ const HeatMapFromImage = () => {
   };
 
   return (
-    <div className="w-full h-full flex relative">
+    <div className="w-full h-full flex relative heatmap-container">
       <div className="flex flex-col h-full w-full">
         {/* Data rows */}
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col min-h-0">
           {days.map((day, dayIndex) => (
-            <div key={dayIndex} className="flex flex-1">
+            <div key={dayIndex} className="flex flex-1 min-h-0">
               <div 
-                className="w-[12%] flex-shrink-0 flex flex-col items-end justify-center pr-1" 
+                className="w-[8%] flex-shrink-0 flex flex-col items-end justify-center" 
               >
                 <div 
                   className="text-gray-600 text-right" 
@@ -98,12 +127,13 @@ const HeatMapFromImage = () => {
               {values[dayIndex].map((value, hourIndex) => (
                 <div
                   key={hourIndex}
-                  className="flex items-center justify-center flex-1 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-sm"
+                  className="flex items-center justify-center flex-1 cursor-pointer transition-transform duration-150 ease-out hover:scale-[1.02]"
                   style={{
                     backgroundColor: getBackgroundColor(value, dayIndex, hourIndex),
                     color: value > maxVal * 0.7 ? '#fff' : '#000',
                     fontSize: 'clamp(6px, 0.5vw, 7px)',
-                    fontWeight: '500'
+                    fontWeight: '500',
+                    transformOrigin: 'center'
                   }}
                   onMouseEnter={(e) => handleCellHover(e, dayIndex, hourIndex, value)}
                   onMouseLeave={handleCellLeave}
@@ -116,12 +146,12 @@ const HeatMapFromImage = () => {
         </div>
         
         {/* Footer row with hour labels */}
-        <div className="flex h-[20%]">
-          <div className="w-[12%] flex-shrink-0"></div>
+        <div className="flex flex-shrink-0 overflow-hidden" style={{ height: '20%' }}>
+          <div className="w-[8%] flex-shrink-0"></div>
           {hours.map((hour, index) => (
             <div
               key={index}
-              className="flex items-start justify-center flex-1"
+              className="flex items-start justify-center flex-1 overflow-hidden"
             >
               <div
                 className="text-gray-600"
@@ -129,7 +159,7 @@ const HeatMapFromImage = () => {
                   writingMode: 'vertical-rl',
                   textOrientation: 'mixed',
                   transform: 'rotate(180deg)',
-                  fontSize: 'clamp(4px, 0.7vw, 10px)',
+                  fontSize: 'clamp(4px, 0.7vw, 8px)',
                   lineHeight: '1',
                   whiteSpace: 'nowrap'
                 }}
@@ -141,7 +171,7 @@ const HeatMapFromImage = () => {
         </div>
       </div>
 
-      {/* Popover */}
+      {/* Improved Popover with correct arrow positioning */}
       {hoveredCell && (
         <div
           className="fixed bg-gray-800 text-white px-3 py-2 rounded shadow-lg text-sm z-50 pointer-events-none"
@@ -149,6 +179,8 @@ const HeatMapFromImage = () => {
             left: hoveredCell.x,
             top: hoveredCell.y - 8,
             transform: 'translateX(-50%) translateY(-100%)',
+            minWidth: '120px',
+            maxWidth: '200px'
           }}
         >
           <div className="text-center">
@@ -156,10 +188,12 @@ const HeatMapFromImage = () => {
             <div>{hours[hoveredCell.hour]}</div>
             <div className="text-yellow-300 font-bold">Value: {hoveredCell.value}</div>
           </div>
-          {/* Arrow pointing down */}
+          {/* Arrow pointing down - positioned relative to the original cell center */}
           <div 
-            className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0"
+            className="absolute top-full w-0 h-0"
             style={{
+              left: `${hoveredCell.cellCenterX - hoveredCell.x + 60}px`, // Calculate arrow position relative to cell center
+              transform: 'translateX(-50%)',
               borderLeft: '5px solid transparent',
               borderRight: '5px solid transparent',
               borderTop: '5px solid #374151'
@@ -179,7 +213,7 @@ export const HeatMapCard: React.FC<HeatMapCardProps> = ({
   const [selectedFloor, setSelectedFloor] = useState('Floor 1');
 
   return (
-    <article className="w-full h-[36.02vh] min-h-[300px] max-w-full border border-gray-200 rounded-xl p-[2.20vh] shadow-sm bg-[#f6f7ff] flex flex-col">
+    <article className="w-full h-[36.02vh] max-w-full border border-gray-200 rounded-xl p-[2.20vh] shadow-sm bg-[#f6f7ff] flex flex-col">
       <div className="flex items-start justify-between flex-shrink-0 mb-[0.5vh]">
         <div className="flex-1 min-w-0">
           <h2 className="text-[rgba(46,75,181,1)] text-[max(2.22vh,14px)] font-semibold mb-[0.37vh] truncate">
@@ -208,7 +242,7 @@ export const HeatMapCard: React.FC<HeatMapCardProps> = ({
         )}
       </div>
 
-      <div className="bg-gray-50 rounded-sm flex-1 overflow-auto min-h-0">
+      <div className="bg-gray-50 flex-1 min-h-0">
         <HeatMapFromImage />
       </div>
     </article>

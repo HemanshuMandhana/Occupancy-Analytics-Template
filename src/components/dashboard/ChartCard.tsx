@@ -44,7 +44,7 @@ export const ChartCard: React.FC<ChartCardProps> = ({ title, className = '' }) =
 
   return (
     <article
-      className={`bg-[#f6f7ff] border border-gray-200 rounded-xl p-[1.85vh] shadow-sm h-[36.02vh] min-h-[300px] flex flex-col ${className}`}
+      className={`bg-[#f6f7ff] border border-gray-200 rounded-xl p-[1.85vh] shadow-sm h-[36.02vh] flex flex-col ${className}`}
     >
       {/* Header */}
       <div className="flex items-start gap-[1.85vh] mb-[1.85vh]">
