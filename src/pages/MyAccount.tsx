@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { User, Edit2 } from 'lucide-react';
+import { User, Edit2, Eye, EyeOff } from 'lucide-react';
 
 const MyAccount: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
   const [formData, setFormData] = useState({
     userId: 'SU0001',
     firstName: 'Admin',
@@ -11,8 +12,26 @@ const MyAccount: React.FC = () => {
     contactNumber: '-----'
   });
 
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+
+  const [showPasswords, setShowPasswords] = useState({
+    currentPassword: false,
+    newPassword: false
+  });
+
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const handlePasswordChange = (field: string, value: string) => {
+    setPasswordData(prev => ({
       ...prev,
       [field]: value
     }));
@@ -26,6 +45,45 @@ const MyAccount: React.FC = () => {
   const handleCancel = () => {
     // Reset to original values if needed
     setIsEditing(false);
+  };
+
+  const handleChangePassword = () => {
+    setIsChangingPassword(!isChangingPassword);
+    if (!isChangingPassword) {
+      // Reset password fields when opening
+      setPasswordData({
+        currentPassword: '',
+        newPassword: '',
+        confirmPassword: ''
+      });
+      setShowPasswords({
+        currentPassword: false,
+        newPassword: false
+      });
+    }
+  };
+
+  const togglePasswordVisibility = (field: 'currentPassword' | 'newPassword') => {
+    setShowPasswords(prev => ({
+      ...prev,
+      [field]: !prev[field]
+    }));
+  };
+
+  const handlePasswordSubmit = () => {
+    // Here you would typically handle password change logic
+    // Validate passwords match, etc.
+    console.log('Password change submitted', passwordData);
+    setIsChangingPassword(false);
+    setPasswordData({
+      currentPassword: '',
+      newPassword: '',
+      confirmPassword: ''
+    });
+    setShowPasswords({
+      currentPassword: false,
+      newPassword: false
+    });
   };
 
   return (
@@ -297,6 +355,7 @@ const MyAccount: React.FC = () => {
                 
                 {/* Change Password Link - consistent width */}
                 <button 
+                  onClick={handleChangePassword}
                   className="text-red-400 hover:text-red-300 transition-colors duration-200 whitespace-nowrap"
                   style={{ 
                     height: 'clamp(28px, 4vh, 46px)', 
@@ -314,6 +373,197 @@ const MyAccount: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Password Change Modal */}
+      {isChangingPassword && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          onClick={handleChangePassword}
+        >
+          <div 
+            className="rounded-xl shadow-2xl"
+            style={{ 
+              backgroundColor: '#253878',
+              width: 'clamp(320px, 90vw, 500px)',
+              maxHeight: '90vh',
+              overflow: 'auto'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div style={{ 
+              padding: 'clamp(16px, 3vh, 24px) clamp(20px, 4vw, 32px)',
+              borderBottom: '1px solid rgba(148, 163, 184, 0.3)'
+            }}>
+              <div className="flex items-center justify-between">
+                <h2 className="font-bold text-white" style={{ fontSize: 'clamp(16px, 2.5vw, 24px)' }}>
+                  Change Password
+                </h2>
+                <button
+                  onClick={handleChangePassword}
+                  className="text-slate-400 hover:text-white transition-colors duration-200"
+                  style={{ fontSize: 'clamp(20px, 3vw, 24px)' }}
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <div style={{ 
+              padding: 'clamp(20px, 4vh, 32px) clamp(20px, 4vw, 32px)'
+            }}>
+              <div className="flex flex-col" style={{ gap: 'clamp(16px, 3vh, 24px)' }}>
+                <div>
+                  <label className="block text-slate-300 mb-2" style={{ 
+                    fontSize: 'clamp(12px, 1.5vw, 16px)'
+                  }}>Current Password</label>
+                  <div className="relative">
+                    <input
+                      type={showPasswords.currentPassword ? "text" : "password"}
+                      value={passwordData.currentPassword}
+                      onChange={(e) => handlePasswordChange('currentPassword', e.target.value)}
+                      className="w-full rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                      style={{ 
+                        backgroundColor: '#253878', 
+                        height: 'clamp(36px, 5vh, 48px)',
+                        border: '1px solid #FFFFFF',
+                        padding: '0 clamp(12px, 2vw, 16px)',
+                        paddingRight: 'clamp(40px, 8vw, 48px)',
+                        fontSize: 'clamp(12px, 1.5vw, 16px)'
+                      }}
+                      placeholder="Enter current password"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => togglePasswordVisibility('currentPassword')}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-white transition-colors duration-200"
+                      style={{ 
+                        width: 'clamp(16px, 3vw, 20px)', 
+                        height: 'clamp(16px, 3vw, 20px)' 
+                      }}
+                    >
+                      {showPasswords.currentPassword ? (
+                        <EyeOff style={{ width: '100%', height: '100%' }} />
+                      ) : (
+                        <Eye style={{ width: '100%', height: '100%' }} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-slate-300 mb-2" style={{ 
+                    fontSize: 'clamp(12px, 1.5vw, 16px)'
+                  }}>New Password</label>
+                  <div className="relative">
+                    <input
+                      type={showPasswords.newPassword ? "text" : "password"}
+                      value={passwordData.newPassword}
+                      onChange={(e) => handlePasswordChange('newPassword', e.target.value)}
+                      className="w-full rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                      style={{ 
+                        backgroundColor: '#253878', 
+                        height: 'clamp(36px, 5vh, 48px)',
+                        border: '1px solid #FFFFFF',
+                        padding: '0 clamp(12px, 2vw, 16px)',
+                        paddingRight: 'clamp(40px, 8vw, 48px)',
+                        fontSize: 'clamp(12px, 1.5vw, 16px)'
+                      }}
+                      placeholder="Enter new password"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => togglePasswordVisibility('newPassword')}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-white transition-colors duration-200"
+                      style={{ 
+                        width: 'clamp(16px, 3vw, 20px)', 
+                        height: 'clamp(16px, 3vw, 20px)' 
+                      }}
+                    >
+                      {showPasswords.newPassword ? (
+                        <EyeOff style={{ width: '100%', height: '100%' }} />
+                      ) : (
+                        <Eye style={{ width: '100%', height: '100%' }} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-slate-300 mb-2" style={{ 
+                    fontSize: 'clamp(12px, 1.5vw, 16px)'
+                  }}>Confirm Password</label>
+                  <input
+                    type="password"
+                    value={passwordData.confirmPassword}
+                    onChange={(e) => handlePasswordChange('confirmPassword', e.target.value)}
+                    className="w-full rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                    style={{ 
+                      backgroundColor: '#253878', 
+                      height: 'clamp(36px, 5vh, 48px)',
+                      border: '1px solid #FFFFFF',
+                      padding: '0 clamp(12px, 2vw, 16px)',
+                      fontSize: 'clamp(12px, 1.5vw, 16px)'
+                    }}
+                    placeholder="Confirm new password"
+                  />
+                </div>
+
+                {/* Modal Action Buttons */}
+                <div className="flex gap-4 justify-end" style={{ 
+                  marginTop: 'clamp(16px, 3vh, 24px)'
+                }}>
+                  <button
+                    onClick={handleChangePassword}
+                    className="font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-700"
+                    style={{ 
+                      height: 'clamp(36px, 5vh, 48px)',
+                      backgroundColor: '#E0F0E4',
+                      color: '#20744A',
+                      border: '1px solid #20744A',
+                      padding: '0 clamp(16px, 3vw, 24px)',
+                      fontSize: 'clamp(12px, 1.5vw, 16px)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = '#377E36';
+                      e.currentTarget.style.color = 'white';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = '#E0F0E4';
+                      e.currentTarget.style.color = '#20744A';
+                    }}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handlePasswordSubmit}
+                    className="font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-700"
+                    style={{ 
+                      height: 'clamp(36px, 5vh, 48px)',
+                      backgroundColor: '#E0F0E4',
+                      color: '#20744A',
+                      border: '1px solid #20744A',
+                      padding: '0 clamp(16px, 3vw, 24px)',
+                      fontSize: 'clamp(12px, 1.5vw, 16px)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = '#377E36';
+                      e.currentTarget.style.color = 'white';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = '#E0F0E4';
+                      e.currentTarget.style.color = '#20744A';
+                    }}
+                  >
+                    Update Password
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
