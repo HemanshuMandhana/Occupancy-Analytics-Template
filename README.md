@@ -1,10 +1,3 @@
-Alright — here’s the **final README** with your project preview image included so it looks professional on GitHub.
-
-I’ll place the screenshot right after the live demo links.
-You’ll just need to replace the image path with either a GitHub-hosted screenshot or one uploaded to your repo’s `assets/` folder.
-
----
-
 # 📊 Occupancy Analytics
 
 A modern **front-end web application** for **real-time space utilization monitoring and analytics**.
@@ -20,7 +13,8 @@ It helps track occupancy levels, visualize trends, and make data-driven decision
 
 ## 🖼 Preview
 
-![Occupancy Analytics Preview](<img width="1918" height="867" alt="image" src="https://github.com/user-attachments/assets/aa7919a0-6c48-419e-8d1e-8f56148cd11f" />)
+<img width="1918" height="867" alt="image" src="https://github.com/user-attachments/assets/29feadc6-7b70-4375-842a-23eab498d8a5" />
+
 
 ---
 
