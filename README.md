@@ -1,73 +1,98 @@
-# Welcome to your Lovable project
+Alright — here’s the **final README** with your project preview image included so it looks professional on GitHub.
 
-## Project info
+I’ll place the screenshot right after the live demo links.
+You’ll just need to replace the image path with either a GitHub-hosted screenshot or one uploaded to your repo’s `assets/` folder.
 
-**URL**: https://lovable.dev/projects/06693e60-474c-419a-8b43-1a550bb4c434
+---
 
-## How can I edit this code?
+# 📊 Occupancy Analytics
 
-There are several ways of editing your application.
+A modern **front-end web application** for **real-time space utilization monitoring and analytics**.
+It helps track occupancy levels, visualize trends, and make data-driven decisions for better space management.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/06693e60-474c-419a-8b43-1a550bb4c434) and start prompting.
+## 🌐 Live Demo
 
-Changes made via Lovable will be committed automatically to this repo.
+🔗 **[Occupancy Analytics](https://occupancy-analytics-template.vercel.app/)**
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🖼 Preview
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+![Occupancy Analytics Preview](<img width="1918" height="867" alt="image" src="https://github.com/user-attachments/assets/aa7919a0-6c48-419e-8d1e-8f56148cd11f" />)
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 📌 Features
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+* **Real-Time Occupancy Visualization** – Displays live occupancy data (via integrated APIs or mock data).
+* **Analytics Dashboard** – Shows usage trends, peak times, and underutilized areas.
+* **Responsive Design** – Optimized for desktop and mobile screens.
+* **Customizable Alerts** – Visual cues when occupancy exceeds set thresholds.
+* **Modern UI** – Built using Tailwind CSS and shadcn-ui components.
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## 🛠️ Tech Stack
+
+* **Framework:** React + Vite
+* **Language:** TypeScript
+* **UI Components:** shadcn-ui
+* **Styling:** Tailwind CSS
+* **Build Tool:** Vite
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/HemanshuMandhana/Occupancy-Analytics-Template.git
+cd Occupancy-Analytics-Template
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Run Development Server
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will start with **auto-reloading** and **instant preview** in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🖋 Editing the Code
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+* Open the project folder in **VS Code** or any preferred IDE.
+* Modify the front-end components inside the `src/` directory.
+* Use **Tailwind CSS utility classes** for styling and **shadcn-ui** for UI elements.
+* Save changes — the development server will update instantly.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 🚀 Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+To deploy the front-end:
 
-## How can I deploy this project?
+1. Build the production version:
 
-Simply open [Lovable](https://lovable.dev/projects/06693e60-474c-419a-8b43-1a550bb4c434) and click on Share -> Publish.
+   ```bash
+   npm run build
+   ```
+2. Deploy the `dist/` folder to any static hosting service such as **Vercel**, **Netlify**, or **GitHub Pages**.
 
-## Can I connect a custom domain to my Lovable project?
+(Currently deployed on **Vercel**: [View Live](https://occupancy-analytics-template.vercel.app/))
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📄 License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is for educational and demonstration purposes only. No license is currently assigned.
