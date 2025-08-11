@@ -1,6 +1,6 @@
 # 📊 Occupancy Analytics
 
-A modern **front-end web application** for **real-time space utilization monitoring and analytics**.
+A modern **web application** for **real-time space utilization monitoring and analytics**.
 It helps track occupancy levels, visualize trends, and make data-driven decisions for better space management.
 
 ---
